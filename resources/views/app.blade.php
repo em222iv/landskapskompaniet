@@ -8,6 +8,7 @@
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/caoursel.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/landskap.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/agency.css') }}" rel="stylesheet">
     <!--<link href="{{ asset('/css/css/ripples.css') }}" rel="stylesheet">-->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/material.min.css" />
 	<!-- Fonts -->
@@ -29,24 +30,39 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">Landskapskompaniet</a>
+
+                        <a class="navbar-brand"  href="/">Landskapskompaniet</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav navbar-inner" >
                             <li><a href="/">Hem</a></li>
                             <li class="dropdown">
-                             <a href="/Tjanster" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
+                             <a href="/tjanster" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
                              <ul class="dropdown-menu" role="menu">
-                                 <li><a href="/tradvard">Trädvård</a></li>
-                                 <li><a href="/grasklipp">Gräsklipp</a></li>
+                                 <li><a href="/tjanster">Överblick</a></li>
+                                 <li class="divider"></li>
+                                 <li class="dropdown-header">Tjänster</li>
+                                 <li><a href="/tradvard">Skog</a></li>
+                                 <li><a href="/trad">Träd</a></li>
+                                 <li><a href="/gras">Gräs</a></li>
+                                 <li><a href="/sjo">Sjö</a></li>
                                  <li class="divider"></li>
                                  <li class="dropdown-header">Vinter</li>
                                  <li><a href="/plogning">Plogning</a></li>
-                                 <li><a href="#">One more separated link</a></li>
                              </ul>
                          </li>
+                            <li class="dropdown">
+                            <a href="/socialt" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Socialt <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/galleri">Galleri</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Nätverk</li>
+                                <li><a href="https://www.facebook.com/landskapskompaniet?fref=ts">Facebook-sida</a></li>
+                                <li><a href="https://instagram.com/explore/tags/landskapskompaniet/">Instagram</a></li>
+                                <li><a href="/gras">Youtube-kanal</a></li>
+                            </ul>
                             <li><a href="/Kontakta">Kontakta oss</a></li>
-                            <li><a href="/Landskapskompaniet">Om Landskapskompaniet</a></li>
+                            <li><a href="/landskapskompaniet">Om Landskapskompaniet</a></li>
                         </ul>
                     </div>
                 </div>
@@ -89,6 +105,7 @@
         })
     });
 </script>
+
 
 </body>
 

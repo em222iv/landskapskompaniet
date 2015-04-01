@@ -28,3 +28,8 @@
 .back-to-top i {
     font-size: 60px;
 }
+@media (min-width: 600px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}

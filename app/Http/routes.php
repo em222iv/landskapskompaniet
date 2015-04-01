@@ -15,7 +15,8 @@ Route::get('/', 'WelcomeController@index');
 Route::get('/Kontakta', 'WelcomeController@contact');
 Route::get('/Kontakta', 'ContactController@index');
 Route::get('/Hem', 'HomeController@index');
-Route::get('/Landskapskompaniet', 'AboutController@index');
+Route::get('/landskapskompaniet', 'AboutController@index');
+Route::get('/tjanster', 'ServiceController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
