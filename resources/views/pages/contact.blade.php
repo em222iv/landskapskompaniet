@@ -1,82 +1,64 @@
 @extends('app')
 
 @section('content')
-<hr class="divider">
-<hr class="divider">
-<hr class="divider">
-<hr class="divider">
+
+<section id="contact">
+   <div class="container">
+      <div class="row">
+          <div class="box">
+              <div class="col-lg-12">
+                  <hr>
+                  <h2 class="intro-text text-center">Kontakt
+                      <strong>formulär</strong>
+                  </h2>
+                  <hr>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae, distinctio, possimus repudiandae cupiditate ipsum excepturi dicta neque eaque voluptates tempora veniam esse earum sapiente optio deleniti consequuntur eos voluptatem.</p>
+                  <form role="form">
+                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                      <div class="row">
+                          <div class="form-group col-lg-4">
+                              <strong>Namn</strong>
+                              <input type="text" class="form-control" Placeholder="t.ex. Tore Jönsson" name="name" value="{{ old('name') }}">
+                          </div>
+                             <div class="form-group col-lg-4">
+                                 <label>Adress</label>
+                                 <input type="text" class="form-control" name="adress" placeholder="t.ex. Drottninggatan 23" value="{{ old('adress') }}">
+                             </div>
+                          <div class="form-group col-lg-4">
+                              <label>Email Adress</label>
+                               <input type="email" class="form-control" name="email"  placeholder='t.ex. Tore@gmail.com' value="{{ old('email') }}">
+                          </div>
+                          <div class="form-group col-lg-4">
+                              <label>Telefon numerr</label>
+                                 <input type="number" class="form-control floating-label" placeholder="t.ex. t.ex. 0754 34 93 818"  value="{{ old('phone') }}">
+                          </div>
+                           <div class="form-group col-lg-4">
+                                <label>Företag</label>
+                                   <input type="text" class="form-control" name="adress" placeholder="t.ex. Apple, Microsoft, Lättviktmotor" value="{{ old('adress') }}">
+                            </div>
+                          <div class="clearfix"></div>
+                          <div class="form-group col-lg-12">
+                              <label>Message</label>
+                              <textarea class="form-control" rows="4" placeholder="Beskiv ditt meddelandet här"></textarea>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-md-10 col-md-offset-10">
+                                  <button type="submit" class="btn btn-primary">
+                                      Skicka
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+{{--
 <div class="container">
     <div class="row">
-        <div class="container marketing">
-
-            <!-- START THE FEATURETTES -->
-
-            <div class="row featurette">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Register</div>
-                        <div class="panel-body">
-                            @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
-
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Namn</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" Placeholder="t.ex. Tore Jönsson" name="name" value="{{ old('name') }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Adress</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="adress" placeholder="t.ex. Drottninggatan 23" value="{{ old('adress') }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">E-Mail Adress</label>
-                                    <div class="col-md-6">
-                                        <input type="email" class="form-control" name="email"  placeholder='t.ex. Tore@gmail.com' value="{{ old('email') }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Telefonnummer</label>
-                                    <div class="col-md-6">
-                                        <input type="number" class="form-control floating-label" placeholder="t.ex. t.ex. 0754 34 93 818"  value="{{ old('phone') }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Beskriv ditt ärende</label>
-                                    <div class="col-md-6">
-                                        <textarea  rows="5" type="textarea" type="textarea" class="form-control"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            Skicka
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <hr class="featurette-divider">
 
@@ -109,5 +91,6 @@
         </div>
     </div>
 </div>
+--}}
 
 @endsection

@@ -30,25 +30,21 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-
                         <a class="navbar-brand"  href="/">Landskapskompaniet</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
-                        <ul class="nav navbar-nav navbar-inner" >
+                        <ul class="nav navbar-nav navbar-inner">
                             <li><a href="/">Hem</a></li>
                             <li class="dropdown">
                              <a href="/tjanster" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
                              <ul class="dropdown-menu" role="menu">
                                  <li><a href="/tjanster">Överblick</a></li>
                                  <li class="divider"></li>
-                                 <li class="dropdown-header">Tjänster</li>
                                  <li><a href="/tradvard">Skog</a></li>
-                                 <li><a href="/trad">Träd</a></li>
+                                 <li><a href="/tjanster/trad">Träd</a></li>
                                  <li><a href="/gras">Gräs</a></li>
                                  <li><a href="/sjo">Sjö</a></li>
-                                 <li class="divider"></li>
-                                 <li class="dropdown-header">Vinter</li>
-                                 <li><a href="/plogning">Plogning</a></li>
+                                 <li><a href="/tjanster/plogning">Plogning</a></li>
                              </ul>
                          </li>
                             <li class="dropdown">
@@ -72,10 +68,77 @@
 	@yield('content')
 <!-- FOOTER -->
 <footer>
-    <div class="container">
-        <a class="back-to-top" style="display: inline;" href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
-        <p>© Landskapskompaniet · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-    </div>
+   <div class="container">
+       <div class="row">
+            <div class="col-lg-6">
+              <ul class="list-inline ">
+                  <li>
+                      <p>Telefon :<a href="tel:+1-303-499-7111">070 43 49 123</a></p>
+                  </li>
+                  <li class="footer-menu-divider">⋅</li>
+                  <li>
+                      <p>E-mail :<a href="mailto:webmaster@example.com">Carl@Landskapskompaniet.se</a></p>
+                  </li>
+              </ul>
+               <ul class="list-inline social-buttons">
+                  <li>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-lg-6">
+           <ul class="list-inline ">
+               <li>
+                   <p><a href="#">F-skatt</a></p>
+               </li>
+               <li class="footer-menu-divider">⋅</li>
+               <li>
+                    <p><a href="#">F-skatt</a></p>
+               </li>
+               <li class="footer-menu-divider">⋅</li>
+               <li>
+                   <p><a href="#">F-skatt</a></p>
+               </li>
+               <li class="footer-menu-divider">⋅</li>
+               <li>
+                    <p><a href="#">F-skatt</a></p>
+               </li>
+           </ul>
+           <ul class="list-inline social-buttons">
+              <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+          </ul>
+
+
+            {{-- <ul class="list-inline social-buttons">
+                 <li>
+                     <a href="#"><button class="btn btn-fab btn-raised btn-primary pull-left"><i class="mdi-communication-email"></i></button></a>
+                 </li>
+                 <li class="footer-menu-divider">⋅</li>
+                 <li>
+                     <a href="#about"> <button class="btn btn-fab btn-raised btn-material-blue pull-left"><i class="mdi-communication-phone"></i></button></a>
+                 </li>
+                 <li class="footer-menu-divider">⋅</li>
+             </ul>--}}
+          </div>
+       </div>
+       <div class="row">
+ <p class="copyright text-muted small">Copyright © Landskapskompaniet. All Rights Reserved</p>
+       </div>
+   </div>
 </footer>
 	<!-- Scripts -->
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -105,8 +168,5 @@
         })
     });
 </script>
-
-
 </body>
-
 </html>
