@@ -7,7 +7,6 @@
         <li data-target="#myCarousel" data-slide-to="1" class=""></li>
         <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
     </ol>
-
     <div class="carousel-inner" role="listbox">
         <div class="item">
             <img class="first-slide" src="http://bigtreestrategies.com/wp-content/uploads/2011/07/BigTree.jpg" alt="First slide">
@@ -49,6 +48,16 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<div id="introduction-container" class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Landskapskompaniet</h2>
+                <h4 class="section-subheading text-muted">Vi hjälper dig med träd, skog, plogning och allahanda tjänster</h4>
+            </div>
+        </div>
+        <hr>
+    </div>
 <div class="container marketing">
 <!-- Three columns of text below the carousel -->
     <div class="row">

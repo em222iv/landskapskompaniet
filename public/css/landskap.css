@@ -36,6 +36,7 @@
 @media screen and (min-width: 800px) {
     .nav.navbar-nav.navbar-inner {
         float:right;
+        margin-left: none;
     }
 }
 @media (min-width: 768px) {
@@ -62,4 +63,7 @@ margin:auto;
 }
 #contact {
     color:white;
+}
+#introduction-container{
+    margin-top:-50px;
 }

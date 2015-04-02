@@ -22,7 +22,7 @@ class AuthController extends Controller {
 
 	/**
 	 * Create a new authentication controller instance.
-	 *
+	 *g
 	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
 	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
 	 * @return void
