@@ -183,7 +183,7 @@
                             </div>
                         </li>
                        <li class="timeline-inverted">
-                            <a href="/Kontakta">
+                            <a href="/contact">
                                 <div class="timeline-image">
                                     <h4>Bli en
                                         <br>del av våran
@@ -193,8 +193,11 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
+
         </div>
+
         {{-- <!-- Clients Aside -->
             <aside class="clients">
                 <div class="container">
@@ -222,5 +225,6 @@
                     </div>
                 </div>
             </aside>--}}
+
     </section>
 @endsection

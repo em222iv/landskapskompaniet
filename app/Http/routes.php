@@ -10,21 +10,34 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//welcomepage
+Route::get('/home', [
+    'as' => 'home', 'uses' => 'WelcomeController@index'
+]);
 
-Route::get('/', 'WelcomeController@index');
-//Route::get('/Kontakta', 'WelcomeController@contact');
-Route::get('/contact', 'ContactController@index');
+//contact page
+Route::get('/contact', [
+    'as' => 'contact', 'uses' => 'ContactController@index'
+]);
+//about page
+Route::get('/about', [
+    'as' => 'about', 'uses' => 'AboutController@index'
+]);
+
+
 Route::post('/send', 'ContactController@store');
 
-Route::get('/gallery', 'GalleryController@index');
-Route::get('gallery/image', 'ImageController@index');
 
-Route::get('/about', 'AboutController@index');
+Route::get('/gallery',[ 'as' => 'gallery', 'uses' => 'GalleryController@index']);
+
+Route::get('/gallery/image',[ 'as' => 'gallery/image', 'uses' => 'ImageController@index']);
+
+
 //service
-Route::get('/services', 'ServiceController@index');
+Route::get('/services',[ 'as' => 'services', 'uses'  =>'ServiceController@index']);
 //subservices
-Route::get('/services/trees', 'TreeController@index');
-Route::get('/services/plowing', 'PlowController@index');
+Route::get('/services/trees',[ 'as' => 'services/trees', 'uses'  => 'TreeController@index']);
+Route::get('/services/plowing', [ 'as' => 'services/plowing', 'uses'  =>'PlowController@index']);
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -32,13 +45,18 @@ Route::controllers([
 
 //admin
 
-Route::get('/home', 'Admin\HomeController@index');
+
+Route::get('admin', [
+    'as' => 'admin/home', 'uses' => 'Admin\HomeController@index']);
+
+
 //carousel
 /*Route::get('/carousels', 'CarouselController@index');
 Route::get('/carousels/create', 'CarouselController@Create');
 //post
 Route::post('carousels', 'CarouselController@store');*/
 
-Route::resource('carousels', 'Admin\CarouselController');
+Route::resource('/admin/carousels', 'Admin\CarouselController');
 //Route::resource('/adminContacts', 'Admin\CarouselController');
-
+Route::resource('/admin/gallery', 'Admin\AdminGalleryController');
+Route::resource('/admin/image', 'Admin\AdminImageController');

@@ -1,16 +1,10 @@
 @extends('app')
 @section('content')
-
-<div class="container">
-
+<section id="gallery">
+    <div class="container">
         <div class="row">
-
-            <div class="col-lg-12">
-                <h1 class="page-header">Thumbnail Gallery</h1>
-            </div>
-
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="/galleri/bild">
+                <a class="thumbnail" href="/gallery/image">
                     <img class="img-responsive gallery" src="https://scontent-ams.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/18723_843327489065796_366994632714234662_n.jpg?oh=d0d3130a773c5cc4da19c09437900b8b&oe=55BA2395" alt="">
                 </a>
             </div>
@@ -70,5 +64,6 @@
                 </a>
             </div>
         </div>
-
+    </div>
+</section>
 @endsection

@@ -10,6 +10,7 @@
                   <hr>
                   <h2 class="intro-text text-center">Kontakt
                       <strong>formulär</strong>
+
                   </h2>
                   <hr>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae, distinctio, possimus repudiandae cupiditate ipsum excepturi dicta neque eaque voluptates tempora veniam esse earum sapiente optio deleniti consequuntur eos voluptatem.</p>
@@ -51,9 +52,11 @@
                        {!! Form::close() !!}
                    </div>
               </div>
-                 @include('errors.errorlist')
+
           </div>
+
       </div>
+        @include('errors.errorlist')
   </div>
 </section>
 <!-- Portfolio Grid Section -->

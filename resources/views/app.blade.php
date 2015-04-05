@@ -30,27 +30,31 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand"  href="/">Landskapskompaniet</a>
+                        @if(Auth::check())
+                        <a class="navbar-brand"  href="/admin">Landskapskompaniet</a>
+                        @else
+                        <a class="navbar-brand"  href="/home">Landskapskompaniet</a>
+                        @endif
                     </div>
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
                         <ul class="nav navbar-nav navbar-inner">
-                            <li><a href="/">Hem</a></li>
+                            <li><a href="/home">Hem</a></li>
                             <li class="dropdown">
                              <a href="/services" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
                              <ul class="dropdown-menu" role="menu">
                                  <li><a href="/services">Överblick</a></li>
                                  <li class="divider"></li>
                                  <li><a href="/tradvard">Skog</a></li>
-                                 <li><a href="/tjanster/trad">Träd</a></li>
+                                 <li><a href="/services/trees">Träd</a></li>
                                  <li><a href="/gras">Gräs</a></li>
                                  <li><a href="/sjo">Sjö</a></li>
-                                 <li><a href="/tjanster/plogning">Plogning</a></li>
+                                 <li><a href="/services/plowing">Plogning</a></li>
                              </ul>
                          </li>
                             <li class="dropdown">
                             <a href="/socialt" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Socialt <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/galleri">Galleri</a></li>
+                                <li><a href="/gallery">Galleri</a></li>
                                 <li class="divider"></li>
                                 <li class="dropdown-header">Nätverk</li>
                                 <li><a href="https://www.facebook.com/landskapskompaniet?fref=ts">Facebook-sida</a></li>
@@ -59,7 +63,9 @@
                             </ul>
                             <li><a href="/contact">Kontakta oss</a></li>
                             <li><a href="/about">Om Landskapskompaniet</a></li>
+
                         </ul>
+                        @include('_partials.breadcrumbs')
                     </div>
                 </div>
             </nav>
