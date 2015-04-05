@@ -13,48 +13,145 @@
                   </h2>
                   <hr>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae, distinctio, possimus repudiandae cupiditate ipsum excepturi dicta neque eaque voluptates tempora veniam esse earum sapiente optio deleniti consequuntur eos voluptatem.</p>
-                  <form role="form">
-                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                      <div class="row">
-                          <div class="form-group col-lg-4">
-                              <strong>Namn</strong>
-                              <input type="text" class="form-control" Placeholder="t.ex. Tore Jönsson" name="name" value="{{ old('name') }}">
-                          </div>
-                             <div class="form-group col-lg-4">
-                                 <label>Adress</label>
-                                 <input type="text" class="form-control" name="adress" placeholder="t.ex. Drottninggatan 23" value="{{ old('adress') }}">
-                             </div>
-                          <div class="form-group col-lg-4">
-                              <label>Email Adress</label>
-                               <input type="email" class="form-control" name="email"  placeholder='t.ex. Tore@gmail.com' value="{{ old('email') }}">
-                          </div>
-                          <div class="form-group col-lg-4">
-                              <label>Telefon numerr</label>
-                                 <input type="number" class="form-control floating-label" placeholder="t.ex. t.ex. 0754 34 93 818"  value="{{ old('phone') }}">
-                          </div>
+                   <div class="row">
+                       {!! Form::open(['url'=>'send']) !!}
                            <div class="form-group col-lg-4">
-                                <label>Företag</label>
-                                   <input type="text" class="form-control" name="adress" placeholder="t.ex. Apple, Microsoft, Lättviktmotor" value="{{ old('adress') }}">
+                            {!! Form::label('name','Namn:') !!}
+                            {!! Form::text('name',null,['class'=>'form-control', 'placeholder' => 't.ex. Tore Jönsson']) !!}
+                          </div>
+
+                           <div class="form-group col-lg-4">
+                              {!! Form::label('address','Adress:') !!}
+                              {!! Form::text('address',null,['class'=>'form-control', 'placeholder' => 't.ex. Drottninggatan 23']) !!}
                             </div>
+
+                          <div class="form-group col-lg-4">
+                              {!! Form::label('email','Email Adress:') !!}
+                              {!! Form::email('email',null,['class'=>'form-control', 'placeholder' => 't.ex. Tore@gmail.com']) !!}
+                          </div>
+
+                          <div class="form-group col-lg-4">
+                            {!! Form::label('phone','Telefon-/Mobilnummer:') !!}
+                            {!! Form::text('phone',null,['class'=>'form-control', 'placeholder' => 't.ex. 07043543455']) !!}
+                          </div>
+
+                           <div class="form-group col-lg-4">
+                              {!! Form::label('company','Företag:') !!}
+                              {!! Form::text('company',null,['class'=>'form-control', 'placeholder' => 't.ex. Microsoft,Apple eller Lättviktmotor']) !!}
+                           </div>
+
                           <div class="clearfix"></div>
-                          <div class="form-group col-lg-12">
-                              <label>Message</label>
-                              <textarea class="form-control" rows="4" placeholder="Beskiv ditt meddelandet här"></textarea>
-                          </div>
+                            <div class="form-group col-lg-12">
+                                {!! Form::label('request','Ärende: ') !!}
+                                {!! Form::textarea('request',null,['class'=>'form-control', 'placeholder' => 'Beskriv ditt ärende här...']) !!}
+                             </div>
                           <div class="form-group">
-                              <div class="col-md-10 col-md-offset-10">
-                                  <button type="submit" class="btn btn-primary">
-                                      Skicka
-                                  </button>
-                              </div>
+                             {!! Form::submit('Skicka',['class'=>'btn btn-primary']) !!}
                           </div>
-                      </div>
-                  </form>
+                       {!! Form::close() !!}
+                   </div>
               </div>
+                 @include('errors.errorlist')
           </div>
       </div>
   </div>
+</section>
+<!-- Portfolio Grid Section -->
+<section id="portfolio" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Portfolio</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Round Icons</h4>
+                    <p class="text-muted">Graphic Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Startup Framework</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="img/portfolio/treehouse.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Treehouse</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="img/portfolio/golden.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Golden</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="mdi-editor-format-indent-increase"></i>
+                        </div>
+                    </div>
+                    <img src="img/portfolio/escape.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Escape</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="fa fa-plus fa-3x" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Dreams</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 {{--
 <div class="container">

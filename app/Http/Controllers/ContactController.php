@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\JobRequest;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller {
@@ -11,4 +12,11 @@ class ContactController extends Controller {
 	{
         return view('pages.contact');
 	}
+
+    public function Store(Requests\JobRequest $request)
+    {
+        JobRequest::create($request->all());
+        return redirect('/');
+
+    }
 }

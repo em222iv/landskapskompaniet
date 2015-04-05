@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+<section>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -35,15 +36,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
+
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
@@ -58,4 +51,5 @@
 		</div>
 	</div>
 </div>
+</section>
 @endsection

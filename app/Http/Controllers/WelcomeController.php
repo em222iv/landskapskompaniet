@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Carousel;
 use Illuminate\Support\Facades\View;
 
 class WelcomeController extends Controller {
@@ -22,10 +23,8 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+		//$this->middleware('guest');
 	}
-
-
 
     /**
 	 * Show the application welcome screen to the user.
@@ -34,7 +33,8 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+        $carousels = Carousel::all();
+		return view('pages.welcome')->with('carousels',$carousels);
 	}
     public function contact()
     {

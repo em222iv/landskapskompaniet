@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class TreeController extends Controller {
+class GalleryController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -14,6 +14,6 @@ class TreeController extends Controller {
 	 */
 	public function index()
 	{
-        return view('pages.subservices.tree');
+		return view('pages.gallery');
 	}
 }

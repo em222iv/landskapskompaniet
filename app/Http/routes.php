@@ -12,16 +12,33 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-Route::get('/Kontakta', 'WelcomeController@contact');
-Route::get('/Kontakta', 'ContactController@index');
+//Route::get('/Kontakta', 'WelcomeController@contact');
+Route::get('/contact', 'ContactController@index');
+Route::post('/send', 'ContactController@store');
 
-Route::get('/landskapskompaniet', 'AboutController@index');
+Route::get('/gallery', 'GalleryController@index');
+Route::get('gallery/image', 'ImageController@index');
+
+Route::get('/about', 'AboutController@index');
 //service
-Route::get('/tjanster', 'ServiceController@index');
+Route::get('/services', 'ServiceController@index');
 //subservices
-Route::get('/tjanster/trad', 'TreeController@index');
-Route::get('/tjanster/plogning', 'PlowController@index');
+Route::get('/services/trees', 'TreeController@index');
+Route::get('/services/plowing', 'PlowController@index');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+//admin
+
+Route::get('/home', 'Admin\HomeController@index');
+//carousel
+/*Route::get('/carousels', 'CarouselController@index');
+Route::get('/carousels/create', 'CarouselController@Create');
+//post
+Route::post('carousels', 'CarouselController@store');*/
+
+Route::resource('carousels', 'Admin\CarouselController');
+//Route::resource('/adminContacts', 'Admin\CarouselController');
+

@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Team Section -->
-    <section id="team" class="bg-light-gray">
+    <section id="about" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -36,8 +36,14 @@
                     <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
                     <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
                     <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-                      <button class="btn btn-fab btn-raised btn-primary pull-left"><i class="mdi-communication-email"></i></button>
-                    <button class="btn btn-fab btn-raised btn-material-blue pull-left"><i class="mdi-communication-phone"></i></button>
+                        <ul class="list-inline social-buttons">
+                            <li>
+                              <a href="tel:+1-303-499-7111" class="btn btn-fab btn-raised btn-material-blue pull-left"><i class="mdi-communication-phone"></i></a>
+                            </li>
+                            <li>
+                               <a href="mailto:webmaster@example.com" class="btn btn-fab btn-primary pull-left"><i class="mdi-communication-email"></i></a>
+                            </li>
+                        </ul>
                 </div>
             </div>
             <div class="row">
@@ -217,8 +223,4 @@
                 </div>
             </aside>--}}
     </section>
-
-
-
-
 @endsection

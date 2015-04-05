@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="full" lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>Landskapskompaniet</title>
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/caoursel.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/landskap.css') }}" rel="stylesheet">
@@ -32,13 +32,13 @@
                         </button>
                         <a class="navbar-brand"  href="/">Landskapskompaniet</a>
                     </div>
-                    <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
+                    <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
                         <ul class="nav navbar-nav navbar-inner">
                             <li><a href="/">Hem</a></li>
                             <li class="dropdown">
-                             <a href="/tjanster" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
+                             <a href="/services" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
                              <ul class="dropdown-menu" role="menu">
-                                 <li><a href="/tjanster">Överblick</a></li>
+                                 <li><a href="/services">Överblick</a></li>
                                  <li class="divider"></li>
                                  <li><a href="/tradvard">Skog</a></li>
                                  <li><a href="/tjanster/trad">Träd</a></li>
@@ -57,8 +57,8 @@
                                 <li><a href="https://instagram.com/explore/tags/landskapskompaniet/">Instagram</a></li>
                                 <li><a href="/gras">Youtube-kanal</a></li>
                             </ul>
-                            <li><a href="/Kontakta">Kontakta oss</a></li>
-                            <li><a href="/landskapskompaniet">Om Landskapskompaniet</a></li>
+                            <li><a href="/contact">Kontakta oss</a></li>
+                            <li><a href="/about">Om Landskapskompaniet</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,13 +82,10 @@
               </ul>
                <ul class="list-inline social-buttons">
                   <li>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="tel:+1-303-499-7111" class="btn btn-fab btn-raised btn-material-blue pull-left"><i class="mdi-communication-phone"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                     <a href="mailto:webmaster@example.com" class="btn btn-fab btn-primary pull-left"><i class="mdi-communication-email"></i></a>
                   </li>
               </ul>
           </div>
@@ -140,6 +137,7 @@
        </div>
    </div>
 </footer>
+<a class="back-to-top" style="display: inline;" href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
 	<!-- Scripts -->
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -147,7 +145,9 @@
     <script src="{{ asset('/css/js/ripples.js') }}"></script>
 <script>$.material.init()</script>
 <script>
+
     jQuery(document).ready(function() {
+     $("div.navbar").attr("aria-expanded","false");
         var offset = 250;
         var duration = 300;
 
@@ -167,6 +167,9 @@
             return false;
         })
     });
+</script>
+<script>
+
 </script>
 </body>
 </html>
