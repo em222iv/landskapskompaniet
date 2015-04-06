@@ -42,7 +42,7 @@ class CarouselController extends Controller {
 	public function store(CarouselRequest $request)
 	{
         Carousel::create($request->all());
-        return redirect('/carousels');
+        return redirect('/admin/carousels');
 	}
 
 	/**
@@ -78,7 +78,7 @@ class CarouselController extends Controller {
 	{
         $carousel = Carousel::findOrFail($id);
         $carousel->update($request->all());
-        return redirect('/carousels');
+        return redirect('/admin/carousels');
 	}
 
 	/**
@@ -89,7 +89,9 @@ class CarouselController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $carousel = Carousel::findOrFail($id);
+        $carousel->delete();
+        return redirect('/admin/carousels');
 	}
 
 }

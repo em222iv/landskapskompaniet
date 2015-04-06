@@ -13,7 +13,7 @@
     <div class="item active">
                 <img class="third-slide" src="https://scontent-ams.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/1385694_791956437536235_7355088129082629807_n.jpg?oh=ef76a6f22565350de02866b22479e203&oe=55A1E750" alt="Slide 0">
                 <div class="container">
-                    <div class="carousel-caption header glass">
+                    <div class="carousel-caption">
                         <h1>ALLTID FÖRST</h1>
                         <p>Presentation alltid först</p>
                         <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
@@ -24,7 +24,7 @@
         <div class="item">
            <img class="first-slide" src="http://bigtreestrategies.com/wp-content/uploads/2011/07/BigTree.jpg" alt="Slide {{$carousel->id}}">
            <div class="container">
-               <div class="carousel-caption header glass">
+               <div class="carousel-caption">
                    <h1>{{ $carousel->title }}</h1>
                    <p>{{$carousel->body}}</p>
                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Kontakta oss!</a></p>
@@ -47,7 +47,7 @@
 <div id="introduction-container" class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Landskapskompaniet</h2>
+                <h3 class="section-heading">Landskapskompaniet</h3>
                 <h4 class="section-subheading text-muted">Vi hjälper dig med träd, skog, plogning och allahanda tjänster</h4>
             </div>
         </div>

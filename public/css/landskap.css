@@ -45,12 +45,14 @@
     .navbar-nav {
         margin:0;
     }
+
 }
 @media (max-width: 1200px) {
     .navbar-nav > li {
 
         margin-left: -7px;
     }
+
 }
 
 .team-member {

@@ -56,7 +56,7 @@ Breadcrumbs::register('admin.carousels.create', function($breadcrumbs) {
 });
 Breadcrumbs::register('admin.carousels.edit', function($breadcrumbs) {
     $breadcrumbs->parent('admin.carousels.index');
-    $breadcrumbs->push('Skapa Carousel', route('admin.carousels.edit'));
+    $breadcrumbs->push('Ändra Slider', route('admin.carousels.edit'));
 });
 Breadcrumbs::register('admin.image.index', function($breadcrumbs) {
     $breadcrumbs->parent('admin/home');

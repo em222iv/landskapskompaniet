@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Landskapskompaniet</h2>
+                    <h3 class="section-heading">Landskapskompaniet</h3>
                     <h3 class="section-subheading text-muted">Vi som jobbar och sammarbetar kring Landskapskompaniet</h3>
                 </div>
             </div>
