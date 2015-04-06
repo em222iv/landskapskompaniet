@@ -3,6 +3,7 @@
 use App\Carousel;
 use App\Http\Requests\CarouselRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Request;
 
 class CarouselController extends Controller {
@@ -41,7 +42,24 @@ class CarouselController extends Controller {
 	 */
 	public function store(CarouselRequest $request)
 	{
-        Carousel::create($request->all());
+
+        $input = Request::all();
+
+        //file
+        $path = Input::file('img-path');
+        //name
+        $img = Request::get('img');
+
+
+        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
+
+        $filename = str_random(4).'-'.str_slug($img).'.'.$extension;
+        $file = file_get_contents($path);
+        file_put_contents(public_path().'/img/carousel'.$filename,$file);
+
+
+        $input['img-path'] = '/img/carousel'.$filename;
+        Carousel::create($input);
         return redirect('/admin/carousels');
 	}
 
@@ -76,6 +94,8 @@ class CarouselController extends Controller {
 	 */
 	public function update($id, CarouselRequest $request)
 	{
+
+
         $carousel = Carousel::findOrFail($id);
         $carousel->update($request->all());
         return redirect('/admin/carousels');
