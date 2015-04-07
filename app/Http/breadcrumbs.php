@@ -18,9 +18,9 @@ Breadcrumbs::register('gallery', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Galleri', route('gallery'));
 });
-Breadcrumbs::register('gallery/image', function($breadcrumbs) {
+Breadcrumbs::register('gallery/{id}', function($breadcrumbs) {
     $breadcrumbs->parent('gallery');
-    $breadcrumbs->push('Bild', route('gallery/image'));
+    $breadcrumbs->push('Bild', route('gallery/{id}'));
 });
 
 //serives pages

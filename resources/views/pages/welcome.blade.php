@@ -5,7 +5,7 @@
     <!-- Indicators -->
     <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    @foreach($carousels as $carousel)
+    @foreach($data['carousels'] as $carousel)
         <li data-target="#myCarousel" data-slide-to="{{$carousel->id}}" class=""></li>
     @endforeach
     </ol>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-     @foreach($carousels as $carousel)
+     @foreach($data['carousels'] as $carousel)
         <div class="item">
            <img class="first-slide" src="{{ $carousel['img-path'] }}" alt="Slide {{$carousel->id}}">
            <div class="container">
@@ -61,47 +61,19 @@
             <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
             <h2>Kontakta oss</h2>
             <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-default" href="#" role="button">Kontakta här »</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <?php
-            // Supply a user id and an access token
-            $userid = "1459532749";
-            $accessToken = "1459532749.ab103e5.4e9c9b38a54145338fc7263289159c95";
-
-            // Gets our data
-            function fetchData($url){
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-                $result = curl_exec($ch);
-                curl_close($ch);
-                return $result;
-            }
-
-            // Pulls and parses data.
-            $result = fetchData("https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}");
-            $result = json_decode($result);
-            ?>
-
-
-            <?php foreach ($result->data as $post): ?>
-            <!-- Renders images. @Options (thumbnail,low_resoulution, high_resolution) -->
-            <a class="group" rel="group1" href="<?= $post->images->standard_resolution->url ?>"><img class="img-circle" alt="Generic placeholder image" width="140" height="140" src="<?= $post->images->thumbnail->url ?>"></a>
-
-            <?php break ?>
-            <?php endforeach ?>
-           {{-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            --}}<h2>Instagram</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-default" href="#" role="button">Vår Instagram »</a></p>
+            <p><a class="btn btn-default" href="/contact" role="button">Kontakta här »</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
             <h2>Facebook</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
             <p><a class="btn btn-default" href="#" role="button">Facebook-sida »</a></p>
+        </div>
+        <div class="col-lg-4">
+            <a class="group" rel="group1" href="{{$data['img']}}"><img class="img-circle" alt="Generic placeholder image" width="140" height="140" src="{{$data['img']}}"></a>
+                <h2>Instagram</h2>
+                <p>{{$data['text']}}</p>
+            <p><a class="btn btn-default" href="#" role="button">Vår Instagram »</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 </div>

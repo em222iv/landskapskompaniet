@@ -130,14 +130,17 @@ margin:auto;
 .navbar.navbar.navbar-static-top{
     background-color: rgb(213, 75, 46);
 }
+/*
+@media (max-width: 1600px) {
+    .carousel.slide {
+        min-width: 100%;
+    / / the largest you want the image to stretch min-width : 900 px;
+    / / the "container" width overflow : hidden;
+    }
 
-.carousel.slide{
-    max-width: 1600px; //the largest you want the image to stretch
-    min-width: 900px; //the "container" width
-    overflow: hidden;
-}
-.carousel-inner{
-    width: 1600px;
-    left: 50%;
-    margin-left: -800px;
-}
+    .carousel-inner {
+        min-width: 100%;
+        left: 50%;
+        margin-left: -800px;
+    }
+}*/

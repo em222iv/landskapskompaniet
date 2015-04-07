@@ -1,9 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use App\Image;
+use Request;
 
 class GalleryController extends Controller {
 
@@ -14,6 +12,7 @@ class GalleryController extends Controller {
 	 */
 	public function index()
 	{
-		return view('pages.gallery');
+        $images = Image::all();
+        return view('pages.gallery')->with('images',$images);
 	}
 }

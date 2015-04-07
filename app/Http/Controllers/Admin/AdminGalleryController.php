@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use App\Image;
+use Request;
 
 class AdminGalleryController extends Controller {
 
@@ -12,9 +13,19 @@ class AdminGalleryController extends Controller {
 	 *
 	 * @return Response
 	 */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
 	public function index()
 	{
-		return view('admin.gallery.index');
+        $images = Image::all();
+        return view('admin.gallery.index')->with('images',$images);
 	}
 
 	/**
@@ -34,8 +45,19 @@ class AdminGalleryController extends Controller {
 	 */
 	public function store()
 	{
-		//
-	}
+        $input = Request::all();
+
+        //file
+        $path = Input::file('image');
+        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
+
+        $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
+        $file = file_get_contents($path);
+        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
+
+        $input['image'] = '/img/gallery/'.$filename;
+        Image::create($input);
+        return redirect('/admin/gallery');	}
 
 	/**
 	 * Display the specified resource.
@@ -76,9 +98,12 @@ class AdminGalleryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
-	}
+    public function destroy($id)
+    {
+        $image = Image::findOrFail($id);
+        $image->delete();
+        return redirect('/admin/gallery');
+    }
+
 
 }

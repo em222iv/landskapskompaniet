@@ -30,7 +30,11 @@ Route::post('/send', 'ContactController@store');
 
 Route::get('/gallery',[ 'as' => 'gallery', 'uses' => 'GalleryController@index']);
 
-Route::get('/gallery/image',[ 'as' => 'gallery/image', 'uses' => 'ImageController@index']);
+Route::get('/gallery/{id}',[ 'as' => 'gallery/{id}', 'uses' => 'ImageController@show',function($id) {
+
+
+    //
+}]);
 
 
 //service
