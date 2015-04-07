@@ -43,7 +43,7 @@ class CarouselController extends Controller {
 	public function store(CarouselRequest $request)
 	{
 
-        $input = Request::all();
+        $input = $request->all();
 
         //file
         $path = Input::file('img-path');
@@ -95,9 +95,18 @@ class CarouselController extends Controller {
 	public function update($id, CarouselRequest $request)
 	{
 
-
         $carousel = Carousel::findOrFail($id);
-        $carousel->update($request->all());
+        $input = $request->all();
+        //file
+        $path = Input::file('img-path');
+        //name
+        $img = Request::get('img');
+        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
+        $filename = str_random(4).'-'.str_slug($img).'.'.$extension;
+        $file = file_get_contents($path);
+        file_put_contents(public_path().'/img/carousel'.$filename,$file);
+        $input['img-path'] = '/img/carousel'.$filename;
+        $carousel->update($input);
         return redirect('/admin/carousels');
 	}
 

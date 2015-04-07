@@ -44,7 +44,7 @@ Breadcrumbs::register('admin/home', function($breadcrumbs) {
 //resource routes
 Breadcrumbs::register('admin/home', function($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Admin', route('admin/home'));
+    $breadcrumbs->push('Admin: '.Auth::User()->name, route('admin/home'));
 });
 Breadcrumbs::register('admin.carousels.index', function($breadcrumbs) {
     $breadcrumbs->parent('admin/home');

@@ -64,8 +64,36 @@
             <p><a class="btn btn-default" href="#" role="button">Kontakta här »</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Instagram</h2>
+            <?php
+            // Supply a user id and an access token
+            $userid = "1459532749";
+            $accessToken = "1459532749.ab103e5.4e9c9b38a54145338fc7263289159c95";
+
+            // Gets our data
+            function fetchData($url){
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+                $result = curl_exec($ch);
+                curl_close($ch);
+                return $result;
+            }
+
+            // Pulls and parses data.
+            $result = fetchData("https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}");
+            $result = json_decode($result);
+            ?>
+
+
+            <?php foreach ($result->data as $post): ?>
+            <!-- Renders images. @Options (thumbnail,low_resoulution, high_resolution) -->
+            <a class="group" rel="group1" href="<?= $post->images->standard_resolution->url ?>"><img class="img-circle" alt="Generic placeholder image" width="140" height="140" src="<?= $post->images->thumbnail->url ?>"></a>
+
+            <?php break ?>
+            <?php endforeach ?>
+           {{-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            --}}<h2>Instagram</h2>
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
             <p><a class="btn btn-default" href="#" role="button">Vår Instagram »</a></p>
         </div><!-- /.col-lg-4 -->
