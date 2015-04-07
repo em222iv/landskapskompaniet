@@ -78,8 +78,8 @@ class AdminGalleryController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
-	}
+        $image = Image::findOrFail($id);
+        return view('admin.gallery.edit')->with('image',$image);	}
 
 	/**
 	 * Update the specified resource in storage.
@@ -89,7 +89,20 @@ class AdminGalleryController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $carousel = Image::findOrFail($id);
+        $input = Request::all();
+
+        //file
+        $path = Input::file('image');
+        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
+
+        $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
+        $file = file_get_contents($path);
+        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
+
+        $input['image'] = '/img/gallery/'.$filename;
+        $carousel->update($input);
+        return redirect('/admin/gallery');
 	}
 
 	/**

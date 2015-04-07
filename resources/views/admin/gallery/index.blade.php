@@ -15,9 +15,6 @@
                                     Bild
                                 </th>
                                 <th>
-                                    text
-                                </th>
-                                <th>
                                     skapad
                                 </th>
 
@@ -28,7 +25,7 @@
                                <tr>
                                  <td>
                                      <h4>
-                                         <a href="/admin/carousels/{{ $image->id }}/edit">{{$image->title}}</a>
+                                         <a href="/admin/gallery/{{ $image->id }}/edit">{{$image->title}}</a>
                                      </h4>
                                  </td>
                                  <td>
@@ -36,9 +33,6 @@
                                          <img src="{{$image->image}}" height="50" width="70">
                                       </h4>
                                   </td>
-                                 <td>
-                                     <div class="body">{{$image->text}}</div>
-                                 </td>
                                  <td>
                                      <p>{{$image->created_at}}</p>
                                  </td>

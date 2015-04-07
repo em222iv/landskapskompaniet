@@ -15,11 +15,12 @@
          background-size: cover;
        }
 
-       #image-container {
-        height:50vh;'
-       }
+
        #image-text {
        color:white;
+       }
+       footer {
+          padding-top:15%;
        }
 
        </style>

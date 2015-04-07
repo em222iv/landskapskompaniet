@@ -42,6 +42,7 @@ Breadcrumbs::register('admin/home', function($breadcrumbs) {
     $breadcrumbs->push('Admin', route('admin/home'));
 });
 //resource routes
+//admin carousel
 Breadcrumbs::register('admin/home', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Admin: '.Auth::User()->name, route('admin/home'));
@@ -65,4 +66,17 @@ Breadcrumbs::register('admin.image.index', function($breadcrumbs) {
 Breadcrumbs::register('admin.image.create', function($breadcrumbs) {
     $breadcrumbs->parent('admin.image.index');
     $breadcrumbs->push('Lägg till bild', route('admin.image.create'));
+});
+//admin gallery
+Breadcrumbs::register('admin.gallery.index', function($breadcrumbs) {
+    $breadcrumbs->parent('admin/home');
+    $breadcrumbs->push('Galleriet', route('admin.gallery.index'));
+});
+Breadcrumbs::register('admin.gallery.create', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.gallery.index');
+    $breadcrumbs->push('Lägg till bild', route('admin.gallery.create'));
+});
+Breadcrumbs::register('admin.gallery.edit', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.gallery.index');
+    $breadcrumbs->push('Ändra bild', route('admin.gallery.edit'));
 });
