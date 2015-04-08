@@ -4,25 +4,18 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+
     @foreach($data['carousels'] as $carousel)
         <li data-target="#myCarousel" data-slide-to="{{$carousel->id}}" class=""></li>
     @endforeach
     </ol>
     <div class="carousel-inner" role="listbox">
-    <div class="item active">
-                <img class="third-slide" src="https://scontent-ams.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/1385694_791956437536235_7355088129082629807_n.jpg?oh=ef76a6f22565350de02866b22479e203&oe=55A1E750" alt="Slide 0">
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>ALLTID FÖRST</h1>
-                        <p>Presentation alltid först</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                    </div>
-                </div>
-            </div>
      @foreach($data['carousels'] as $carousel)
-        <div class="item">
+         @if($carousel == $data['carousels'][0])
+            <div class="item active">
+         @else
+            <div class="item">
+         @endif
            <img class="first-slide" src="{{ $carousel['img-path'] }}" alt="Slide {{$carousel->id}}">
            <div class="container">
                <div class="carousel-caption">

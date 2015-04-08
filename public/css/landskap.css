@@ -131,16 +131,19 @@ margin:auto;
     background-color: rgb(213, 75, 46);
 }
 /*
-@media (max-width: 1600px) {
+
+@media (max-width: 1200px) {
     .carousel.slide {
-        min-width: 100%;
-    / / the largest you want the image to stretch min-width : 900 px;
+        min-width: 1600px;
+    / / the largest you want the image to stretch min-width : 600 px;
     / / the "container" width overflow : hidden;
     }
 
     .carousel-inner {
-        min-width: 100%;
+        min-width: 1600px;
         left: 50%;
         margin-left: -800px;
     }
-}*/
+}
+*/
+

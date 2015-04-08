@@ -11,10 +11,13 @@
 |
 */
 //welcomepage
-Route::get('/home', [
+Route::get('/', [
     'as' => 'home', 'uses' => 'WelcomeController@index'
 ]);
 
+Route::get('/home', [
+    'as' => 'home', 'uses' => 'WelcomeController@index'
+]);
 //contact page
 Route::get('/contact', [
     'as' => 'contact', 'uses' => 'ContactController@index'
