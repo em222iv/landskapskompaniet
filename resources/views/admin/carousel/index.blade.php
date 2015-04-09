@@ -33,7 +33,7 @@
                              <div class="body">{{$carousel->body}}</div>
                          </td>
                          <td>
-                             <p>{{$carousel->created_at}}</p>
+
                          </td>
                          <td>
                             {!! Form::open(array('url' => 'admin/carousels/' . $carousel->id, 'class' => 'pull-right')) !!}
