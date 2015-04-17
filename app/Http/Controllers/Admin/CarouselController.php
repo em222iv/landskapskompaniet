@@ -55,8 +55,8 @@ class CarouselController extends Controller {
 
         $filename = str_random(4).'-'.str_slug($img).'.'.$extension;
         $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/carousel/'.$filename,$file);
-
+        file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
+        //  file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
 
         $input['img-path'] = 'img/carousel/'.$filename;
         Carousel::create($input);
@@ -104,7 +104,8 @@ class CarouselController extends Controller {
         $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
         $filename = str_random(4).'-'.str_slug($img).'.'.$extension;
         $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/carousel/'.$filename,$file);
+        file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
+        //  file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
         $input['img-path'] = 'img/carousel/'.$filename;
         $carousel->update($input);
         return redirect('/admin/carousels');

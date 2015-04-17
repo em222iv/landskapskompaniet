@@ -15,7 +15,7 @@
     text-decoration: none;
     font-size: 2.2em;
 }
-
+@font-face { font-family: Verdana; src: url('font/Vani.ttf'); }
 .back-to-top:hover {
     color: #ffffff;
 }
@@ -128,22 +128,27 @@ margin:auto;
     }
 }
 .navbar.navbar.navbar-static-top{
+
     background-color: rgb(213, 75, 46);
 }
-/*
-
-@media (max-width: 1200px) {
-    .carousel.slide {
-        min-width: 1600px;
-    / / the largest you want the image to stretch min-width : 600 px;
-    / / the "container" width overflow : hidden;
-    }
-
-    .carousel-inner {
-        min-width: 1600px;
-        left: 50%;
-        margin-left: -800px;
-    }
+h2 {
+    font-family: Vani;
 }
-*/
+
+
+
+    .item{
+        max-height: 500px;
+        overflow: hidden;
+    }
+
+    .slide {
+        max-width:auto;
+        height: 500px;
+        overflow:hidden;
+
+
+    }
+
+
 
