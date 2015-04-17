@@ -8,7 +8,7 @@
             <a href="/auth/logout" class="btn btn-primary btn-warning">Logga ut</a><hr>
             <a href="/admin/carousels">Carousels</a>
             <a href="/admin/gallery">Gallery</a>
-            <a href="/admin/image">Image</a>
+            <a href="/admin/service">Tjänster</a>
        </div>
 
     </div>

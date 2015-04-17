@@ -14,181 +14,66 @@
             </div>
         </div>
         <div class="row">
-           <div class="col-lg-6">
-               <div class="bs-component">
-                   <div class="list-group">
-                       <div class="list-group-item">
-                           <div class="row-action-primary">
-                               <i class="mdi-file-folder"></i>
-                           </div>
-                           <div class="row-content">
-                               <div class="least-content">15m</div>
-                               <h4 class="list-group-item-heading">Tile with a label</h4>
-                               <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-                           </div>
-                       </div>
-                       <div class="list-group-separator"></div>
-                       <div class="list-group-item">
-                           <div class="row-action-primary">
-                               <i class="mdi-file-folder"></i>
-                           </div>
-                           <div class="row-content">
-                               <div class="least-content">10m</div>
-                               <h4 class="list-group-item-heading">Tile with a label</h4>
-                               <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-                           </div>
-                       </div>
-                       <div class="list-group-separator"></div>
-                       <div class="list-group-item">
-                           <div class="row-action-primary">
-                               <i class="mdi-file-folder"></i>
-                           </div>
-                           <div class="row-content">
-                               <div class="least-content">8m</div>
-                               <h4 class="list-group-item-heading">Tile with a label</h4>
-                               <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-                           </div>
-                       </div>
-                       <div class="list-group-separator"></div>
-                   </div>
-               </div>
-           </div>
-           <div class="col-lg-6">
-               <div class="bs-component">
-                   <div class="list-group">
-                       <div class="list-group-item">
-                           <div class="row-action-primary">
-                               <i class="mdi-file-folder"></i>
-                           </div>
-                           <div class="row-content">
-                               <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                               <h4 class="list-group-item-heading">Tile with an icon</h4>
-                               <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-                           </div>
-                       </div>
-                       <div class="list-group-separator"></div>
-                       <div class="list-group-item">
-                           <div class="row-action-primary">
-                               <i class="mdi-file-folder"></i>
-                           </div>
-                           <div class="row-content">
-                               <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                               <h4 class="list-group-item-heading">Tile with an icon</h4>
-                               <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-                           </div>
-                       </div>
-                       <div class="list-group-separator"></div>
-                       <div class="list-group-item">
-                           <div class="row-action-primary">
-                               <i class="mdi-file-folder"></i>
-                           </div>
-                           <div class="row-content">
-                               <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                               <h4 class="list-group-item-heading">Tile with an icon</h4>
-                               <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-                           </div>
-                       </div>
-                       <div class="list-group-separator"></div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    @foreach($services as $service)
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="row-action-primary">
+                                    <img class="img-responsive img-circle"  src="{{$service->img}}" alt="">
+                                </div>
+                                <div class="row-content">
+                                    <a href="#" ><div class="least-content">Läs mer</div></a>
+                                    <h4 class="list-group-item-heading">{{$service->title}}</h4>
+                                    <p class="list-group-item-text contain-text">{{$service->text}}</p>
+                                </div>
+                            </div>
+                            <div class="list-group-separator"></div>
+                        </div>
+                    @endforeach
+                        <ul class="list-inline social-buttons pull-right">
+                            <li>
+                                <a href="tel:+1-303-499-7111" class="btn btn-fab btn-raised btn-material-blue pull-left"><i class="mdi-communication-phone"></i></a>
+                            </li>
+                            <li>
+                                <a href="mailto:webmaster@example.com" class="btn btn-fab btn-primary pull-left"><i class="mdi-communication-email"></i></a>
+                            </li>
+                        </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </section>
-<!-- Portfolio Grid Section -->
-<section id="portfolio" class="bg-white">
+<section id="features">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Portfolio</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Round Icons</h4>
-                    <p class="text-muted">Graphic Design</p>
+            <div class="row featurette">
+                <div class="col-md-7 col-md-push-5">
+                    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5 col-md-pull-7">
+                    <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMTI1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Startup Framework</h4>
-                    <p class="text-muted">Website Design</p>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMTI1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img src="img/portfolio/treehouse.png" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Treehouse</h4>
-                    <p class="text-muted">Website Design</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img src="img/portfolio/golden.png" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Golden</h4>
-                    <p class="text-muted">Website Design</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="mdi-editor-format-indent-increase"></i>
-                        </div>
-                    </div>
-                    <img src="img/portfolio/escape.png" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Escape</h4>
-                    <p class="text-muted">Website Design</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="fa fa-plus fa-3x" class="portfolio-link" data-toggle="modal">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Dreams</h4>
-                    <p class="text-muted">Website Design</p>
-                </div>
-            </div>
+
+
+            <!-- /END THE FEATURETTES -->
         </div>
     </div>
 </section>

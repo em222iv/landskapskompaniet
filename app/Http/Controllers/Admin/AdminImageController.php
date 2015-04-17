@@ -78,7 +78,9 @@ class AdminImageController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $service = Image::findOrFail($id);
+        $service->delete();
+        return redirect('/admin/service');
 	}
 
 }

@@ -73,6 +73,7 @@ margin:auto;
 }
 #contact {
     color:white;
+    background-color: white;
 }
 #introduction-container{
     margin-top:-50px;
@@ -149,6 +150,9 @@ h2 {
 
 
     }
-
-
-
+.contain-text {
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }

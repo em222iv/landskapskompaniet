@@ -65,7 +65,7 @@
                             <li><a href="/about">Om Landskapskompaniet</a></li>
 
                         </ul>
-                        @include('_partials.breadcrumbs')
+                    {{--    @include('_partials.breadcrumbs')--}}
                     </div>
                 </div>
             </nav>
