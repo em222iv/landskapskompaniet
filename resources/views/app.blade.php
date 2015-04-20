@@ -24,7 +24,12 @@
             <nav class="navbar navbar navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
                         @if(Auth::check())
                         <a class="navbar-brand"  href="/admin">Landskapskompaniet</a>
                         @else
@@ -40,7 +45,7 @@
                                  <li><a href="/tjänster">Överblick</a></li>
                                  <li class="divider"></li>
                                   @foreach($services as $service)
-                                     <li><a href="/tjänster/{{$service->title}}">{{$service->title}}</a></li>
+                                     <li><a href="tjänster/{{$service->id}}">{{$service->title}}</a></li>
                                  @endforeach
                              </ul>
                          </li>
