@@ -1,6 +1,8 @@
 <?php namespace App\Providers;
 
+use App\Service;
 use Illuminate\Support\ServiceProvider;
+use Request;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -11,7 +13,8 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+        $services = Service::all();
+        view()->share('services',$services);
 	}
 
 	/**

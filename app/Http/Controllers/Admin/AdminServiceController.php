@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use App\Image;
 use Request;
 
+
 class AdminServiceController extends Controller {
     public function __construct()
     {
@@ -52,6 +53,7 @@ class AdminServiceController extends Controller {
         $file = file_get_contents($path);
         file_put_contents(public_path().'/img/service/'.$filename,$file);
         //  file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
+
 
         $input['img'] = '/img/service/'.$filename;
        // $input['img'] = 'img/service/'.$filename;

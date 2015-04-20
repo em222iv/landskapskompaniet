@@ -20,16 +20,11 @@
 </head>
 <body>
     <div class="navbar-wrapper">
-        <div class="container">
+        <div class="container" id="nav-container">
             <nav class="navbar navbar navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
+
                         @if(Auth::check())
                         <a class="navbar-brand"  href="/admin">Landskapskompaniet</a>
                         @else
@@ -38,31 +33,29 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
                         <ul class="nav navbar-nav navbar-inner">
-                            <li><a href="/home">Hem</a></li>
+                            <li><a href="/hem">Hem</a></li>
                             <li class="dropdown">
-                             <a href="/services" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
+                             <a href="/tjänster" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
                              <ul class="dropdown-menu" role="menu">
-                                 <li><a href="/services">Överblick</a></li>
+                                 <li><a href="/tjänster">Överblick</a></li>
                                  <li class="divider"></li>
-                                 <li><a href="/tradvard">Skog</a></li>
-                                 <li><a href="/services/trees">Träd</a></li>
-                                 <li><a href="/gras">Gräs</a></li>
-                                 <li><a href="/sjo">Sjö</a></li>
-                                 <li><a href="/services/plowing">Plogning</a></li>
+                                  @foreach($services as $service)
+                                     <li><a href="/tjänster/{{$service->title}}">{{$service->title}}</a></li>
+                                 @endforeach
                              </ul>
                          </li>
                             <li class="dropdown">
                             <a href="/socialt" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Socialt <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/gallery">Galleri</a></li>
+                                <li><a href="/galleri">Galleri</a></li>
                                 <li class="divider"></li>
                                 <li class="dropdown-header">Nätverk</li>
                                 <li><a href="https://www.facebook.com/landskapskompaniet?fref=ts">Facebook-sida</a></li>
                                 <li><a href="https://instagram.com/explore/tags/landskapskompaniet/">Instagram</a></li>
                                 <li><a href="/gras">Youtube-kanal</a></li>
                             </ul>
-                            <li><a href="/contact">Kontakta oss</a></li>
-                            <li><a href="/about">Om Landskapskompaniet</a></li>
+                            <li><a href="/kontakt">Kontakta oss</a></li>
+                            <li><a href="/landskapskompaniet">Om Landskapskompaniet</a></li>
 
                         </ul>
                     {{--    @include('_partials.breadcrumbs')--}}

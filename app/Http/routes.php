@@ -15,36 +15,39 @@ Route::get('/', [
     'as' => 'home', 'uses' => 'WelcomeController@index'
 ]);
 
-Route::get('/home', [
+Route::get('/hem', [
     'as' => 'home', 'uses' => 'WelcomeController@index'
 ]);
 //contact page
-Route::get('/contact', [
+Route::get('/kontakt', [
     'as' => 'contact', 'uses' => 'ContactController@index'
 ]);
 //about page
-Route::get('/about', [
+Route::get('/landskapskompaniet', [
     'as' => 'about', 'uses' => 'AboutController@index'
 ]);
 
+Route::get('/galleri',[ 'as' => 'gallery', 'uses' => 'GalleryController@index']);
 
-Route::post('/send', 'ContactController@store');
-
-
-Route::get('/gallery',[ 'as' => 'gallery', 'uses' => 'GalleryController@index']);
-
-Route::get('/gallery/{id}',[ 'as' => 'gallery/{id}', 'uses' => 'ImageController@show',function($id) {
+Route::get('/galleri/{id}',[ 'as' => 'gallery/{id}', 'uses' => 'ImageController@show',function($name) {
 
 
-    //
+
 }]);
 
 
 //service
-Route::get('/services',[ 'as' => 'services', 'uses'  =>'ServiceController@index']);
+Route::get('/tjänster',[ 'as' => 'services', 'uses'  =>'ServiceController@index']);
 //subservices
-Route::get('/services/trees',[ 'as' => 'services/trees', 'uses'  => 'TreeController@index']);
-Route::get('/services/plowing', [ 'as' => 'services/plowing', 'uses'  =>'PlowController@index']);
+/*Route::get('/service/{name}',[ 'as' => 'service/{id}', 'uses' => 'ServiceController@show',function($name = null)
+{
+
+}]);*/
+Route::get('tjänster/{name?}',[ 'as' => 'service/{name}', 'uses' => 'ServiceController@show', function($name = null)
+{
+    return $name;
+}]);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

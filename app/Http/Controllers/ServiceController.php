@@ -16,4 +16,16 @@ class ServiceController extends Controller {
         $services = Service::all();
         return view('pages.services')->with('services',$services);
     }
+    public function show($name)
+    {
+        $services = Service::all();
+        $service = Service::where('title', '=', $name)->first();
+
+        $serviceData = array(
+            'services'  => $services,
+            'service' => $service
+        );
+
+        return view('pages.service')->with('data',$serviceData);
+    }
 }

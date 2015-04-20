@@ -55,7 +55,7 @@ class AdminGalleryController extends Controller {
         $file = file_get_contents($path);
         file_put_contents(public_path().'/img/gallery/'.$filename,$file);
         //  file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
-        $input['image'] = 'img/gallery/'.$filename;
+        $input['image'] = '/img/gallery/'.$filename;
         Image::create($input);
         return redirect('/admin/gallery');	}
 

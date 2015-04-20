@@ -10,4 +10,7 @@ class Service extends Model {
         'img',
     ];
 
+    public function sub_services() {
+        return $this->belongsToMany('App\SubService')->withTimestamps();
+    }
 }

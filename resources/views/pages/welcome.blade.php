@@ -21,7 +21,7 @@
                <div class="carousel-caption">
                    <h1>{{ $carousel->title }}</h1>
                    <p>{{$carousel->body}}</p>
-                   <p><a class="btn btn-lg btn-primary" href="#" role="button">Kontakta oss!</a></p>
+                  {{-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Kontakta oss!</a></p>--}}
                </div>
            </div>
         </div>

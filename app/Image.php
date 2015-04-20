@@ -7,6 +7,6 @@ class Image extends Model {
     protected $fillable = [
         'image',
         'title',
-        'text'
+        'body'
     ];
 }
