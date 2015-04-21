@@ -11,8 +11,8 @@ class SubService extends Model {
         'img',
     ];
 
-    public function service() {
-        return $this->belongsToMany('App\Service');
+    public function services() {
+        return $this->belongsToMany('App\Service')->withTimestamps();
     }
 
 }

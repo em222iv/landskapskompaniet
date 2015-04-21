@@ -7,6 +7,8 @@
                   {!! Form::model($image,['method'=>'PATCH', 'action' => ['Admin\AdminGalleryController@update', $image->id],'files' => true]) !!}
                      @include('admin.gallery.partials.form',['submitButton' => 'Skapa'])
                   {!! Form::close() !!}
+
+
                     @include('errors.errorlist')
             </div>
         </div>

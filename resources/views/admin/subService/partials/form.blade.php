@@ -3,10 +3,13 @@
     {!! Form::file('img',['class'=>'form-control']) !!}
    </div>
    <div class="form-group">
-    {!! Form::label('title','Titel:') !!}
-    {!! Form::text('title',null,['class'=>'form-control']) !!}
+    {!! Form::label('head-title','Svart Titel:') !!}
+    {!! Form::text('head-title',null,['class'=>'form-control']) !!}
    </div>
-
+    <div class="form-group">
+        {!! Form::label('sub-title','Grå Titel:') !!}
+        {!! Form::text('sub-title',null,['class'=>'form-control']) !!}
+    </div>
    <div class="form-group">
     {!! Form::label('text','Text:') !!}
     {!! Form::textarea('text',null,['class'=>'form-control']) !!}

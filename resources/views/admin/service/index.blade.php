@@ -26,12 +26,15 @@
                        <tr>
                          <td>
                              <h4>
-                                 <a href="/admin/carousels/{{ $service->id }}/edit">{{$service->title}}</a>
+                                 <a href="/admin/service/{{ $service->id }}/edit">{{$service->title}}</a>
                              </h4>
                          </td>
                          <td>
                              <div class="body ">{{$service->text}}</div>
                          </td>
+                           <td>
+                               <div class="body ">{{$service->sub_services}}</div>
+                           </td>
                          <td>
                              <img src="{{$service->img}}" height="50" width="70">
                          </td>

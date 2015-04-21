@@ -7,7 +7,7 @@ use Request;
 class AppServiceProvider extends ServiceProvider {
 
 	/**
-	 * Bootstrap any application services.
+	 * the boot function must be emptied when trying to rollback or refresh database
 	 *
 	 * @return void
 	 */

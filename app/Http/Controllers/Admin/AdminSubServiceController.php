@@ -2,13 +2,12 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Service;
+use App\SubService;
 use Illuminate\Support\Facades\Input;
-use App\Image;
 use Request;
 
+class AdminSubServiceController extends Controller {
 
-class AdminServiceController extends Controller {
     public function __construct()
     {
         $this->middleware('auth');
@@ -20,18 +19,20 @@ class AdminServiceController extends Controller {
      */
     public function index()
     {
-        $services = Service::all();
-        return view('admin.service.index')->with('services',$services);
+        $subservices = SubService::all();
+
+        return view('admin.subService.index')->with('subservices',$subservices);
     }
 
-	/**
+
+    /**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-        return view('admin.service.create');
+        return view('admin.subService.create');
 	}
 
 	/**
@@ -41,7 +42,6 @@ class AdminServiceController extends Controller {
 	 */
 	public function store()
 	{
-
         $input = Request::all();
 
         //file
@@ -49,16 +49,16 @@ class AdminServiceController extends Controller {
 
         $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
 
-        $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
+        $filename = str_random(4).'-'.str_slug($input['head-title']).'.'.$extension;
         $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/service/'.$filename,$file);
-        //  file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
+        file_put_contents(public_path().'/img/subservice/'.$filename,$file);
+        //  file_put_contents('../httpd.www/img/subgallery/'.$filename,$file);
 
 
-        $input['img'] = '/img/service/'.$filename;
-       // $input['img'] = 'img/service/'.$filename;
-        Service::create($input);
-        return redirect('/admin/service');
+        $input['img'] = '/img/subservice/'.$filename;
+        // $input['img'] = 'img/service/'.$filename;
+        SubService::create($input);
+        return redirect('/admin/subservice');
 	}
 
 	/**
@@ -80,10 +80,7 @@ class AdminServiceController extends Controller {
 	 */
 	public function edit($id)
 	{
-        $service = Service::findOrFail($id);
-
-
-        return view('admin.service.edit')->with('service',$service);
+		//
 	}
 
 	/**
@@ -105,9 +102,7 @@ class AdminServiceController extends Controller {
 	 */
 	public function destroy($id)
 	{
-        $service = Service::findOrFail($id);
-        $service->delete();
-        return redirect('/admin/service');
+		//
 	}
 
 }

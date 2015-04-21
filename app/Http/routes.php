@@ -70,3 +70,4 @@ Route::resource('/admin/carousels', 'Admin\CarouselController');
 //Route::resource('/adminContacts', 'Admin\CarouselController');
 Route::resource('/admin/gallery', 'Admin\AdminGalleryController');
 Route::resource('/admin/service', 'Admin\AdminServiceController');
+Route::resource('/admin/subservice', 'Admin\AdminSubServiceController');

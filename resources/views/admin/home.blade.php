@@ -9,6 +9,7 @@
             <a href="/admin/carousels">Carousels</a>
             <a href="/admin/gallery">Gallery</a>
             <a href="/admin/service">Tjänster</a>
+            <a href="/admin/subservice">Deltjänster</a>
        </div>
 
     </div>

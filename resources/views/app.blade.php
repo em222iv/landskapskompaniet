@@ -33,7 +33,7 @@
                         @if(Auth::check())
                         <a class="navbar-brand"  href="/admin">Landskapskompaniet</a>
                         @else
-                        <a class="navbar-brand"  href="/home">Landskapskompaniet</a>
+                        <a class="navbar-brand"  href="/hem">Landskapskompaniet</a>
                         @endif
                     </div>
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
@@ -45,7 +45,7 @@
                                  <li><a href="/tjänster">Överblick</a></li>
                                  <li class="divider"></li>
                                   @foreach($services as $service)
-                                     <li><a href="tjänster/{{$service->id}}">{{$service->title}}</a></li>
+                                     <li><a href="tjänster/{{$service->title}}">{{$service->title}}</a></li>
                                  @endforeach
                              </ul>
                          </li>
@@ -63,7 +63,10 @@
                             <li><a href="/landskapskompaniet">Om Landskapskompaniet</a></li>
 
                         </ul>
-                    {{--    @include('_partials.breadcrumbs')--}}
+                        @if(Auth::check())
+                            @include('_partials.breadcrumbs')
+                        @endif
+
                     </div>
                 </div>
             </nav>
