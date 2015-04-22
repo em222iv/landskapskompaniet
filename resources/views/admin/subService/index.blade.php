@@ -1,7 +1,7 @@
 @extends('......app')
 
 @section('content')
-<section>
+<section id="subservices">
      <div class="row">
         <div class="col-md-8 col-md-offset-2 text-center">
         <a href="subservice/create" ><div class="btn btn-primary">Skapa deltjänst</div></a>
@@ -11,9 +11,11 @@
                         <th>
                             Titel
                         </th>
-                        <th>
-                            text
+                          <th>
+                            Tillhör Tjänster
                         </th>
+
+
 
 
                     </tr>
@@ -26,17 +28,18 @@
                                  <a href="/admin/subservice/{{ $subservice->id }}/edit">{{$subservice['head-title']}} {{$subservice['sub-title']}}</a>
                              </h4>
                          </td>
-                         <td>
-                             <div class="body ">{{$subservice->text}}</div>
-                         </td>
                            <td>
                                @foreach($subservice->services as $service)
                                     <a href="service/{{$service->id}}/edit"><div class="service">{{$service['title']}}</div></a>
                                @endforeach
                            </td>
+
                            <td>
-                               <img width="70px" src="{{$subservice->img}}">
-                           </td>
+                             {!! Form::open(array('url' => 'admin/subservice/' . $subservice->id, 'class' => 'pull-right')) !!}
+                               {!! Form::hidden('_method', 'DELETE')!!}
+                               {!! Form::submit('Ta bort', array('class' => 'btn btn-warning')) !!}
+                             {!! Form::close() !!}
+                            </td>
                      </tr>
                   </tbody>
             @endforeach
@@ -44,5 +47,13 @@
         </div>
     </div>
 </section>
-
+<script>
+    var tableclass = document.getElementsByClassName('big-table');
+    if ($(window).width() < 960) {
+       document.removeChild(tableclass);
+    }
+    else {
+         tableclass.visibility = 'hidden'
+    }
+</script>
 @stop

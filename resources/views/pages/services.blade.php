@@ -30,14 +30,9 @@
                             <div class="portfolio-caption">
                                 <h4>{{$service->title}}</h4>
                                 <p class="text-muted contain-text">{{$service->text}}</p>
-                                 <ul class="list-inline social-buttons pull-right">
-                                    <li>
-                                        <a href="tel:+1-303-499-7111" class="btn btn-fab btn-raised btn-material-blue pull-left"><i class="mdi-communication-phone"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="mailto:webmaster@example.com" class="btn btn-fab btn-primary pull-left"><i class="mdi-communication-email"></i></a>
-                                    </li>
-                                 </ul>
+                                 <div class="list-inline social-buttons pull-right">
+                                   @include('_partials.contactButtons')
+                                 </div>
                             </div>
                         </div>
                     @endforeach

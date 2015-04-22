@@ -27,6 +27,7 @@
 #plog-bild {
     max-width:42%;
 }
+
 .back-to-top i {
     font-size: 60px;
 }
@@ -45,6 +46,7 @@
     .navbar-nav {
         margin:0;
     }
+
 
 }
 @media (max-width: 1200px) {
@@ -185,4 +187,21 @@ footer {
 #partners {
     margin-top: -100px;
     margin-bottom: 360px;
+}
+.gallery-item-body {
+    max-height: 200px;
+}
+.panel.panel-default {
+    text-decoration: none;
+}
+.service-img {
+    max-width: 70px;
+}
+.btn.btn-danger.btn-fab.btn-xs.mdi-navigation-close{
+    max-width: 30px;
+    max-height: 30px;
+}
+#service-row{
+    margin-left:0;
+    margin-right: 0;
 }

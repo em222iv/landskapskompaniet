@@ -28,47 +28,57 @@
     @endforeach
 
     </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </div>
 
 <div id="introduction-container" class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h3 class="section-heading">Landskapskompaniet</h3>
-                <h4 class="section-subheading text-muted">Vi hjälper dig med träd, skog, plogning och allahanda tjänster</h4>
-            </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h3 class="section-heading">Landskapskompaniet</h3>
+            <h4 class="section-subheading text-muted">Vi hjälper dig med träd, skog, plogning och allahanda tjänster</h4>
         </div>
-        <hr>
     </div>
+    <hr>
+</div>
 <div class="container marketing">
 <!-- Three columns of text below the carousel -->
     <div class="row">
         <div class="col-lg-4">
-            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+         @include('_partials.contactButtons')
             <h2>Kontakta oss</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-default" href="/contact" role="button">Kontakta här »</a></p>
+            <p>Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner!</p>
+           {{-- <p><a class="btn btn-default" href="/contact" role="button">Kontakta här »</a></p>--}}
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <a href="https://www.facebook.com/landskapskompaniet?fref=ts"><img class="img-circle" src="{{$data['fbimg']}}" alt="Generic placeholder image" width="140" height="140"></a>
             <h2>Facebook</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">Facebook-sida »</a></p>
+            <p>{{$data['fbtext']}}</p>
+            <div class="fb-like" data-href="https://www.facebook.com/landskapskompaniet?fref=ts" data-width="100" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+           {{-- <p><a class="btn btn-default" href="#" role="button">Facebook-sida »</a></p>--}}
         </div>
         <div class="col-lg-4">
-            <a class="group" rel="group1" href="{{$data['img']}}"><img class="img-circle" alt="Generic placeholder image" width="140" height="140" src="{{$data['img']}}"></a>
+            <a class="group" rel="group1" href="https://instagram.com/explore/tags/landskapskompaniet/"><img class="img-circle" alt="Generic placeholder image" width="140" height="140" src="{{$data['instaimg']}}"></a>
                 <h2>Instagram</h2>
-                <p>{{$data['text']}}</p>
-            <p><a class="btn btn-default" href="#" role="button">Vår Instagram »</a></p>
+                <p>{{$data['instatext']}}</p>
+           {{-- <p><a class="btn btn-default" href="#" role="button">Vår Instagram »</a></p>--}}
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 </div>
+   <div id="fb-root"></div>
+   <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=1584087028510603";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
 
 @endsection

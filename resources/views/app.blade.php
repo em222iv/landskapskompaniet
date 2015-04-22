@@ -87,14 +87,7 @@
                       <p>E-mail :<a href="mailto:webmaster@example.com">Carl@Landskapskompaniet.se</a></p>
                   </li>
               </ul>
-               <ul class="list-inline social-buttons">
-                  <li>
-                    <a href="tel:+1-303-499-7111" class="btn btn-fab btn-raised btn-material-blue pull-left"><i class="mdi-communication-phone"></i></a>
-                  </li>
-                  <li>
-                     <a href="mailto:webmaster@example.com" class="btn btn-fab btn-primary pull-left"><i class="mdi-communication-email"></i></a>
-                  </li>
-              </ul>
+                @include('_partials.contactButtons')
           </div>
           <div class="col-lg-6">
            <ul class="list-inline ">
