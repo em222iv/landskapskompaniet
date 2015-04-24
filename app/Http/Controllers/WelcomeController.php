@@ -3,7 +3,8 @@
 use App\Carousel;
 use Illuminate\Support\Facades\View;
 use Facebook\FacebookSession;
-use Facebook\Get;
+use Facebook\FacebookRequest;
+use Facebook\FacebookRedirectLoginHelper;
 class WelcomeController extends Controller {
 
 	/*
@@ -34,43 +35,49 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+
+        // instagram flöde
         $userid = "1459532749";
         $instaAccessToken = "1459532749.ab103e5.4e9c9b38a54145338fc7263289159c95";
-        //facebook
-        $groupId="landskapskompaniet";
-        $fbAccesstoken = "CAACEdEose0cBALw0noElEoZCAL14hBBRdaM7uFWzZAaZAcdd7QAt9GUZCSNSJOZAkpKrhcB8KAdmm2ZALEhNItOX9IGA1syKwCfd2iJ7ZB6DDXU6wMmkh6DgX0bUUb5mwiLzc5K2Q67H1mKKxty1tiz4ks0Y5yJN1utJq5DMwt02Ti5MBliBvMCZAEacnUezLEn3HEFQ6iriaBL04RzxAfZCr";
 
-// You c
         $instaresult = $this->fetchData("https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$instaAccessToken}");
-
         $instaresult = json_decode($instaresult);
-
         foreach ($instaresult->data as $post) {
             $instaimg = $post->images->standard_resolution->url;
            // $instatags = $post->tags;
             $instatext = $post->caption->text;
             break;
         }
+        // facebook flöde
 
 
-       $fbresult = $this->fetchData("https://graph.facebook.com/{$groupId}/feed?access_token={$fbAccesstoken}");
 
+
+        $groupId="landskapskompaniet";
+        $fbAccesstoken = "CAACEdEose0cBAOM9hJE2h9sjbqWlOkGG7hgnZAGJKo5GrvjBuVtahpXdS5Gg76qJBHX6m386z5InRmXgMy2JZCZAeuONPPV2H4vC1KlNxTZAo650Gny32K4NkPJKcc5vFB2s6MddYoIe6bDWvv5y9Ab6ISPAODWwna2QOdKkAdW40whZAgO5Ad6qciZB6WnWsoxqyakvRHl6bYDGaeFcBUOMMO28EEbNwZD";
+    /*    FacebookSession::setDefaultApplication('1584087028510603', '808de35efe8a112af1e6c5a94bd89854');
+
+        $session = new FacebookSession($fbAccesstoken);
+        return $session;
+        $request = new FacebookRequest($session, 'GET', '/me');
+        $response = $request->execute();
+        $graphObject = $response->getGraphObject();
+        return $graphObject;*/
+
+
+     /*   $fbresult = $this->fetchData("https://graph.facebook.com/{$groupId}/feed?access_token={$fbAccesstoken}");
         $fbresult = json_decode($fbresult,true);
-
         foreach ($fbresult as $post) {
-
             $fbtext = $post[0]['message'];
             $fbimg =  $post[0]['picture'];
             break;
-        }
+        }*/
 
         $carousels = Carousel::all();
         $data = array(
             'carousels'  => $carousels,
             'instaimg'   =>  $instaimg,
-            'instatext' => $instatext,
-            'fbtext' => $fbtext,
-            'fbimg' => $fbimg
+            'instatext' => $instatext
         );
 		return view('pages.welcome')->with('data',$data);
 	}

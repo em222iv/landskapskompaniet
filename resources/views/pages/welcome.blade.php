@@ -58,9 +58,9 @@
            {{-- <p><a class="btn btn-default" href="/contact" role="button">Kontakta här »</a></p>--}}
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <a href="https://www.facebook.com/landskapskompaniet?fref=ts"><img class="img-circle" src="{{$data['fbimg']}}" alt="Generic placeholder image" width="140" height="140"></a>
+            <a href="https://www.facebook.com/landskapskompaniet?fref=ts"><img id="facebook-picture" class="img-circle" src="" width="140" height="140"></a>
             <h2>Facebook</h2>
-            <p>{{$data['fbtext']}}</p>
+            <p id="faceboook-message"></p>
             <div class="fb-like" data-href="https://www.facebook.com/landskapskompaniet?fref=ts" data-width="100" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
            {{-- <p><a class="btn btn-default" href="#" role="button">Facebook-sida »</a></p>--}}
         </div>
@@ -74,15 +74,46 @@
 </div>
 
    <div id="fb-root"></div>
-   <script>
-
-
-     (function(d, s, id) {
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) return;
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=1584087028510603";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));</script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1584087028510603',
+            xfbml      : true,
+            version    : 'v2.3'
+        });
+        if (typeof facebookInit == 'function') {
+            facebookInit();
+        }
+    };
+    function facebookInit() {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                FB.api(
+                    "/landskapskompaniet/feed",
+                    function (response) {
+                        if (response && !response.error) {
+                            console.log(response['data'][0]);
+                            var img = document.getElementById('facebook-picture');
+                            var msg = document.getElementById('faceboook-message');
+                            console.log(msg);
+                            img.src=response['data'][0]['picture'];
+                            msg.innerText=response['data'][0]['message'];
+                        }
+                    }
+                );
+            }
+            else {
+                FB.login();
+            }
+        });
+    }
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <div id="fb-root"></div>
 @endsection
