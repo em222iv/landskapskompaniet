@@ -16,7 +16,7 @@
          @else
             <div class="item">
          @endif
-           <img class="first-slide" src="{{ $carousel['img-path'] }}" alt="Slide {{$carousel->id}}">
+           <img class="slide-image" src="{{ $carousel['img-path'] }}" alt="Slide {{$carousel->id}}">
            <div class="container">
                <div class="carousel-caption">
                    <h1>{{ $carousel->title }}</h1>
@@ -72,13 +72,17 @@
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 </div>
+
    <div id="fb-root"></div>
-   <script>(function(d, s, id) {
+   <script>
+
+
+     (function(d, s, id) {
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) return;
      js = d.createElement(s); js.id = id;
      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=1584087028510603";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
-
+<div id="fb-root"></div>
 @endsection

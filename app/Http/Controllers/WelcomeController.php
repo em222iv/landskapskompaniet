@@ -2,7 +2,8 @@
 
 use App\Carousel;
 use Illuminate\Support\Facades\View;
-
+use Facebook\FacebookSession;
+use Facebook\Get;
 class WelcomeController extends Controller {
 
 	/*
@@ -37,10 +38,9 @@ class WelcomeController extends Controller {
         $instaAccessToken = "1459532749.ab103e5.4e9c9b38a54145338fc7263289159c95";
         //facebook
         $groupId="landskapskompaniet";
-        $fbAccesstoken = "1584087028510603|gclpUX63DDELjQbIRlVYQ2_Q4pw";
+        $fbAccesstoken = "CAACEdEose0cBALw0noElEoZCAL14hBBRdaM7uFWzZAaZAcdd7QAt9GUZCSNSJOZAkpKrhcB8KAdmm2ZALEhNItOX9IGA1syKwCfd2iJ7ZB6DDXU6wMmkh6DgX0bUUb5mwiLzc5K2Q67H1mKKxty1tiz4ks0Y5yJN1utJq5DMwt02Ti5MBliBvMCZAEacnUezLEn3HEFQ6iriaBL04RzxAfZCr";
 
-        //alternativ
-        //https://graph.facebook.com/landskapskompaniet/promotable_posts?access_token=CAAWguACgr4sBAAjRb0mcbraDke0ZAISG2Q1jzlJLK4ac7o3JDVEND8yacVZASo5IyNj1mrE9s0rqZCCCwhnyXYYrM5wv96lj20il7oaeWZAe09YZBhfXwYdBRkD8M11TLbP4097cZCvIoR74XmSm7iUIo4NOGzws8Ympg1kOr6xHJ5zEgA3RAHLZCoXQS1OwU0GFFZBeOIZB7pzUkhZBm7UDZCi
+// You c
         $instaresult = $this->fetchData("https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$instaAccessToken}");
 
         $instaresult = json_decode($instaresult);
@@ -58,8 +58,9 @@ class WelcomeController extends Controller {
         $fbresult = json_decode($fbresult,true);
 
         foreach ($fbresult as $post) {
-            $fbtext = $post[1]['message'];
-            $fbimg =  $post[1]['picture'];
+
+            $fbtext = $post[0]['message'];
+            $fbimg =  $post[0]['picture'];
             break;
         }
 

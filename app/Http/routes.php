@@ -31,8 +31,6 @@ Route::get('/galleri',[ 'as' => 'gallery', 'uses' => 'GalleryController@index'])
 
 Route::get('/galleri/{id}',[ 'as' => 'gallery/{id}', 'uses' => 'ImageController@show',function($name) {
 
-
-
 }]);
 
 
@@ -65,7 +63,6 @@ Route::get('admin', [
 Route::get('/carousels/create', 'CarouselController@Create');
 //post
 Route::post('carousels', 'CarouselController@store');*/
-
 Route::resource('/admin/carousels', 'Admin\CarouselController');
 //Route::resource('/adminContacts', 'Admin\CarouselController');
 Route::resource('/admin/gallery', 'Admin\AdminGalleryController');

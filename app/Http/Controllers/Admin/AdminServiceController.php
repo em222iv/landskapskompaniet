@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Service;
 use Illuminate\Support\Facades\Input;
-use App\Image;
+use App\SubService;
 use Request;
 
 
@@ -81,9 +81,21 @@ class AdminServiceController extends Controller {
 	public function edit($id)
 	{
         $service = Service::findOrFail($id);
+        $subservices = SubService::all();
+/*            $count = 0;
+            foreach ($subservices as $s1){
 
+                foreach ($service->sub_services as $s2) {
 
-        return view('admin.service.edit')->with('service',$service);
+                    if($s1->id === $s2->id){
+
+                        unset($subservices->toArray()[$count]);
+                    }
+                    $count++;
+                }
+            }*/
+
+        return view('admin.service.edit')->with('service',$service)->with('subservices', $subservices);
 	}
 
 	/**
@@ -94,8 +106,29 @@ class AdminServiceController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $service = Service::findOrFail($id);
+        $subservices = SubService::all();
+        $input = Request::all();
+        $service->sub_services()->detach();
+        foreach ($subservices as $s) {
+            if(isset($input[$s['head-title']])){
+                $service->sub_services()->attach($s->id);
+            }
+        }
+        return redirect('/admin/service');
+        //file
+        $path = Input::file('image');
+        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
+
+        $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
+        $file = file_get_contents($path);
+        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
+        // file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
+        $input['image'] = 'img/gallery/'.$filename;
+        $service->update($input);
+        return redirect('/admin/gallery');
 	}
+
 
 	/**
 	 * Remove the specified resource from storage.

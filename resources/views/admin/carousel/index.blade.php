@@ -2,7 +2,7 @@
 
 @section('content')
 <section>
-     <div class="row">
+     <div id="table-row" class="row">
         <div class="col-md-8 col-md-offset-2 text-center">
         <a href="carousels/create" ><div class="btn btn-primary">Skapa Slider</div></a>
                 <table class="table table-striped">

@@ -6,30 +6,11 @@
             <h1>inloggad</h1>
             <a href="/auth/register" class="btn btn-primary btn-success">Ny användare</a>
             <a href="/auth/logout" class="btn btn-primary btn-warning">Logga ut</a><hr>
-            <a href="/admin/carousels">Carousels</a>
-            <a href="/admin/gallery">Gallery</a>
-            <a href="/admin/service">Tjänster</a>
-            <a href="/admin/subservice">Deltjänster</a>
+            <a href="/admin/carousels" class="btn btn-flat btn-success">Slider</a>
+            <a href="/admin/gallery" class="btn btn-flat btn-info">Galleri</a>
+            <a href="/admin/service" class="btn btn-flat btn-primary">Tjänster</a>
+            <a href="/admin/subservice" class="btn btn-flat btn-default">Deltjänster</a>
        </div>
-
-    </div>
-    <div class="row">
-        <link rel="stylesheet" href="jquery.fancybox-1.3.4.css" type="text/css">
-        <script type='text/javascript' src='jquery.min.js'></script>
-        <script type='text/javascript' src='jquery.fancybox-1.3.4.pack.js'></script>
-        <script type="text/javascript">
-            $(function() {
-                $("a.group").fancybox({
-                    'nextEffect'	:	'fade',
-                    'prevEffect'	:	'fade',
-                    'overlayOpacity' :  0.8,
-                    'overlayColor' : '#000000',
-                    'arrows' : false,
-                });
-            });
-        </script>
-
-
-    </div>
+     </div>
 </section>
-@stop
+@endsection

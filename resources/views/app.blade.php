@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Landskapskompaniet</title>
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/caoursel.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/landskap.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/agency.css') }}" rel="stylesheet">
-    <!--<link href="{{ asset('/css/css/ripples.css') }}" rel="stylesheet">-->
+    <link href="{{ asset('/bootstrap-material-design-master/dist/css/ripples.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/material.min.css" />
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+    <!-- Fonts -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
     <div class="navbar-wrapper">
@@ -118,18 +115,6 @@
                 <a href="#"><i class="fa fa-linkedin"></i></a>
               </li>
           </ul>
-
-
-            {{-- <ul class="list-inline social-buttons">
-                 <li>
-                     <a href="#"><button class="btn btn-fab btn-raised btn-primary pull-left"><i class="mdi-communication-email"></i></button></a>
-                 </li>
-                 <li class="footer-menu-divider">⋅</li>
-                 <li>
-                     <a href="#about"> <button class="btn btn-fab btn-raised btn-material-blue pull-left"><i class="mdi-communication-phone"></i></button></a>
-                 </li>
-                 <li class="footer-menu-divider">⋅</li>
-             </ul>--}}
           </div>
        </div>
        <div class="row">
@@ -137,15 +122,19 @@
        </div>
    </div>
 </footer>
-<a class="back-to-top" style="display: inline;" href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
+<a class="back-to-top" style="display: inline;" href="#"><div class="glyphicon glyphicon-circle-arrow-up"></div></a>
 	<!-- Scripts -->
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{ asset('/css/js/ripples.js') }}"></script>
-<script>$.material.init()</script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $.material.init();
+        });
+    </script>
+    <script src="{{ asset('/bootstrap-material-design-master/dist/js/ripples.js') }}"></script>
+    <script src="/bootstrap-material-design-master/dist/js/material.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
 <script>
-
     jQuery(document).ready(function() {
      $("div.navbar").attr("aria-expanded","false");
         var offset = 250;
@@ -168,8 +157,26 @@
         })
     });
 </script>
-<script>
+{{--<script>
+//per css-tricks restarting css animations
+// http://css-tricks.com/restart-css-animation/
+$('.label').id.click(function() {
 
-</script>
+  // find the first span which is our circle/bubble
+  var el = $(this).children('span:first-child');
+
+  // add the bubble class (we do this so it doesnt show on page load)
+  el.addClass('circle');
+
+  // clone it
+  var newone = el.clone(true);
+
+  // add the cloned version before our original
+  el.before(newone);
+
+  // remove the original so that it is ready to run on next click
+  $("." + el.attr("class") + ":last").remove();
+});
+</script>--}}
 </body>
 </html>

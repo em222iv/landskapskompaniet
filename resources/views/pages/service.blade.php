@@ -16,10 +16,9 @@
                 </div>
                 <h3>Kategorier</h3>
                 <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
+                    @foreach($data['service']->sub_services as $subservice)
+                     <a href="#{{$subservice['head-title']}}"><li>{{$subservice['head-title']}} {{$subservice['sub-title']}}</li></a>
+                     @endforeach
                 </ul>
             </div>
         </div>
@@ -45,30 +44,24 @@
 <section id="features">
     <div class="container">
         <div class="row">
-            <div class="row featurette">
-                <div class="col-md-7 col-md-push-5">
-                    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5 col-md-pull-7">
-                    <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMTI1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMTI1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
-                </div>
-            </div>
+           @foreach($data['service']->sub_services as $subservice)
 
 
+
+                <div class="row featurette" >
+                 <a name="{{$subservice['head-title']}}"></a>
+                    <div class="col-md-7" id="subservice-text-holder">
+                        <h2 class="featurette-heading">{{$subservice['head-title']}}<span class="text-muted">  {{$subservice['sub-title']}}</span></h2>
+                        <p class="lead">{{$subservice->text}}</p>
+                    </div>
+                    <div class="col-md-5" id="subserivce-img-holder">
+                        <img class="featurette-image img-responsive center-block"  id="subservice-holder-img"  src="{{$subservice->img}}" data-holder-rendered="true">
+                    </div>
+                </div>
+                <hr class="featurette-divider">
+            @endforeach
             <!-- /END THE FEATURETTES -->
+
         </div>
     </div>
 </section>

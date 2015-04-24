@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Image;
+use App\SubService;
 use App\Service;
 use Request;
 
@@ -14,6 +14,7 @@ class ServiceController extends Controller {
     public function index()
     {
         $services = Service::all();
+
         return view('pages.services')->with('services',$services);
     }
     public function show($name)

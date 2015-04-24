@@ -2,7 +2,7 @@
 
 @section('content')
 <section>
-     <div class="row">
+     <div id="table-row" class="row">
         <div class="col-md-6 col-md-offset-3 text-center">
         <a href="gallery/create" ><div class="btn btn-primary">Lägg till bild</div></a>
             @foreach($images as $image)

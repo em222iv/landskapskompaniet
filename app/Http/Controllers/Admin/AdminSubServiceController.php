@@ -102,7 +102,9 @@ class AdminSubServiceController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $subservice = SubService::findOrFail($id);
+        $subservice->delete();
+        return redirect('/admin/subservice');
 	}
 
 }
