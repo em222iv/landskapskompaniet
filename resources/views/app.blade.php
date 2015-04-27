@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META NAME="description" CONTENT="Landskapskompaniet hjälper den med träd">
+    <META NAME="keywords" CONTENT="landskapskompaniet,träd,tree,arborist,plog,plogning,träfällning">
 	<title>Landskapskompaniet</title>
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/landskap.css') }}" rel="stylesheet">
@@ -28,15 +30,16 @@
                             <span class="icon-bar"></span>
                         </button>
                         @if(Auth::check())
-                        <a class="navbar-brand"  href="/admin">Landskapskompaniet</a>
+                        <a class="navbar-brand" id="brand" href="/admin">Landskapskompaniet</a>
                         @else
-                        <a class="navbar-brand"  href="/hem">Landskapskompaniet</a>
+                        <a class="navbar-brand" id="brand" href="/hem">Landskapskompaniet</a>
                         @endif
                     </div>
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
                         <ul class="nav navbar-nav navbar-inner">
                             <li><a href="/hem">Hem</a></li>
-                            <li class="dropdown">
+                            <li><a href="/tjänster">Tjänster</a></li>
+                            {{--<li class="dropdown">
                              <a href="/tjänster" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tjänster <span class="caret"></span></a>
                              <ul class="dropdown-menu" role="menu">
                                  <li><a href="/tjänster">Överblick</a></li>
@@ -44,18 +47,9 @@
                                   @foreach($services as $service)
                                      <li><a href="tjänster/{{$service->title}}">{{$service->title}}</a></li>
                                  @endforeach
-                             </ul>
+                             </ul>--}}
                          </li>
-                            <li class="dropdown">
-                            <a href="/socialt" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Socialt <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/galleri">Galleri</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Nätverk</li>
-                                <li><a href="https://www.facebook.com/landskapskompaniet?fref=ts">Facebook-sida</a></li>
-                                <li><a href="https://instagram.com/explore/tags/landskapskompaniet/">Instagram</a></li>
-                                <li><a href="/gras">Youtube-kanal</a></li>
-                            </ul>
+                            <li><a href="/galleri">Galleri</a></li>
                             <li><a href="/kontakt">Kontakta oss</a></li>
                             <li><a href="/landskapskompaniet">Om Landskapskompaniet</a></li>
 

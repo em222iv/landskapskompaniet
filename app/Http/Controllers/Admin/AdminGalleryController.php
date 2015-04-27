@@ -2,6 +2,8 @@
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CarouselRequest;
+use App\Http\Requests\createImageRequest;
 use Illuminate\Support\Facades\Input;
 use App\Image;
 use Request;
@@ -43,20 +45,25 @@ class AdminGalleryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(createImageRequest $request)
 	{
-        $input = Request::all();
+        $input = $request->all();
 
-        //file
-        $path = Input::file('image');
-        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
 
-        $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
-        $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
-        //  file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
-        $input['image'] = '/img/gallery/'.$filename;
-        Image::create($input);
+        if (Request::hasFile('image')){
+            //file
+            $path = Input::file('image');
+            $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
+
+            $filename = str_random(4) . '-' . str_slug($input['title']) . '.' . $extension;
+            $file = file_get_contents($path);
+            file_put_contents(public_path().'/img/gallery/'.$filename,$file);
+            //file_put_contents('../httpd.www/img/gallery/' . $filename, $file);
+            $input['image'] = '/img/gallery/' . $filename;
+            Image::create($input);
+        }else {
+            flash('hej!');
+        }
         return redirect('/admin/gallery');	}
 
 	/**
@@ -98,8 +105,8 @@ class AdminGalleryController extends Controller {
 
         $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
         $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
-        // file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
+        //file_put_contents(public_path().'/img/gallery/'.$filename,$file);
+        file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
         $input['image'] = 'img/gallery/'.$filename;
         $carousel->update($input);
         return redirect('/admin/gallery');

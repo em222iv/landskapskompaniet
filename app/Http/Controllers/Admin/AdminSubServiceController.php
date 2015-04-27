@@ -51,8 +51,8 @@ class AdminSubServiceController extends Controller {
 
         $filename = str_random(4).'-'.str_slug($input['head-title']).'.'.$extension;
         $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/subservice/'.$filename,$file);
-        //  file_put_contents('../httpd.www/img/subgallery/'.$filename,$file);
+        //file_put_contents(public_path().'/img/subservice/'.$filename,$file);
+        file_put_contents('../httpd.www/img/subservice/'.$filename,$file);
 
 
         $input['img'] = '/img/subservice/'.$filename;
@@ -80,7 +80,8 @@ class AdminSubServiceController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $subservice = SubService::findOrFail($id);
+        return view('admin.subService.edit')->with('subservice', $subservice);
 	}
 
 	/**
@@ -91,7 +92,21 @@ class AdminSubServiceController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $subservice = SubService::findOrFail($id);
+        $input = Request::all();
+
+        //file
+        $path = Input::file('img');
+        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
+
+        $filename = str_random(4).'-'.str_slug($input['head-title']).'.'.$extension;
+        $file = file_get_contents($path);
+        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
+        //file_put_contents('../httpd.www/img/service/'.$filename,$file);
+        $input['image'] = 'img/service/'.$filename;
+        $subservice->update($input);
+        return redirect('/admin/subservice');
+
 	}
 
 	/**

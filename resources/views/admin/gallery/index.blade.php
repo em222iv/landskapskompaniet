@@ -7,6 +7,7 @@
         <a href="gallery/create" ><div class="btn btn-primary">Lägg till bild</div></a>
             @foreach($images as $image)
              <div class="col-md-12">
+
                  <div class="panel panel-default" style="background-image: url('{{$image->image}}');background-repeat:no-repeat">
                      <a href="/admin/gallery/{{ $image->id }}/edit"><div id="gallery-panel-body" class="panel-body">
                         <h4>{{$image->title}}</h4>

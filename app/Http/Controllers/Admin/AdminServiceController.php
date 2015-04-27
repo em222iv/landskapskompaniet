@@ -51,10 +51,8 @@ class AdminServiceController extends Controller {
 
         $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
         $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/service/'.$filename,$file);
-        //  file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
-
-
+        //file_put_contents(public_path().'/img/service/'.$filename,$file);
+         file_put_contents('../httpd.www/img/service/'.$filename,$file);
         $input['img'] = '/img/service/'.$filename;
        // $input['img'] = 'img/service/'.$filename;
         Service::create($input);
@@ -122,11 +120,11 @@ class AdminServiceController extends Controller {
 
         $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
         $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
-        // file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
-        $input['image'] = 'img/gallery/'.$filename;
+        //file_put_contents(public_path().'/img/gallery/'.$filename,$file);
+        file_put_contents('../httpd.www/img/service/'.$filename,$file);
+        $input['image'] = 'img/service/'.$filename;
         $service->update($input);
-        return redirect('/admin/gallery');
+        return redirect('/admin/service');
 	}
 
 

@@ -45,17 +45,15 @@
     <div class="container">
         <div class="row">
            @foreach($data['service']->sub_services as $subservice)
-
-
-
                 <div class="row featurette" >
-                 <a name="{{$subservice['head-title']}}"></a>
-                    <div class="col-md-7" id="subservice-text-holder">
+
+                    <div class="col-md-6" id="subserivce-img-holder">
+                      <a name="{{$subservice['head-title']}}"></a>
+                        <img class="featurette-image img-responsive center-block"  id="subservice-holder-img"  src="{{$subservice->img}}" data-holder-rendered="true">
+                    </div>
+                     <div class="col-md-6" >
                         <h2 class="featurette-heading">{{$subservice['head-title']}}<span class="text-muted">  {{$subservice['sub-title']}}</span></h2>
                         <p class="lead">{{$subservice->text}}</p>
-                    </div>
-                    <div class="col-md-5" id="subserivce-img-holder">
-                        <img class="featurette-image img-responsive center-block"  id="subservice-holder-img"  src="{{$subservice->img}}" data-holder-rendered="true">
                     </div>
                 </div>
                 <hr class="featurette-divider">

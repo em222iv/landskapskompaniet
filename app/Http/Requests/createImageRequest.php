@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Input;
 use App\Image;
 
 
-class CarouselRequest extends Request {
+class createImageRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -25,13 +25,10 @@ class CarouselRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
+        return [
             'title' => 'required',
-            'body' => 'required',
-            'img' => 'required',
-            'img-path' => 'required',
-
-		];
+            'body' => 'required'
+        ];
 	}
 
 }
