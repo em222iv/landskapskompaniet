@@ -73,6 +73,27 @@
     </div><!-- /.row -->
 </div>
 
+
+<table >
+<tr ><th colspan=2 bgcolor=white>Server Software:</th><td colspan=2 bgcolor=white></td></tr>
+<tr ><th colspan=2 bgcolor=white>Server Hostname:</th><td colspan=2 bgcolor=white>localhost</td></tr>
+<tr ><th colspan=2 bgcolor=white>Server Port:</th><td colspan=2 bgcolor=white>8000</td></tr>
+<tr ><th colspan=2 bgcolor=white>Document Path:</th><td colspan=2 bgcolor=white>/</td></tr>
+<tr ><th colspan=2 bgcolor=white>Document Length:</th><td colspan=2 bgcolor=white>11614 bytes</td></tr>
+<tr ><th colspan=2 bgcolor=white>Concurrency Level:</th><td colspan=2 bgcolor=white>10</td></tr>
+<tr ><th colspan=2 bgcolor=white>Time taken for tests:</th><td colspan=2 bgcolor=white>25.560 seconds</td></tr>
+<tr ><th colspan=2 bgcolor=white>Complete requests:</th><td colspan=2 bgcolor=white>50</td></tr>
+<tr ><th colspan=2 bgcolor=white>Failed requests:</th><td colspan=2 bgcolor=white>0</td></tr>
+<tr ><th colspan=2 bgcolor=white>Total transferred:</th><td colspan=2 bgcolor=white>629646 bytes</td></tr>
+<tr ><th colspan=2 bgcolor=white>HTML transferred:</th><td colspan=2 bgcolor=white>580700 bytes</td></tr>
+<tr ><th colspan=2 bgcolor=white>Requests per second:</th><td colspan=2 bgcolor=white>1.96</td></tr>
+<tr ><th colspan=2 bgcolor=white>Transfer rate:</th><td colspan=2 bgcolor=white>24.06 kb/s received</td></tr>
+<tr ><th bgcolor=white colspan=4>Connnection Times (ms)</th></tr>
+<tr ><th bgcolor=white>&nbsp;</th> <th bgcolor=white>min</th>   <th bgcolor=white>avg</th>   <th bgcolor=white>max</th></tr>
+<tr ><th bgcolor=white>Connect:</th><td bgcolor=white>    0</td><td bgcolor=white>    0</td><td bgcolor=white>    0</td></tr>
+<tr ><th bgcolor=white>Processing:</th><td bgcolor=white>  597</td><td bgcolor=white> 4648</td><td bgcolor=white> 5354</td></tr>
+<tr ><th bgcolor=white>Total:</th><td bgcolor=white>  597</td><td bgcolor=white> 4648</td><td bgcolor=white> 5354</td></tr>
+</table>
    <div id="fb-root"></div>
 <script>
     window.fbAsyncInit = function() {

@@ -27,6 +27,9 @@
 #plog-bild {
     max-width:42%;
 }
+.navbar-brand {
+    margin-left: -10px;
+}
 
 .back-to-top i {
     font-size: 60px;
@@ -61,18 +64,6 @@
 margin:auto;
 
 }
-#timeline-picture1 {
-    max-height:100%;
-    min-width:100%;
-}
-#timeline-picture2 {
-     max-height:100%;
-     min-width:100%;
- }
-#timeline-picture3 {
-    min-height:100%;
-    min-width:100%;
-}
 section#contact {
     background-color: #F7F7F9;
     color:black;
@@ -81,11 +72,8 @@ section#contact {
     margin-top:-50px;
 }
 .bg-white {
-
     background-color: #ffffff !important;
 }
-
-
 
 @import url(http://fonts.googleapis.com/css?family=Megrim&text=CAT);
 

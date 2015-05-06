@@ -51,8 +51,8 @@ class AdminSubServiceController extends Controller {
 
         $filename = str_random(4).'-'.str_slug($input['head-title']).'.'.$extension;
         $file = file_get_contents($path);
-        //file_put_contents(public_path().'/img/subservice/'.$filename,$file);
-        file_put_contents('../httpd.www/img/subservice/'.$filename,$file);
+        file_put_contents(public_path().'/img/subservice/'.$filename,$file);
+        //file_put_contents('../httpd.www/img/subservice/'.$filename,$file);
 
 
         $input['img'] = '/img/subservice/'.$filename;
