@@ -37,6 +37,7 @@
                        @include('_partials.contactButtons')
                 </div>
             </div>
+        </div>
 
     </section>
     <!-- About Section -->
@@ -53,7 +54,7 @@
                     <ul class="timeline">
                         <li>
                             <div class="timeline-image">
-                                <img id="timeline-picture1" class="img-circle img-responsive" src="https://scontent-ams.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/1929203_131778640992_1504921_n.jpg?oh=96cf8702bde6168b6dcdc4b2aebd5563&oe=55B571FD" alt="">
+                                <img id="timeline-picture1" class="img-responsive" src="https://scontent-ams.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/1929203_131778640992_1504921_n.jpg?oh=96cf8702bde6168b6dcdc4b2aebd5563&oe=55B571FD" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -67,7 +68,7 @@
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img id="timeline-picture2" class="img-circle img-responsive" src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/284881_10150323243172392_189074_n.jpg?oh=3b755b84a2cc911d0f1c2b4a0f04b44b&oe=559F9F16&__gda__=1437566758_022d40219c73d87f57510e9a6a4ab19d" alt="">
+                                <img id="timeline-picture2" class="img-responsive" src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/284881_10150323243172392_189074_n.jpg?oh=3b755b84a2cc911d0f1c2b4a0f04b44b&oe=559F9F16&__gda__=1437566758_022d40219c73d87f57510e9a6a4ab19d" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -81,7 +82,7 @@
                         </li>
                         <li>
                             <div class="timeline-image">
-                                <img id="timeline-picture3" class="img-circle img-responsive" src="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfa1/v/t1.0-9/10482470_10152892323914865_5175479861958275444_n.jpg?oh=d04594727e53dd78d83d93843b25f33a&oe=55B57FCF&__gda__=1436226850_b85d6171bf2418347ff2d6400a8aedbf" alt="">
+                                <img id="timeline-picture3" class="img-responsive" src="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfa1/v/t1.0-9/10482470_10152892323914865_5175479861958275444_n.jpg?oh=d04594727e53dd78d83d93843b25f33a&oe=55B57FCF&__gda__=1436226850_b85d6171bf2418347ff2d6400a8aedbf" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -95,7 +96,7 @@
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img id="timeline-picture4" class="img-circle img-responsive" src="https://scontent-ams.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/11006376_826780984053780_6330594013323611392_n.jpg?oh=324b1a7213d62c9808adf6e230b9144d&oe=55A52F9E" alt="">
+                                <img id="timeline-picture4" class="img-responsive" src="https://scontent-ams.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/11006376_826780984053780_6330594013323611392_n.jpg?oh=324b1a7213d62c9808adf6e230b9144d&oe=55A52F9E" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">

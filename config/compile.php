@@ -20,7 +20,12 @@ return [
 		realpath(__DIR__.'/../app/Providers/ConfigServiceProvider.php'),
 		realpath(__DIR__.'/../app/Providers/EventServiceProvider.php'),
 		realpath(__DIR__.'/../app/Providers/RouteServiceProvider.php'),
-
+        realpath(__DIR__.'/../app/http/Controllers/HomeController.php'),
+        realpath(__DIR__.'/../app/http/Controllers/WelcomeController.php'),
+        realpath(__DIR__.'/../app/http/Controllers/GalleryController.php'),
+        realpath(__DIR__.'/../app/http/Controllers/ImageController.php'),
+        realpath(__DIR__.'/../app/http/Controllers/AboutController.php'),
+        realpath(__DIR__.'/../app/http/Controllers/ContactController.php'),
 	],
 
 	/*

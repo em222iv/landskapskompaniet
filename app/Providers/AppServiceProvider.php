@@ -13,8 +13,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-        $services = Service::all();
-        view()->share('services',$services);
+
 	}
 
 	/**

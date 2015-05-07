@@ -2,8 +2,7 @@
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CarouselRequest;
-use App\Http\Requests\createImageRequest;
+use App\Http\Requests\GalleryRequest;
 use Illuminate\Support\Facades\Input;
 use App\Image;
 use Request;
@@ -45,10 +44,9 @@ class AdminGalleryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(createImageRequest $request)
+	public function store(GalleryRequest $request)
 	{
         $input = $request->all();
-
 
         if (Request::hasFile('image')){
             //file
@@ -62,7 +60,8 @@ class AdminGalleryController extends Controller {
             $input['image'] = '/img/gallery/' . $filename;
             Image::create($input);
         }else {
-            flash('hej!');
+            flash('No picture chosen');
+            return view('admin.gallery.create');
         }
         return redirect('/admin/gallery');	}
 
@@ -94,22 +93,28 @@ class AdminGalleryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id,GalleryRequest $request)
 	{
         $carousel = Image::findOrFail($id);
-        $input = Request::all();
+        $input = $request->all();
 
+        if (Request::hasFile('image')){
         //file
         $path = Input::file('image');
         $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
 
         $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
         $file = file_get_contents($path);
-        //file_put_contents(public_path().'/img/gallery/'.$filename,$file);
-        file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
-        $input['image'] = 'img/gallery/'.$filename;
+        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
+        //file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
+        $input['image'] = '/img/gallery/'.$filename;
         $carousel->update($input);
         return redirect('/admin/gallery');
+        }else {
+            $input['image'] = $carousel['image'];
+            $carousel->update($input);
+            return redirect('/admin/gallery');
+        }
 	}
 
 	/**

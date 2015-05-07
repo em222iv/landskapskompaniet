@@ -56,7 +56,7 @@
                         <p class="lead">{{$subservice->text}}</p>
                     </div>
                 </div>
-                <hr class="featurette-divider">
+
             @endforeach
             <!-- /END THE FEATURETTES -->
 

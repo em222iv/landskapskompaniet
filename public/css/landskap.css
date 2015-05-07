@@ -34,7 +34,7 @@
 .back-to-top i {
     font-size: 60px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .navbar-nav > li {
         float: left;
         margin-left: 70px;
@@ -48,16 +48,42 @@
     }
     .navbar-nav {
         margin:0;
+        float:right
     }
-
-
 }
-@media (max-width: 1200px) {
+@media (max-width:1199px) and (min-width:982px) {
     .navbar-nav > li {
-
+        float: right;
+        margin-left: 30px;
+    }
+}
+@media (max-width:982px) and (min-width:770px) {
+    .navbar-nav > li {
+        float: left;
         margin-left: -15px;
     }
+}
+@media (max-width:770px) {
+    .menu-social {
 
+    }
+}
+
+.social-link{
+    width:50px;
+    background-color: transparent;
+    margin-top: -5px;
+}
+.button-round {
+    boder-radius:100%;
+    background-color:transparent;
+    padding: 0;
+    border: none;
+    background: none;
+    margin:auto;
+}
+.tag-social-link{
+    background-color: transparent;
 }
 
 .team-member {
@@ -195,6 +221,9 @@ footer {
 #table-row{
     margin-left:0;
     margin-right: 0;
+}
+.menu-social {
+    float:right;
 }
 
 /*test*/
@@ -339,4 +368,25 @@ input[type=checkbox]:checked ~ label .check {
 #subservice-text-holder{
     padding-left: 20px;
     padding-right: 20px;
+}
+.team-member{
+    max-width: 450px;
+    margin-top: -50px;
+}
+#partner-heading{
+    padding-bottom: 70px;
+}
+#youtube-social-link{
+    margin-left: -14px;
+    width:70px;
+}
+#insta-social-link{
+    margin-left: -3px;
+}
+#fb-social-link {
+    height: 43px;
+    width: 43px;
+}
+#social-buttons{
+    padding-right: 15px;
 }

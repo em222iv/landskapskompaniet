@@ -52,17 +52,17 @@
                             <li><a href="/galleri">Galleri</a></li>
                             <li><a href="/kontakt">Kontakta oss</a></li>
                             <li><a href="/landskapskompaniet">Om Landskapskompaniet</a></li>
-
                         </ul>
-                        @if(Auth::check())
-                            @include('_partials.breadcrumbs')
-                        @endif
-
+                        <div class="menu-social">
+                            @include('_partials.socialButtons')
+                        </div>
+                        @include('_partials.breadcrumbs')
                     </div>
                 </div>
             </nav>
         </div>
     </div>
+
 	@yield('content')
 <!-- FOOTER -->
 <footer>
@@ -98,17 +98,9 @@
                     <p><a href="#">F-skatt</a></p>
                </li>
            </ul>
-           <ul class="list-inline social-buttons">
-              <li>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-              </li>
-          </ul>
+              <div class="centered">
+              @include('_partials.socialButtons')
+              </div>
           </div>
        </div>
        <div class="row">
@@ -151,26 +143,6 @@
         })
     });
 </script>
-{{--<script>
-//per css-tricks restarting css animations
-// http://css-tricks.com/restart-css-animation/
-$('.label').id.click(function() {
 
-  // find the first span which is our circle/bubble
-  var el = $(this).children('span:first-child');
-
-  // add the bubble class (we do this so it doesnt show on page load)
-  el.addClass('circle');
-
-  // clone it
-  var newone = el.clone(true);
-
-  // add the cloned version before our original
-  el.before(newone);
-
-  // remove the original so that it is ready to run on next click
-  $("." + el.attr("class") + ":last").remove();
-});
-</script>--}}
 </body>
 </html>

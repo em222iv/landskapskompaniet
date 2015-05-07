@@ -44,7 +44,7 @@ class CarouselController extends Controller {
 	{
 
         $input = $request->all();
-
+        if (Request::hasFile('img-path')){
         //file
         $path = Input::file('img-path');
         //name
@@ -55,12 +55,16 @@ class CarouselController extends Controller {
 
         $filename = str_random(4).'-'.str_slug($img).'.'.$extension;
         $file = file_get_contents($path);
-        //file_put_contents(public_path().'/img/carousel/'.$filename,$file);
-        file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
+        file_put_contents(public_path().'/img/carousel/'.$filename,$file);
+        //file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
 
-        $input['img-path'] = 'img/carousel/'.$filename;
+        $input['img-path'] = '/img/carousel/'.$filename;
         Carousel::create($input);
         return redirect('/admin/carousels');
+        }else {
+            flash()->error('no picture added');
+            return view('admin.carousels.create');
+        }
 	}
 
 	/**
@@ -97,6 +101,7 @@ class CarouselController extends Controller {
 
         $carousel = Carousel::findOrFail($id);
         $input = $request->all();
+        if (Request::hasFile('img-path')){
         //file
         $path = Input::file('img-path');
         //name
@@ -104,11 +109,16 @@ class CarouselController extends Controller {
         $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
         $filename = str_random(4).'-'.str_slug($img).'.'.$extension;
         $file = file_get_contents($path);
-        //file_put_contents(public_path().'./img/carousel/'.$filename,$file);
-         file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
-        $input['img-path'] = 'img/carousel/'.$filename;
+        file_put_contents(public_path().'./img/carousel/'.$filename,$file);
+        // file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
+        $input['img-path'] = '/img/carousel/'.$filename;
         $carousel->update($input);
         return redirect('/admin/carousels');
+        }else {
+            $input['img-path'] = $carousel['img-path'];
+            $carousel->update($input);
+            return view('admin.carousels.edit');
+        }
 	}
 
 	/**

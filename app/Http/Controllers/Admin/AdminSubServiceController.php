@@ -1,10 +1,13 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
+
 use App\Http\Controllers\Controller;
 use App\SubService;
+use App\Http\Requests\subServiceRequest;
 use Illuminate\Support\Facades\Input;
 use Request;
+
+
 
 class AdminSubServiceController extends Controller {
 
@@ -40,11 +43,13 @@ class AdminSubServiceController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(subServiceRequest $request)
 	{
-        $input = Request::all();
 
+        $input = $request->all();
         //file
+
+        if (Request::hasFile('img')){
         $path = Input::file('img');
 
         $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
@@ -54,11 +59,16 @@ class AdminSubServiceController extends Controller {
         file_put_contents(public_path().'/img/subservice/'.$filename,$file);
         //file_put_contents('../httpd.www/img/subservice/'.$filename,$file);
 
-
         $input['img'] = '/img/subservice/'.$filename;
         // $input['img'] = 'img/service/'.$filename;
         SubService::create($input);
+        flash()->success('created');
         return redirect('/admin/subservice');
+        }else {
+            flash()->error('no picture added');
+            return view('admin.subService.create');
+        }
+
 	}
 
 	/**
@@ -90,10 +100,12 @@ class AdminSubServiceController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id,subServiceRequest $request)
 	{
+        $input = $request->all();
         $subservice = SubService::findOrFail($id);
-        $input = Request::all();
+        if (Request::hasFile('img')){
+
 
         //file
         $path = Input::file('img');
@@ -103,10 +115,16 @@ class AdminSubServiceController extends Controller {
         $file = file_get_contents($path);
         file_put_contents(public_path().'/img/gallery/'.$filename,$file);
         //file_put_contents('../httpd.www/img/service/'.$filename,$file);
-        $input['image'] = 'img/service/'.$filename;
-        $subservice->update($input);
-        return redirect('/admin/subservice');
+        $input['img'] = '/img/service/'.$filename;
 
+
+        $subservice->update($input);
+        }else {
+            $input['img'] = $subservice['img'];
+            $subservice->update($input);
+            return view('admin.subService');
+        }
+        return redirect('/admin/subservice');
 	}
 
 	/**

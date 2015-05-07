@@ -37,7 +37,7 @@
 
 <section id="partners">
     <div class="row">
-        <div class="col-lg-12 text-center">
+        <div id="partner-heading" class="col-lg-12 text-center">
             <h3 class="section-heading">Sammarbetspartners</h3>
             <h4 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h4>
         </div>

@@ -2,9 +2,6 @@
 
 use App\Carousel;
 use Illuminate\Support\Facades\View;
-use Facebook\FacebookSession;
-use Facebook\FacebookRequest;
-use Facebook\FacebookRedirectLoginHelper;
 class WelcomeController extends Controller {
 
 	/*

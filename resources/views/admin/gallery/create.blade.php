@@ -8,6 +8,7 @@
                     @include('admin.gallery.partials.form',['submitButton' => 'Skapa'])
                   {!! Form::close() !!}
                   @include('errors.errorlist')
+                    @include('flash::message')
                 </div>
             </div>
     </section>

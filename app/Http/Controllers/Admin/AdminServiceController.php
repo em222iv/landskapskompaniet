@@ -1,10 +1,10 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Service;
 use Illuminate\Support\Facades\Input;
 use App\SubService;
+use App\Http\Requests\ServiceRequest;
 use Request;
 
 
@@ -39,12 +39,13 @@ class AdminServiceController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(ServiceRequest $request)
 	{
 
-        $input = Request::all();
+        $input = $request->all();
 
         //file
+        if (Request::hasFile('image')){
         $path = Input::file('img');
 
         $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
@@ -56,7 +57,11 @@ class AdminServiceController extends Controller {
         $input['img'] = '/img/service/'.$filename;
        // $input['img'] = 'img/service/'.$filename;
         Service::create($input);
-        return redirect('/admin/service');
+            return redirect('/admin/service');
+        }else {
+            flash()->error('no picture added');
+            return view('admin.service.edit');
+        }
 	}
 
 	/**
@@ -80,19 +85,6 @@ class AdminServiceController extends Controller {
 	{
         $service = Service::findOrFail($id);
         $subservices = SubService::all();
-/*            $count = 0;
-            foreach ($subservices as $s1){
-
-                foreach ($service->sub_services as $s2) {
-
-                    if($s1->id === $s2->id){
-
-                        unset($subservices->toArray()[$count]);
-                    }
-                    $count++;
-                }
-            }*/
-
         return view('admin.service.edit')->with('service',$service)->with('subservices', $subservices);
 	}
 
@@ -102,28 +94,33 @@ class AdminServiceController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id,ServiceRequest $request)
 	{
         $service = Service::findOrFail($id);
         $subservices = SubService::all();
-        $input = Request::all();
+        $input = $request->all();
         $service->sub_services()->detach();
         foreach ($subservices as $s) {
             if(isset($input[$s['head-title']])){
                 $service->sub_services()->attach($s->id);
             }
         }
-        return redirect('/admin/service');
-        //file
-        $path = Input::file('image');
-        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
 
+        if (Request::hasFile('img')){
+        //file
+        $path = Input::file('img');
+        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
         $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
         $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
-        //file_put_contents('../httpd.www/img/service/'.$filename,$file);
-        $input['image'] = 'img/service/'.$filename;
+        file_put_contents(public_path().'/img/service/'.$filename,$file);
+        // file_put_contents('../httpd.www/img/service/'.$filename,$file);
+        $input['img'] = '/img/service/'.$filename;
         $service->update($input);
+        }else {
+            $input['img'] = $service['img'];
+            $service->update($input);
+            return redirect('admin/service');
+        }
         return redirect('/admin/service');
 	}
 
