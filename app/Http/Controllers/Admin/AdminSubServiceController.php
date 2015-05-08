@@ -105,26 +105,21 @@ class AdminSubServiceController extends Controller {
         $input = $request->all();
         $subservice = SubService::findOrFail($id);
         if (Request::hasFile('img')){
-
-
-        //file
-        $path = Input::file('img');
-        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
-
-        $filename = str_random(4).'-'.str_slug($input['head-title']).'.'.$extension;
-        $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
-        //file_put_contents('../httpd.www/img/service/'.$filename,$file);
-        $input['img'] = '/img/service/'.$filename;
-
-
-        $subservice->update($input);
+            $path = Input::file('img');
+            $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filename = str_random(4).'-'.str_slug($input['head-title']).'.'.$extension;
+            $file = file_get_contents($path);
+            file_put_contents(public_path().'/img/service/'.$filename,$file);
+            // file_put_contents('../httpd.www/img/service/'.$filename,$file);
+            $input['img'] = '/img/service/'.$filename;
+            $subservice->update($input);
+        return redirect('/admin/subservice');
         }else {
             $input['img'] = $subservice['img'];
             $subservice->update($input);
             return view('admin.subService');
         }
-        return redirect('/admin/subservice');
+
 	}
 
 	/**

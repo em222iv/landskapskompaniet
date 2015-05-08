@@ -80,3 +80,29 @@ Breadcrumbs::register('admin.gallery.edit', function($breadcrumbs) {
     $breadcrumbs->parent('admin.gallery.index');
     $breadcrumbs->push('Ändra bild', route('admin.gallery.edit'));
 });
+//admin service
+Breadcrumbs::register('admin.service.index', function($breadcrumbs) {
+    $breadcrumbs->parent('admin/home');
+    $breadcrumbs->push('Tjänster', route('admin.service.index'));
+});
+Breadcrumbs::register('admin.service.create', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.service.index');
+    $breadcrumbs->push('Lägg till tjänst', route('admin.service.create'));
+});
+Breadcrumbs::register('admin.service.edit', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.service.index');
+    $breadcrumbs->push('Ändra tjänst', route('admin.service.edit'));
+});
+//admin service
+Breadcrumbs::register('admin.subservice.index', function($breadcrumbs) {
+    $breadcrumbs->parent('admin/home');
+    $breadcrumbs->push('Deltjänster', route('admin.subservice.index'));
+});
+Breadcrumbs::register('admin.subservice.create', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.subservice.index');
+    $breadcrumbs->push('Lägg till deltjänst', route('admin.subservice.create'));
+});
+Breadcrumbs::register('admin.subservice.edit', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.subservice.index');
+    $breadcrumbs->push('Ändra deltjänst', route('admin.subservice.edit'));
+});

@@ -65,49 +65,64 @@
 
 	@yield('content')
 <!-- FOOTER -->
-<footer>
-   <div class="container">
-       <div class="row">
-            <div class="col-lg-6">
-              <ul class="list-inline ">
-                  <li>
-                      <p>Telefon :<a href="tel:+1-303-499-7111">070 43 49 123</a></p>
-                  </li>
-                  <li class="footer-menu-divider">⋅</li>
-                  <li>
-                      <p>E-mail :<a href="mailto:webmaster@example.com">Carl@Landskapskompaniet.se</a></p>
-                  </li>
-              </ul>
-                @include('_partials.contactButtons')
-          </div>
-          <div class="col-lg-6">
-           <ul class="list-inline ">
-               <li>
-                   <p><a href="#">F-skatt</a></p>
-               </li>
-               <li class="footer-menu-divider">⋅</li>
-               <li>
-                    <p><a href="#">F-skatt</a></p>
-               </li>
-               <li class="footer-menu-divider">⋅</li>
-               <li>
-                   <p><a href="#">F-skatt</a></p>
-               </li>
-               <li class="footer-menu-divider">⋅</li>
-               <li>
-                    <p><a href="#">F-skatt</a></p>
-               </li>
-           </ul>
-              <div class="centered">
-              @include('_partials.socialButtons')
-              </div>
-          </div>
-       </div>
-       <div class="row">
- <p class="copyright text-muted small">Copyright © Landskapskompaniet. All Rights Reserved</p>
-       </div>
-   </div>
-</footer>
+<footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>Landskapskompaniet<span>logo</span></h3>
+
+				<p class="footer-links">
+					<a href="#">Hem</a>
+					·
+					<a href="#">Tjänster</a>
+					·
+					<a href="#">Galleri</a>
+					·
+					<a href="#">Kontakta oss</a>
+					·
+					<a href="#">Om landskapskompaniet</a>
+
+				</p>
+
+				<p class="footer-company-name">Landkspaskompaniet © 2015</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="mdi-communication-business"></i>
+					<p><span>I skogen</span> Lohärad, Norrtälje</p>
+				</div>
+
+				<div>
+					<i class="mdi-communication-phone"></i>
+					<p>Telefon :<a href="tel:+1-303-499-7111">070 43 49 123</a></p>
+				</div>
+
+				<div>
+					<i class="mdi-communication-email"></i>
+					<p>E-mail :<a href="mailto:webmaster@example.com">Carl@Landskapskompaniet.se</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>Om oss</span><p>hehefe</p>
+
+				</p>
+
+				<div class="footer-icons">
+
+                   @include('_partials.socialButtons')
+
+				</div>
+
+			</div>
+
+		</footer>
+
 <a class="back-to-top" style="display: inline;" href="#"><div class="glyphicon glyphicon-circle-arrow-up"></div></a>
 	<!-- Scripts -->
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
