@@ -32,20 +32,16 @@ Route::get('/galleri',[ 'as' => 'gallery', 'uses' => 'GalleryController@index'])
 Route::get('/galleri/{id}',[ 'as' => 'gallery/{id}', 'uses' => 'ImageController@show',function($name) {
 
 }]);
+Route::get('/tjänster/{id}',[ 'as' => 'services/{id}', 'uses' => 'ServiceController@show',function($name) {
+    return $name;
+}]);
 
 
 //service
 Route::get('/tjänster',[ 'as' => 'services', 'uses'  =>'ServiceController@index']);
-//subservices
-/*Route::get('/service/{name}',[ 'as' => 'service/{id}', 'uses' => 'ServiceController@show',function($name = null)
-{
 
-}]);*/
-Route::get('tjänster/{name?}',[ 'as' => 'service/{name}', 'uses' => 'ServiceController@show', function($name = null)
-{
-    return $name;
-}]);
-
+//Auth
+Route::get('auth/register', ['middleware' => 'auth', 'as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -53,9 +49,7 @@ Route::controllers([
 
 //admin
 
-
-Route::get('admin', [
-    'as' => 'admin/home', 'uses' => 'Admin\HomeController@index']);
+Route::get('admin', ['as' => 'admin/home', 'uses' => 'Admin\HomeController@index']);
 
 
 //carousel

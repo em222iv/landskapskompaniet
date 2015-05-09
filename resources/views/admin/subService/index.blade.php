@@ -30,7 +30,7 @@
                          </td>
                            <td>
                                @foreach($subservice->services as $service)
-                                    <a href="service/{{$service->id}}/edit"><div class="service">{{$service['title']}}</div></a>
+                                   <a href="service/{{$service->id}}/edit">{{$service['title']}}</a> |
                                @endforeach
                            </td>
 

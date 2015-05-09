@@ -30,10 +30,11 @@ class AuthController extends Controller {
 	public function __construct(Guard $auth, Registrar $registrar)
 	{
 		$this->auth = $auth;
-		$this->registrar = $registrar;
 
-		//$this->middleware('admin', ['except' => 'getLogin']);
-        $this->beforeFilter('guest', array('except' => array('getRegister', 'getLogout')));
+        $this->registrar = $registrar;
+
+		//$this->middleware('check', ['except' => 'getLogin','admin']);
+        $this->beforeFilter('check', array('except' => array('getRegister', 'getLogout')));
 
 	}
 

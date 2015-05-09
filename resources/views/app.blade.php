@@ -69,7 +69,7 @@
 
 			<div class="footer-left">
 
-				<h3>Landskapskompaniet<span>logo</span></h3>
+				<h4>Landskapskompaniet</h4>
 
 				<p class="footer-links">
 					<a href="#">Hem</a>

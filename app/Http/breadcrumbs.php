@@ -23,20 +23,17 @@ Breadcrumbs::register('gallery/{id}', function($breadcrumbs) {
     $breadcrumbs->push('Bild', route('gallery/{id}'));
 });
 
-//serives pages
+//services pages
 Breadcrumbs::register('services', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Tjänster', route('services'));
 });
-Breadcrumbs::register('services/trees', function($breadcrumbs) {
+Breadcrumbs::register('services/{id}', function($breadcrumbs) {
     $breadcrumbs->parent('services');
-    $breadcrumbs->push('Träd', route('services/trees'));
-});
-Breadcrumbs::register('services/plowing', function($breadcrumbs) {
-    $breadcrumbs->parent('services');
-    $breadcrumbs->push('Plogning', route('services/plowing'));
+    $breadcrumbs->push('Tjänst', route('services/{id}'));
 });
 
+//admin
 Breadcrumbs::register('admin/home', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Admin', route('admin/home'));
@@ -67,6 +64,7 @@ Breadcrumbs::register('admin.image.create', function($breadcrumbs) {
     $breadcrumbs->parent('admin.image.index');
     $breadcrumbs->push('Lägg till bild', route('admin.image.create'));
 });
+
 //admin gallery
 Breadcrumbs::register('admin.gallery.index', function($breadcrumbs) {
     $breadcrumbs->parent('admin/home');

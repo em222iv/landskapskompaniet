@@ -37,6 +37,10 @@ class RedirectIfAuthenticated {
 		{
 			return new RedirectResponse(url('auth/login'));
 		}
+        if (!$this->auth->check())
+        {
+            return new RedirectResponse(url('auth/register'));
+        }
 
 		return $next($request);
 	}
