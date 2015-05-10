@@ -6,10 +6,6 @@
     {!! Form::label('head-title','Svart Titel:') !!}
     {!! Form::text('head-title',null,['class'=>'form-control']) !!}
    </div>
-    <div class="form-group">
-        {!! Form::label('sub-title','Grå Titel:') !!}
-        {!! Form::text('sub-title',null,['class'=>'form-control']) !!}
-    </div>
    <div class="form-group">
     {!! Form::label('text','Text:') !!}
     {!! Form::textarea('text',null,['class'=>'form-control']) !!}
@@ -18,3 +14,17 @@
    <div class="form-group">
     {!! Form::submit($submitButton,['class'=>'btn btn-primary']) !!}
    </div>
+
+   <div class="form-group">
+      {!! Form::label('service_list','Tjänster') !!}
+     {!! Form::select('service_list[]',$services,null,['id'=>'service_list','class'=>'form-control','multiple']) !!}
+   </div>
+
+  @section('footer')
+   <script type="text/javascript">
+   console.log('df');
+      $('#service_list').select2({
+       placeholder: 'Välj tjänster'
+      });
+  </script>
+  @endsection

@@ -31,7 +31,8 @@ class AdminServiceController extends Controller {
 	 */
 	public function create()
 	{
-        return view('admin.service.create');
+        $subservices = SubService::lists('head-title','id');
+        return view('admin.service.create',compact('subservices'));
 	}
 
 	/**
@@ -45,83 +46,74 @@ class AdminServiceController extends Controller {
         $input = $request->all();
 
         //file
-        if (Request::hasFile('image')){
-        $path = Input::file('img');
-
-        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
-
-        $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
-        $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/service/'.$filename,$file);
-        // file_put_contents('../httpd.www/img/service/'.$filename,$file);
-        $input['img'] = '/img/service/'.$filename;
-       // $input['img'] = 'img/service/'.$filename;
-        Service::create($input);
-            return redirect('/admin/service');
+        if (Request::hasFile('img')){
+            $file = Input::file('img');
+            $filename= $this->storeImage(public_path().'/img/service/',$file);
+            $input['img'] = '/img/service/'.$filename;
+            $service = Service::create($input);
+            $service->sub_services()->sync($request->input('sub_list'));
         }else {
             flash()->error('no picture added');
-            return view('admin.service.edit');
-        }
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-        $service = Service::findOrFail($id);
-        $subservices = SubService::all();
-        return view('admin.service.edit')->with('service',$service)->with('subservices', $subservices);
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id,ServiceRequest $request)
-	{
-        $service = Service::findOrFail($id);
-        $subservices = SubService::all();
-        $input = $request->all();
-        $service->sub_services()->detach();
-        foreach ($subservices as $s) {
-            if(isset($input[$s['head-title']])){
-                $service->sub_services()->attach($s->id);
-            }
-        }
-
-        if (Request::hasFile('img')){
-        //file
-        $path = Input::file('img');
-        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
-        $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
-        $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/service/'.$filename,$file);
-        // file_put_contents('../httpd.www/img/service/'.$filename,$file);
-        $input['img'] = '/img/service/'.$filename;
-        $service->update($input);
-        }else {
-            $input['img'] = $service['img'];
-            $service->update($input);
-            return redirect('admin/service');
+            return view('admin.service.create');
         }
         return redirect('/admin/service');
+    }
+
+/**
+ * Display the specified resource.
+ *
+ * @param  int  $id
+ * @return Response
+ */
+public function show($id)
+{
+    //
+}
+
+/**
+ * Show the form for editing the specified resource.
+ *
+ * @param  int  $id
+ * @return Response
+ */
+public function edit($id)
+{
+    $service = Service::findOrFail($id);
+    $subservices = SubService::lists('head-title','id');
+    return view('admin.service.edit',compact('subservices', 'service'));
+}
+
+/**
+ * Update the specified resource in storage.
+ *
+ * @param  int  $id
+ * @return Response
+ */
+public function update($id,ServiceRequest $request)
+{
+    $service = Service::findOrFail($id);
+    $subservices = SubService::all();
+    $input = $request->all();
+//    $service->sub_services()->detach();
+//    foreach ($subservices as $s) {
+//        if(isset($input[$s['head-title']])){
+//            $service->sub_services()->attach($s->id);
+//        }
+//    }
+
+    if (Request::hasFile('img')){
+        //file
+        $file = Input::file('img');
+        $filename= $this->storeImage(public_path().'/img/service/',$file);
+        $input['img'] = 'img/service/'.$filename;
+        $service->update($input);
+    }else {
+        $input['img'] = $service['img'];
+        $service->update($input);
+        $service->sub_services()->sync($request->input('sub_list',[]));
+        return redirect('admin/service');
+    }
+    return redirect('/admin/service');
 	}
 
 
@@ -134,8 +126,22 @@ class AdminServiceController extends Controller {
 	public function destroy($id)
 	{
         $service = Service::findOrFail($id);
+        unlink(public_path().$service['img']);
+        //  unlink('../httpd.www/img/service/'.$service['img']);
         $service->delete();
         return redirect('/admin/service');
 	}
+    /**
+     * @param $filepath
+     * @param $file
+     * @return filename
+     */
+    private function storeImage($filepath,$file) {
+        $extension = $file->getClientOriginalExtension();
+        $filename = str_random(6).'.'.$extension;
+        $file->move($filepath, $filename);
+//        $file->move('../httpd.www/img/service/', $filename);
+        return $filename;
+    }
 
 }

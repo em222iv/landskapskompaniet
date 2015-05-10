@@ -29,6 +29,8 @@
 }
 .navbar-brand {
     margin-left: -10px;
+    font-family: vani;
+
 }
 
 .back-to-top i {
@@ -36,8 +38,8 @@
 }
 @media (min-width: 1200px) {
     .navbar-nav > li {
-        float: left;
-        margin-left: 70px;
+        float: right;
+        margin-left:136px;
     }
     .dropdown:hover .dropdown-menu {
         display: block;
@@ -51,22 +53,34 @@
         float:right
     }
 }
-@media (max-width:1199px) and (min-width:982px) {
+@media (max-width:1199px) and (min-width:990px) {
     .navbar-nav > li {
         float: right;
-        margin-left: 30px;
+        margin-left: 85px;
+    }
+    .menu-social {
+        margin-top: 10.5px;
     }
 }
-@media (max-width:982px) and (min-width:770px) {
+@media (max-width:990px) and (min-width:770px) {
     .navbar-nav > li {
-        float: left;
-        margin-left: -15px;
+        float: right;
+        margin-left: 31px;
+    }
+    .menu-social {
+        margin-top: 10.5px;
     }
 }
 @media (max-width:770px) {
     .menu-social {
 
     }
+    /*.thumb {*/
+        /*overflow:hidden;*/
+    /*}*/
+    /*.gallery-picture{*/
+        /*max-width: 100%;*/
+    /*}*/
 }
 
 .social-link{
@@ -111,7 +125,7 @@ section#contact {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 #brand {
-    font-size: 22px;
+    font-size: 23px;
 }
 .glass::before {
     z-index: -1;
@@ -372,6 +386,7 @@ input[type=checkbox]:checked ~ label .check {
     padding-right: 20px;
 }
 .team-member{
+    padding-bottom: 41px;
     max-width: 450px;
     margin-top: -50px;
 }
@@ -379,19 +394,26 @@ input[type=checkbox]:checked ~ label .check {
     padding-bottom: 70px;
 }
 #youtube-social-link{
-    margin-left: -14px;
-    width:70px;
+    height: 16px;
+    width: 16px;
+
+
 }
 #insta-social-link{
-    margin-left: -3px;
+    height: 16px;
+    width: 16px;
+    margin-left: 4px;
 }
 #fb-social-link {
-    height: 45px;
-    width: 45px;
+    height: 14px;
+    width: 14px;
     border-radius: 15%;
+    margin-left: 10px;
+    margin-bottom: 0px;
 }
 #social-buttons{
-    padding-right: 15px;
+    margin-top: -0.5px;
+    padding-right: 1px;
 }
 /*footer*/
 .footer-distributed{
@@ -426,13 +448,13 @@ input[type=checkbox]:checked ~ label .check {
 }
 /* The company logo */
 
-.footer-distributed h3{
+.footer-distributed h4{
     color:  #ffffff;
     font-family: vani;
     margin: 0;
 }
 
-.footer-distributed h3 span{
+.footer-distributed h4 span{
     color:  #5383d3;
 }
 
@@ -533,7 +555,7 @@ input[type=checkbox]:checked ~ label .check {
     width: 35px;
     height: 35px;
     cursor: pointer;
-    background-color:  #33383b;
+    /*background-color:  #33383b;*/
     border-radius: 2px;
 
     font-size: 20px;
@@ -566,4 +588,53 @@ input[type=checkbox]:checked ~ label .check {
         margin-left: 0;
     }
 
+}
+#services-service-img{
+    max-height: 150px;
+    min-height: 150px;
+}
+#footer-contact-header{
+    color:white;
+    font-size: 20px;
+}
+#map-canvas {
+    min-height: 280px;
+    min-width: 100%;
+    margin: 0px;
+    padding: 0px
+}
+#panel {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -180px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+}
+#partners-row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#prev-button {
+    font-size: 38px;
+    opacity: 0.6;
+    position: absolute;
+}
+#admin-button {
+    font-size: 23px;
+    opacity: 0.6;
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 40px;
+}
+.form-actions {
+    margin-top: -22px;
+}
+#welcome-contact-content {
+    margin-top: 38px;
+}
+#welcome-contact-content > h2 {
+    padding-top: 44px;
 }

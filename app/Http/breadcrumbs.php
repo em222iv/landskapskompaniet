@@ -3,7 +3,7 @@
 // Home
 Breadcrumbs::register('home', function($breadcrumbs)
 {
-    $breadcrumbs->push('Hem', route('home'));
+    $breadcrumbs->push('Förstasidan', route('home'));
 });
 Breadcrumbs::register('contact', function($breadcrumbs) {
     $breadcrumbs->parent('home');

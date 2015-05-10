@@ -15,4 +15,13 @@ class SubService extends Model {
         return $this->belongsToMany('App\Service')->withTimestamps();
     }
 
+    /**
+     * get list of ids assoiciated with $this article
+     * @return array
+     */
+
+    public function getServiceListAttribute()
+    {
+        return $this->services->lists('id');
+    }
 }

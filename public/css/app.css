@@ -497,6 +497,7 @@ section h3.section-subheading {
     text-align: center;
     color: #fff;
     background-color: #fed136;
+    overflow: hidden;
 }
 
 .timeline>li .timeline-image h4 {
@@ -593,6 +594,7 @@ section h3.section-subheading {
         width: 150px;
         height: 150px;
         margin-left: -75px;
+
     }
 
     .timeline>li .timeline-image h4 {
@@ -664,7 +666,7 @@ section#contact {
 }
 
 section#contact .section-heading {
-    color: #fff;
+    color: #5a5a5a;
 }
 
 section#contact .form-group {
@@ -747,14 +749,14 @@ ul.social-buttons {
 
 ul.social-buttons li a {
     display: block;
-    width: 40px;
+    width: 20px;
     height: 40px;
     border-radius: 100%;
     font-size: 20px;
     line-height: 40px;
     outline: 0;
     color: #fff;
-    background-color: white;
+    /*background-color: white;*/
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     transition: all .3s;
@@ -763,7 +765,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-    background-color: #fed136;
+    /*background-color: #fed136;*/
 }
 
 .btn:focus,
@@ -886,7 +888,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 main,
 menu,
 nav,
@@ -1792,7 +1793,8 @@ img {
 .carousel-inner > .item > a > img */{
   display: block;
   max-width: 100%;
-  height: auto;
+    min-height: 100%;
+    max-height: 100%;
 }
 .first-slide {
     display: block;
@@ -5180,11 +5182,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444444;
 }
 .breadcrumb {
+    height: 17px;
     margin-top: 70px;
-  margin-bottom: 20px;
-  list-style: none;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    font-size: smaller;
 }
 .breadcrumb > li {
   display: inline-block;

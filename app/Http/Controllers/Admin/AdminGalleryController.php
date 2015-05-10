@@ -39,28 +39,21 @@ class AdminGalleryController extends Controller {
 		return view('admin.gallery.create');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+    /**
+     * @param GalleryRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
 	public function store(GalleryRequest $request)
 	{
         $input = $request->all();
 
         if (Request::hasFile('image')){
-            //file
-            $path = Input::file('image');
-            $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
-
-            $filename = str_random(4) . '-' . str_slug($input['title']) . '.' . $extension;
-            $file = file_get_contents($path);
-            file_put_contents(public_path().'/img/gallery/'.$filename,$file);
-            //file_put_contents('../httpd.www/img/gallery/' . $filename, $file);
+            $file = Input::file('image');
+            $filename = $this->storeImage(public_path().'/img/gallery/',$file);
             $input['image'] = '/img/gallery/' . $filename;
             Image::create($input);
         }else {
-            flash('No picture chosen');
+            flash()->error('No picture chosen');
             return view('admin.gallery.create');
         }
         return redirect('/admin/gallery');	}
@@ -99,23 +92,20 @@ class AdminGalleryController extends Controller {
         $input = $request->all();
 
         if (Request::hasFile('image')){
-        //file
-        $path = Input::file('image');
-        $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
-
-        $filename = str_random(4).'-'.str_slug($input['title']).'.'.$extension;
-        $file = file_get_contents($path);
-        file_put_contents(public_path().'/img/gallery/'.$filename,$file);
-        //file_put_contents('../httpd.www/img/gallery/'.$filename,$file);
-        $input['image'] = '/img/gallery/'.$filename;
-        $carousel->update($input);
-        return redirect('/admin/gallery');
+            $file = Input::file('image');
+            $filename = $this->storeImage(public_path().'/img/gallery/',$file);
+            $this->destroyImage($carousel['image']);
+            $input['image'] = '/img/gallery/'.$filename;
+            $carousel->update($input);
         }else {
             $input['image'] = $carousel['image'];
             $carousel->update($input);
             return redirect('/admin/gallery');
         }
-	}
+
+        return redirect('/admin/gallery');
+        flash()->success('Updated');
+    }
 
 	/**
 	 * Remove the specified resource from storage.
@@ -126,9 +116,26 @@ class AdminGalleryController extends Controller {
     public function destroy($id)
     {
         $image = Image::findOrFail($id);
+        unlink(public_path().$image['image']);
+        //  unlink('../httpd.www/img/service/'.$image['image']);
         $image->delete();
         return redirect('/admin/gallery');
     }
-
+    /**
+     * @param $filepath
+     * @param $file
+     * @return filename
+     */
+    private function storeImage($filepath,$file) {
+        $extension = $file->getClientOriginalExtension();
+        $filename = str_random(6).'.'.$extension;
+        $file->move($filepath, $filename);
+//        $file->move('../httpd.www/img/service/', $filename);
+        return $filename;
+    }
+    private function destroyImage($image) {
+        unlink(public_path().$image);
+        //  unlink('../httpd.www/img/service/'.$image);
+    }
 
 }
