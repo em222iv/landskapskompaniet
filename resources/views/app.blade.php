@@ -62,11 +62,8 @@
 
 	@yield('content')
     <footer class="footer-distributed">
-
     			<div class="footer-left">
-
     				<h4>LANDSKAPSKOMPANIET AB</h4>
-
     				<p class="footer-links">
     					<a href="#">Hem</a>
     					·
@@ -77,48 +74,32 @@
     					<a href="#">Kontakta oss</a>
     					·
     					<a href="#">Om oss</a>
-
     				</p>
-
     				<p class="footer-company-name">Landkspaskompaniet © 2015</p>
     			</div>
-
     			<div class="footer-center">
-
     				<div>
     					<i class="mdi-communication-business"></i>
     					<p><span>Råbyvägen 28</span>76172, Norrtälje</p>
     				</div>
-
     				<div>
     					<i class="mdi-communication-phone"></i>
     					<p>Telefon: <a href="tel:+1-303-499-7111">00736511977</a></p>
     				</div>
-
     				<div>
     					<i class="mdi-communication-email"></i>
     					<p>E-mail: <a href="mailto:webmaster@example.com">landskapskompaniet@gmail.com</a></p>
     				</div>
-
     			</div>
-
     			<div class="footer-right">
-
     				<p class="footer-company-about">
     					<div id="footer-contact-header">Kontakta oss</div><p>@include('_partials.contactButtons')</p>
-
     				</p>
-
     				<div class="footer-icons">
-
-
                        @include('_partials.socialButtons')
-
     				</div>
     			</div>
     		</footer>
-
-
 <a class="back-to-top" style="display: inline;" href="#"><div class="glyphicon glyphicon-circle-arrow-up"></div></a>
 	<!-- Scripts -->
 
