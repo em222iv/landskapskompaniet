@@ -6,32 +6,33 @@ use Illuminate\Support\Facades\Input;
 use App\Image;
 
 
-class CarouselRequest extends Request {
+class CarouselRequest extends Request
+{
 
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return true;
-	}
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		return [
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
             'title' => 'required',
             'body' => 'required',
             'img' => 'required',
             'img-path' => 'required',
 
-		];
-	}
+        ];
+    }
 
 }

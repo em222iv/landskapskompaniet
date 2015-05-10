@@ -1,24 +1,16 @@
 // usage: .variations(~" .check", color, transparent);
 .variations(@extra, @property, @default) {
-  .generic-variations(@extra, @default, {
-      @{property}: @material-color;
-    });
+  .generic-variations(@extra, @default, { @{property}: @material-color; });
 }
 
 .background-variations(@extra, @default) {
-  .generic-variations(@extra, @default, {
-      background-color: @material-color;
-      color: @text-color;
-      & when (@material-color = @btn-default) {
-        color: @lightbg-text;
-      }
-    });
+  .generic-variations(@extra, @default, { background-color: @material-color; color: @text-color; & when (@material-color = @btn-default) {
+    color: @lightbg-text;
+  } });
 }
 
 .text-variations(@extra, @default) {
-  .generic-variations(@extra, @default, {
-      color: @material-color;
-    });
+  .generic-variations(@extra, @default, { color: @material-color; });
 }
 
 //
@@ -30,7 +22,6 @@
 // @material-color ---> #f44336, #e8f5e9, #5c6bc0 ...
 // @text-color ---> rgba(255,255,255,0.84), rgba(0,0,0,0.84), rgba(255,255,255,0.84) ...
 //
-
 
 .generic-variations(@extra, @default, @func) {
 
@@ -140,6 +131,5 @@
   .generic-variations-factory(~"blue-grey");
 
 }
-
 
 @all-variations: ~"-default, -primary, -info, -success, -warning, -danger";

@@ -1,3 +1,3 @@
 Meteor.startup(function () {
-  $.material.init();
+    $.material.init();
 });

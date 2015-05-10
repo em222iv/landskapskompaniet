@@ -4,7 +4,8 @@ use App\SubService;
 use App\Service;
 use Request;
 
-class ServiceController extends Controller {
+class ServiceController extends Controller
+{
 
     /**
      * Display a listing of the resource.
@@ -15,18 +16,19 @@ class ServiceController extends Controller {
     {
         $services = Service::all();
 
-        return view('pages.services')->with('services',$services);
+        return view('pages.services')->with('services', $services);
     }
+
     public function show($name)
     {
         $services = Service::all();
         $service = Service::where('title', '=', $name)->first();
 
         $serviceData = array(
-            'services'  => $services,
+            'services' => $services,
             'service' => $service
         );
 
-        return view('pages.service')->with('data',$serviceData);
+        return view('pages.service')->with('data', $serviceData);
     }
 }

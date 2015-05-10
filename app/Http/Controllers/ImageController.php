@@ -3,13 +3,14 @@
 use App\Image;
 use Request;
 
-class ImageController extends Controller {
+class ImageController extends Controller
+{
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
     public function show($id)
     {
         $dbImages = Image::all();
@@ -17,24 +18,22 @@ class ImageController extends Controller {
         $index = 0;
         foreach ($dbImages as $image) {
 
-            if($id == $image['id']) {
+            if ($id == $image['id']) {
 
-                $prev = $index-1;
-                $next = $index+1;
+                $prev = $index - 1;
+                $next = $index + 1;
                 $images[0] = $image;
 
-                if (isset($dbImages[$prev])){
+                if (isset($dbImages[$prev])) {
 
                     $images[1] = $dbImages[$prev];
-                }
-                else {
+                } else {
                     $images[1] = $image;
                 }
-                if (isset($dbImages[$next])){
+                if (isset($dbImages[$next])) {
 
                     $images[2] = $dbImages[$next];
-                }
-                else {
+                } else {
                     $images[2] = $image;
                 }
                 break;
@@ -61,6 +60,6 @@ class ImageController extends Controller {
 //        else {
 //            $images[2] = Image::findOrFail($next);
 //        }
-        return view('pages.image')->with('images',$images);
+        return view('pages.image')->with('images', $images);
     }
 }

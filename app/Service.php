@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model {
+class Service extends Model
+{
 
     protected $fillable = [
         'title',
@@ -11,7 +12,8 @@ class Service extends Model {
     ];
 
 
-    public function sub_services() {
+    public function sub_services()
+    {
         return $this->belongsToMany('App\SubService')->withTimestamps();
     }
 

@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\JobRequest;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller {
+class ContactController extends Controller
+{
 
-	public function index()
-	{
+    public function index()
+    {
         return view('pages.contact');
-	}
+    }
 
     public function Store(Requests\JobRequest $request)
     {

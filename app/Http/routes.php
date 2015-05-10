@@ -27,24 +27,24 @@ Route::get('/landskapskompaniet', [
     'as' => 'about', 'uses' => 'AboutController@index'
 ]);
 
-Route::get('/galleri',[ 'as' => 'gallery', 'uses' => 'GalleryController@index']);
+Route::get('/galleri', ['as' => 'gallery', 'uses' => 'GalleryController@index']);
 
-Route::get('/galleri/{id}',[ 'as' => 'gallery/{id}', 'uses' => 'ImageController@show',function($name) {
+Route::get('/galleri/{id}', ['as' => 'gallery/{id}', 'uses' => 'ImageController@show', function ($name) {
 
 }]);
-Route::get('/tjänster/{id}',[ 'as' => 'services/{id}', 'uses' => 'ServiceController@show',function($name) {
+Route::get('/tjänster/{id}', ['as' => 'services/{id}', 'uses' => 'ServiceController@show', function ($name) {
     return $name;
 }]);
 
 
 //service
-Route::get('/tjänster',[ 'as' => 'services', 'uses'  =>'ServiceController@index']);
+Route::get('/tjänster', ['as' => 'services', 'uses' => 'ServiceController@index']);
 
 //Auth
 Route::get('auth/register', ['middleware' => 'auth', 'as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
 //admin
