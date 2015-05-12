@@ -46,9 +46,10 @@
             <h4 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h4>
         </div>
     </div>
+    <div class="class col-lg-12">
     <div class="col-sm-3">
         <div class="team-member">
-            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class="img-responsive img-circle" alt="">
+            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
             <h4>Lättviksmotor</h4>
             <p class="text-muted">VD</p>
 
@@ -56,7 +57,7 @@
     </div>
     <div class="col-sm-3">
         <div class="team-member">
-            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class="img-responsive img-circle" alt="">
+            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
             <h4>Britten</h4>
             <p class="text-muted">VD</p>
 
@@ -64,7 +65,7 @@
     </div>
     <div class="col-sm-3">
         <div class="team-member">
-            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class="img-responsive img-circle" alt="">
+            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
             <h4>Någon annan</h4>
             <p class="text-muted">VD</p>
 
@@ -72,11 +73,12 @@
     </div>
     <div class="col-sm-3">
         <div class="team-member">
-            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class="img-responsive img-circle" alt="">
+            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
             <h4>Någon annnan, annan</h4>
             <p class="text-muted">VD</p>
 
         </div>
+    </div>
     </div>
 </section>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>

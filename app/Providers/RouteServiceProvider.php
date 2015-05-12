@@ -25,9 +25,11 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot($router);
 
-        //
+        $router->model('gallery','App\Image');
+        $router->model('service','App\Service');
+        $router->model('subservice','App\SubService');
+        $router->model('carousels','App\Carousel');
     }
-
     /**
      * Define the routes for the application.
      *

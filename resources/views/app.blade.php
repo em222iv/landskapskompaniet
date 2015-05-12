@@ -114,8 +114,9 @@
             $.material.init();
         });
     </script>
-    <script src="{{ asset('/bootstrap-material-design-master/dist/js/ripples.min.js') }}"></script>
-    <script src="/bootstrap-material-design-master/dist/js/material.min.js"></script>
+    <script src="{{ asset('/js/ripples.min.js') }}"></script>
+    <script src="{{ asset('/js/material.min.js') }}"></script>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
     <script src="{{ asset('/js/scroll-up-button.js') }}"></script>
 

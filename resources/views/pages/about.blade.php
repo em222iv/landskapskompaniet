@@ -11,10 +11,9 @@
                 </div>
             </div>
             <div class="row">
-
-                <div class="col-sm-6">
+                <div class="col-sm-6" id="team-member-holder">
                     <div class="team-member">
-                       <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class="img-responsive img-circle" alt="">
+                       <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
                         <h4>Carl Matsson</h4>
                         <p class="text-muted">VD</p>
                     </div>

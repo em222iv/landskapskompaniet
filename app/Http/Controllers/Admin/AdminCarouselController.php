@@ -45,24 +45,12 @@ class CarouselController extends Controller
      */
     public function store(CarouselRequest $request)
     {
-
-        $input = $request->all();
         if (Request::hasFile('img-path')) {
             //file
-            $path = Input::file('img-path');
-            //name
-            $img = Request::get('img');
-
-
-            $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
-
-            $filename = str_random(4) . '-' . str_slug($img) . '.' . $extension;
-            $file = file_get_contents($path);
-            file_put_contents(public_path() . '/img/carousel/' . $filename, $file);
-            //file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
-
+            $file = Input::file('img-path');
+            $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
             $input['img-path'] = '/img/carousel/' . $filename;
-            Carousel::create($input);
+            Carousel::create($request);
             return redirect('/admin/carousels');
         } else {
             flash()->error('no picture added');
@@ -71,25 +59,13 @@ class CarouselController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Carousel $carousel)
     {
-        $carousel = Carousel::findOrFail($id);
         return view('admin.carousel.edit')->with('carousel', $carousel);
     }
 
@@ -99,27 +75,17 @@ class CarouselController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id, CarouselRequest $request)
+    public function update(Carousel $carousel, CarouselRequest $request)
     {
-
-        $carousel = Carousel::findOrFail($id);
-        $input = $request->all();
         if (Request::hasFile('img-path')) {
-            //file
-            $path = Input::file('img-path');
-            //name
-            $img = Request::get('img');
-            $extension = pathinfo($path->getClientOriginalName(), PATHINFO_EXTENSION);
-            $filename = str_random(4) . '-' . str_slug($img) . '.' . $extension;
-            $file = file_get_contents($path);
-            file_put_contents(public_path() . './img/carousel/' . $filename, $file);
-            // file_put_contents('../httpd.www/img/carousel/'.$filename,$file);
-            $input['img-path'] = '/img/carousel/' . $filename;
-            $carousel->update($input);
+            $file = Input::file('img-path');
+            $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
+            $request['img-path'] = '/img/carousel/' . $filename;
+            $carousel->update($request);
             return redirect('/admin/carousels');
         } else {
-            $input['img-path'] = $carousel['img-path'];
-            $carousel->update($input);
+            $request['img-path'] = $carousel['img-path'];
+            $carousel->update($request);
             return view('admin.carousels.edit');
         }
     }
@@ -130,13 +96,25 @@ class CarouselController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Carousel $carousel)
     {
-        $carousel = Carousel::findOrFail($id);
         unlink(public_path() . $carousel['img-path']);
         //  unlink('../httpd.www/img/service/'.$carousel['img-path']);
         $carousel->delete();
         return redirect('/admin/carousels');
+    }
+    /**
+     * @param $filepath
+     * @param $file
+     * @return filename
+     */
+    private function storeImage($filepath, $file)
+    {
+        $extension = $file->getClientOriginalExtension();
+        $filename = str_random(6) . '.' . $extension;
+        $file->move($filepath, $filename);
+//        $file->move('../httpd.www/img/service/', $filename);
+        return $filename;
     }
 
 }

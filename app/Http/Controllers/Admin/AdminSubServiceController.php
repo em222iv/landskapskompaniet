@@ -48,14 +48,12 @@ class AdminSubServiceController extends Controller
      */
     public function store(SubServiceRequest $request)
     {
-        $input = $request->all();
-        //file
         if (Request::hasFile('img')) {
             $file = Input::file('img');
             $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
-            $input['img'] = '/img/subservice/' . $filename;
+            $request['img'] = '/img/subservice/' . $filename;
 //        $input['img'] = 'img/service/'.$filename;
-            $subservice = SubService::create($input);
+            $subservice = SubService::create($request);
             $subservice->services()->attach($request->input('service_list'));
             flash()->success('created');
         } else {
@@ -71,9 +69,8 @@ class AdminSubServiceController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(SubService $subservice)
     {
-        $subservice = SubService::findOrFail($id);
         $services = Service::lists('title', 'id');
         return view('admin.subService.edit', compact('services', 'subservice'));
     }
@@ -84,21 +81,19 @@ class AdminSubServiceController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id, SubServiceRequest $request)
+    public function update(SubService $subservice, SubServiceRequest $request)
     {
-        $input = $request->all();
-        $subservice = SubService::findOrFail($id);
+
         if (Request::hasFile('img')) {
             $file = Input::file('img');
             $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
-            $input['img'] = '/img/subservice/' . $filename;
+            $request['img'] = '/img/subservice/' . $filename;
 //          $input['img'] = 'img/service/'.$filename;
-
-            $subservice->update($input);
+            $subservice->update($request);
             $subservice->services()->sync($request->input('service_list', []));
         } else {
-            $input['img'] = $subservice['img'];
-            $subservice->update($input);
+            $request['img'] = $subservice['img'];
+            $subservice->update($request);
             $subservice->services()->sync($request->input('service_list', []));
         }
         return redirect('/admin/subservice');
@@ -110,9 +105,8 @@ class AdminSubServiceController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(SubService $subservice)
     {
-        $subservice = SubService::findOrFail($id);
         unlink(public_path() . $subservice['img']);
         //  unlink('../httpd.www/img/service/'.$subservice['img']);
         $subservice->delete();

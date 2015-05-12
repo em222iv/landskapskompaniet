@@ -62,25 +62,13 @@ class AdminServiceController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        $service = Service::findOrFail($id);
         $subservices = SubService::lists('head-title', 'id');
         return view('admin.service.edit', compact('subservices', 'service'));
     }
@@ -91,28 +79,17 @@ class AdminServiceController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id, ServiceRequest $request)
+    public function update(Service $service, ServiceRequest $request)
     {
-        $service = Service::findOrFail($id);
-        $subservices = SubService::all();
-        $input = $request->all();
-//    $service->sub_services()->detach();
-//    foreach ($subservices as $s) {
-//        if(isset($input[$s['head-title']])){
-//            $service->sub_services()->attach($s->id);
-//        }
-//    }
-
         if (Request::hasFile('img')) {
-            //file
             $file = Input::file('img');
             $filename = $this->storeImage(public_path() . '/img/service/', $file);
-            $input['img'] = 'img/service/' . $filename;
+            $request['img'] = 'img/service/' . $filename;
             $service->services()->sync($request->input('sub_list', []));
-            $service->update($input);
+            $service->update($request);
         } else {
-            $input['img'] = $service['img'];
-            $service->update($input);
+            $request['img'] = $service['img'];
+            $service->update($request);
             $service->sub_services()->sync($request->input('sub_list', []));
             return redirect('admin/service');
         }
@@ -126,9 +103,8 @@ class AdminServiceController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        $service = Service::findOrFail($id);
         unlink(public_path() . $service['img']);
         //  unlink('../httpd.www/img/service/'.$service['img']);
         $service->delete();

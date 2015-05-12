@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Carousel;
-use Illuminate\Support\Facades\View;
 
 class WelcomeController extends Controller
 {
@@ -47,28 +46,10 @@ class WelcomeController extends Controller
             $instatext = $post->caption->text;
             break;
         }
-        // facebook flöde
 
+//        $groupId = "landskapskompaniet";
+//        $fbAccesstoken = "CAACEdEose0cBAOM9hJE2h9sjbqWlOkGG7hgnZAGJKo5GrvjBuVtahpXdS5Gg76qJBHX6m386z5InRmXgMy2JZCZAeuONPPV2H4vC1KlNxTZAo650Gny32K4NkPJKcc5vFB2s6MddYoIe6bDWvv5y9Ab6ISPAODWwna2QOdKkAdW40whZAgO5Ad6qciZB6WnWsoxqyakvRHl6bYDGaeFcBUOMMO28EEbNwZD";
 
-        $groupId = "landskapskompaniet";
-        $fbAccesstoken = "CAACEdEose0cBAOM9hJE2h9sjbqWlOkGG7hgnZAGJKo5GrvjBuVtahpXdS5Gg76qJBHX6m386z5InRmXgMy2JZCZAeuONPPV2H4vC1KlNxTZAo650Gny32K4NkPJKcc5vFB2s6MddYoIe6bDWvv5y9Ab6ISPAODWwna2QOdKkAdW40whZAgO5Ad6qciZB6WnWsoxqyakvRHl6bYDGaeFcBUOMMO28EEbNwZD";
-        /*    FacebookSession::setDefaultApplication('1584087028510603', '808de35efe8a112af1e6c5a94bd89854');
-
-            $session = new FacebookSession($fbAccesstoken);
-            return $session;
-            $request = new FacebookRequest($session, 'GET', '/me');
-            $response = $request->execute();
-            $graphObject = $response->getGraphObject();
-            return $graphObject;*/
-
-
-        /*   $fbresult = $this->fetchData("https://graph.facebook.com/{$groupId}/feed?access_token={$fbAccesstoken}");
-           $fbresult = json_decode($fbresult,true);
-           foreach ($fbresult as $post) {
-               $fbtext = $post[0]['message'];
-               $fbimg =  $post[0]['picture'];
-               break;
-           }*/
 
         $carousels = Carousel::all();
         $data = array(

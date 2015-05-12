@@ -5,7 +5,7 @@
 
 
 <!-- Portfolio Grid Section -->
-<section id="portfolio" class="bg-light-gray">
+<section id="services" class="bg-light-gray">
     <div class="container">
        <div class="row">
               <div class="col-lg-12 text-center">
@@ -30,7 +30,6 @@
                                 <h4>{{$service->title}}</h4>
                                 <p class="text-muted contain-text">{{$service->text}}</p>
                                  <div class="list-inline social-buttons pull-right">
-
                                  </div>
                             </div>
                         </div>

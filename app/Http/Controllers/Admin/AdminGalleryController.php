@@ -47,13 +47,11 @@ class AdminGalleryController extends Controller
      */
     public function store(GalleryRequest $request)
     {
-        $input = $request->all();
-
         if (Request::hasFile('image')) {
             $file = Input::file('image');
             $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
-            $input['image'] = '/img/gallery/' . $filename;
-            Image::create($input);
+            $request['image'] = '/img/gallery/' . $filename;
+            Image::create($request);
         } else {
             flash()->error('No picture chosen');
             return view('admin.gallery.create');
@@ -78,9 +76,8 @@ class AdminGalleryController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Image $image)
     {
-        $image = Image::findOrFail($id);
         return view('admin.gallery.edit')->with('image', $image);
     }
 
@@ -90,20 +87,19 @@ class AdminGalleryController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id, GalleryRequest $request)
+    public function update(Image $image, GalleryRequest $request)
     {
-        $carousel = Image::findOrFail($id);
-        $input = $request->all();
-
         if (Request::hasFile('image')) {
             $file = Input::file('image');
+
             $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
-            $this->destroyImage($carousel['image']);
-            $input['image'] = '/img/gallery/' . $filename;
-            $carousel->update($input);
+            $this->destroyImage($image['image']);
+
+            $request['image'] = '/img/gallery/' . $filename;
+            $image->update($request);
         } else {
-            $input['image'] = $carousel['image'];
-            $carousel->update($input);
+            $request['image'] = $image['image'];
+            $image->update($request);
             return redirect('/admin/gallery');
         }
 
@@ -117,9 +113,8 @@ class AdminGalleryController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Image $image)
     {
-        $image = Image::findOrFail($id);
         unlink(public_path() . $image['image']);
         //  unlink('../httpd.www/img/service/'.$image['image']);
         $image->delete();
