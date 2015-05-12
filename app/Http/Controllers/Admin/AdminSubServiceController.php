@@ -50,11 +50,12 @@ class AdminSubServiceController extends Controller
     {
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
-            $request['img'] = '/img/subservice/' . $filename;
+       //     $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
+            $filename = $this->storeImage('../httpd.www/img/subservice/', $file);
+            $request['img'] = 'img/subservice/' . $filename;
 //        $input['img'] = 'img/service/'.$filename;
-            $subservice = SubService::create($request);
-            $subservice->services()->attach($request->input('service_list'));
+            $subservice = SubService::create($request->all());
+            $this->sync($subservice,$request);
             flash()->success('created');
         } else {
             flash()->error('no picture added');
@@ -83,18 +84,18 @@ class AdminSubServiceController extends Controller
      */
     public function update(SubService $subservice, SubServiceRequest $request)
     {
-
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
-            $request['img'] = '/img/subservice/' . $filename;
-//          $input['img'] = 'img/service/'.$filename;
-            $subservice->update($request);
-            $subservice->services()->sync($request->input('service_list', []));
+         //   $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
+            $filename = $this->storeImage('../httpd.www/img/subservice/', $file);
+            $request['img'] = 'img/subservice/' . $filename;
+            $this->destroyImage($subservice['img']);
+            $subservice->update($request->all());
+            $this->sync($subservice,$request);
         } else {
             $request['img'] = $subservice['img'];
-            $subservice->update($request);
-            $subservice->services()->sync($request->input('service_list', []));
+            $subservice->update($request->all());
+            $this->sync($subservice,$request);
         }
         return redirect('/admin/subservice');
     }
@@ -107,11 +108,20 @@ class AdminSubServiceController extends Controller
      */
     public function destroy(SubService $subservice)
     {
-        unlink(public_path() . $subservice['img']);
-        //  unlink('../httpd.www/img/service/'.$subservice['img']);
+        //unlink(public_path() . $subservice['img']);
+          unlink('../httpd.www/img/service/'.$subservice['img']);
         $subservice->delete();
         return redirect('/admin/subservice');
     }
+
+    /**
+     * sync parameter services
+     */
+    private function sync($model,$request) {
+        $model->services()->sync($request->input('service_list', []));
+
+    }
+
 
     /**
      * @param $filepath
@@ -123,7 +133,12 @@ class AdminSubServiceController extends Controller
         $extension = $file->getClientOriginalExtension();
         $filename = str_random(6) . '.' . $extension;
         $file->move($filepath, $filename);
-//        $file->move('../httpd.www/img/service/', $filename);
         return $filename;
     }
+    private function destroyImage($image)
+    {
+        // unlink(public_path() . $image);
+        unlink('../httpd.www/img/subservice/'.$image);
+    }
+
 }

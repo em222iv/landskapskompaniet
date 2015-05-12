@@ -32,9 +32,9 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    {!! Form::open(array('url' => 'admin/service/' . $service->id, 'class' => 'pull-right')) !!}
-                                        {!! Form::hidden('_method', 'DELETE')!!}
-                                        {!! Form::submit('', array('class' => 'btn btn-danger btn-fab btn-xs mdi-navigation-close')) !!}
+                                    {!! Form::open(array('url' => 'admin/subservice/' . $subservice->id, 'class' => 'pull-right')) !!}
+                                      {!! Form::hidden('_method', 'DELETE')!!}
+                                      {!! Form::submit('Ta bort', array('class' => 'btn btn-warning')) !!}
                                     {!! Form::close() !!}
                                 </td>
                             </tr>

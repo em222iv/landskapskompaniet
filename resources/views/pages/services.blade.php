@@ -18,7 +18,7 @@
                 <div class="bs-component">
                     @foreach($services as $service)
                         <div class="service-panel col-md-3 col-sm-6 portfolio-item">
-                            <a href="tjänster/{{$service->title}}" class="portfolio-link other-services-img" data-toggle="modal">
+                            <a href="tjänster/{{$service->id}}" class="portfolio-link other-services-img" data-toggle="modal">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content">
                                         <i class="fa fa-plus fa-3x"></i>

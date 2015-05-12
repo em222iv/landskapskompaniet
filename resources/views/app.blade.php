@@ -51,7 +51,7 @@
                 </div>
             </nav>
              <div class="form-actions">
-                <a href="{{ URL::previous() }}"><div class="icon-preview"><i id="prev-button"  class="mdi-av-skip-previous"></i></div></a>
+                <a href="{{ URL::previous() }}"><div class="icon-preview"><i id="prev-button"  class="mdi-navigation-chevron-left"></i></div></a>
                 @if(Auth::check())
                     <a href="/admin"><div class="icon-preview"><i id="admin-button"  class="mdi-navigation-apps"></i></div></a>
                 @endif

@@ -48,9 +48,10 @@ class CarouselController extends Controller
         if (Request::hasFile('img-path')) {
             //file
             $file = Input::file('img-path');
-            $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
-            $input['img-path'] = '/img/carousel/' . $filename;
-            Carousel::create($request);
+           // $filename = $this->storeImage(public_path() . '/img/carousel/', $file);
+            $filename = $this->storeImage('../httpd.www/img/carousel/', $file);
+            $input['img-path'] = 'img/carousel/' . $filename;
+            Carousel::create($request->all());
             return redirect('/admin/carousels');
         } else {
             flash()->error('no picture added');
@@ -79,13 +80,15 @@ class CarouselController extends Controller
     {
         if (Request::hasFile('img-path')) {
             $file = Input::file('img-path');
-            $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
-            $request['img-path'] = '/img/carousel/' . $filename;
-            $carousel->update($request);
+           // $filename = $this->storeImage(public_path() . '/img/carousel/', $file);
+            $filename = $this->storeImage('../httpd.www/img/carousel/', $file);
+            $request['img-path'] = 'img/carousel/' . $filename;
+            $this->destroyImage($carousel['img-path']);
+            $carousel->update($request->all());
             return redirect('/admin/carousels');
         } else {
             $request['img-path'] = $carousel['img-path'];
-            $carousel->update($request);
+            $carousel->update($request->all());
             return view('admin.carousels.edit');
         }
     }
@@ -98,8 +101,8 @@ class CarouselController extends Controller
      */
     public function destroy(Carousel $carousel)
     {
-        unlink(public_path() . $carousel['img-path']);
-        //  unlink('../httpd.www/img/service/'.$carousel['img-path']);
+       // unlink(public_path() . $carousel['img-path']);
+          unlink('../httpd.www/img/service/'.$carousel['img-path']);
         $carousel->delete();
         return redirect('/admin/carousels');
     }
@@ -112,9 +115,13 @@ class CarouselController extends Controller
     {
         $extension = $file->getClientOriginalExtension();
         $filename = str_random(6) . '.' . $extension;
-        $file->move($filepath, $filename);
-//        $file->move('../httpd.www/img/service/', $filename);
+        $file->move($filepath, $filename);;
         return $filename;
+    }
+    private function destroyImage($image)
+    {
+        // unlink(public_path() . $image);
+        unlink('../httpd.www/img/carousel/'.$image);
     }
 
 }

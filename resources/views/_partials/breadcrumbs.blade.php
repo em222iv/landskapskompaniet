@@ -1,5 +1,5 @@
 @if (Breadcrumbs::exists())
-     {!! Breadcrumbs::render(Route::currentRouteName()) !!}
+     {!! Breadcrumbs::render() !!}
   @elseif(Breadcrumbs::exists() == false)
      {!! Breadcrumbs::render('home') !!}
   @else

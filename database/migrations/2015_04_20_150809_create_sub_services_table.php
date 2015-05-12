@@ -15,8 +15,7 @@ class CreateSubServicesTable extends Migration
     {
         Schema::create('sub_services', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('head-title');
-            $table->string('sub-title');
+            $table->string('title');
             $table->text('text');
             $table->string('img');
             $table->timestamps();

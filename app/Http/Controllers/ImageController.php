@@ -11,8 +11,10 @@ class ImageController extends Controller
      *
      * @return Response
      */
-    public function show($id)
+    public function show(Image $image)
     {
+
+        $id = $image->id;
         $dbImages = Image::all();
         $images = [];
         $index = 0;
@@ -40,6 +42,7 @@ class ImageController extends Controller
             }
             $index++;
         }
-        return view('pages.image')->with('images', $images);
+
+        return view('pages.image',compact('images', $images));
     }
 }

@@ -49,9 +49,10 @@ class AdminGalleryController extends Controller
     {
         if (Request::hasFile('image')) {
             $file = Input::file('image');
-            $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
+           // $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
+            $filename = $this->storeImage('../httpd.www/img/gallery/', $file);
             $request['image'] = '/img/gallery/' . $filename;
-            Image::create($request);
+            Image::create($request->all());
         } else {
             flash()->error('No picture chosen');
             return view('admin.gallery.create');
@@ -92,14 +93,14 @@ class AdminGalleryController extends Controller
         if (Request::hasFile('image')) {
             $file = Input::file('image');
 
-            $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
+     //       $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
+            $filename = $this->storeImage('../httpd.www/img/gallery/', $file);
             $this->destroyImage($image['image']);
-
             $request['image'] = '/img/gallery/' . $filename;
-            $image->update($request);
+            $image->update($request->all());
         } else {
             $request['image'] = $image['image'];
-            $image->update($request);
+            $image->update($request->all());
             return redirect('/admin/gallery');
         }
 
@@ -131,14 +132,13 @@ class AdminGalleryController extends Controller
         $extension = $file->getClientOriginalExtension();
         $filename = str_random(6) . '.' . $extension;
         $file->move($filepath, $filename);
-//        $file->move('../httpd.www/img/service/', $filename);
         return $filename;
     }
 
     private function destroyImage($image)
     {
-        unlink(public_path() . $image);
-        //  unlink('../httpd.www/img/service/'.$image);
+       // unlink(public_path() . $image);
+          unlink('../httpd.www/img/service/'.$image);
     }
 
 }

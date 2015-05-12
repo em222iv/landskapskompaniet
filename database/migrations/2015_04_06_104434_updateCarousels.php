@@ -15,7 +15,6 @@ class UpdateCarousels extends Migration
     {
         Schema::table('carousels', function (Blueprint $table) {
             $table->string('img')->default('');
-            $table->string('img-path')->default('');
         });
 
     }
@@ -29,7 +28,6 @@ class UpdateCarousels extends Migration
     {
         Schema::table('carousels', function (Blueprint $table) {
             $table->string('img');
-            $table->string('img-path');
         });
     }
 

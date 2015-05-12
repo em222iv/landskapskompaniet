@@ -10,16 +10,13 @@
     {!! Form::label('text','Text:') !!}
     {!! Form::textarea('text',null,['class'=>'form-control']) !!}
    </div>
-
-   <div class="form-group">
-    {!! Form::submit($submitButton,['class'=>'btn btn-primary']) !!}
-   </div>
-
-   <div class="form-group">
+  <div class="form-group">
       {!! Form::label('service_list','Tjänster') !!}
      {!! Form::select('service_list[]',$services,null,['id'=>'service_list','class'=>'form-control','multiple']) !!}
    </div>
-
+   <div class="form-group">
+    {!! Form::submit($submitButton,['class'=>'btn btn-primary']) !!}
+   </div>
   @section('footer')
    <script type="text/javascript">
    console.log('df');

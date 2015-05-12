@@ -22,7 +22,7 @@ class ServiceController extends Controller
     public function show(Service $service)
     {
         $services = Service::all();
-        return $service;
+
         $serviceData = array(
             'services' => $services,
             'service' => $service

@@ -45,15 +45,14 @@ class AdminServiceController extends Controller
     public function store(ServiceRequest $request)
     {
 
-        $input = $request->all();
-
         //file
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            $filename = $this->storeImage(public_path() . '/img/service/', $file);
-            $input['img'] = '/img/service/' . $filename;
-            $service = Service::create($input);
-            $service->sub_services()->sync($request->input('sub_list'));
+            //$filename = $this->storeImage(public_path() . '/img/service/', $file);
+            $filename = $this->storeImage('../httpd.www/img/service/', $file);
+            $request['img'] = '/img/service/' . $filename;
+            $service = Service::create($request->all());
+            $this->sync($service,$request);
         } else {
             flash()->error('no picture added');
             return view('admin.service.create');
@@ -83,15 +82,16 @@ class AdminServiceController extends Controller
     {
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            $filename = $this->storeImage(public_path() . '/img/service/', $file);
+           // $filename = $this->storeImage(public_path() . '/img/service/', $file);
+            $filename = $this->storeImage('../httpd.www/img/service/', $file);
             $request['img'] = 'img/service/' . $filename;
-            $service->services()->sync($request->input('sub_list', []));
-            $service->update($request);
+            $this->destroyImage($service['img']);
+            $this->sync($service,$request);
+            $service->update($request->all());
         } else {
             $request['img'] = $service['img'];
-            $service->update($request);
-            $service->sub_services()->sync($request->input('sub_list', []));
-            return redirect('admin/service');
+            $service->update($request->all());
+            $this->sync($service,$request);
         }
         return redirect('/admin/service');
     }
@@ -110,6 +110,13 @@ class AdminServiceController extends Controller
         $service->delete();
         return redirect('/admin/service');
     }
+    /**
+     * sync parameter subservices
+     */
+    private function sync($model,$request) {
+        $model->sub_services()->sync($request->input('sub_list'));
+
+    }
 
     /**
      * @param $filepath
@@ -120,9 +127,14 @@ class AdminServiceController extends Controller
     {
         $extension = $file->getClientOriginalExtension();
         $filename = str_random(6) . '.' . $extension;
-        $file->move($filepath, $filename);
-//        $file->move('../httpd.www/img/service/', $filename);
+//        $file->move($filepath, $filename);
+       $file->move('../httpd.www/img/service/', $filename);
         return $filename;
+    }
+    private function destroyImage($image)
+    {
+        // unlink(public_path() . $image);
+        unlink('../httpd.www/img/service/'.$image);
     }
 
 }

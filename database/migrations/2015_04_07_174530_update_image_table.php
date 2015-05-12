@@ -14,7 +14,7 @@ class UpdateImageTable extends Migration
     public function up()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->string('image')->default('');
+            $table->string('img')->default('');
         });
     }
 
@@ -26,7 +26,7 @@ class UpdateImageTable extends Migration
     public function down()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->string('image');
+            $table->string('img');
         });
     }
 
