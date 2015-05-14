@@ -1,30 +1,19 @@
- @extends('app')
- @section('content')
+@extends('app')
+@section('head')
+    <link href="{{ asset('/css/image.css') }}" rel="stylesheet">
+@endsection
+@section('gallery-picture')
+    class="full"
+@endsection
 
-<style>body {
-       	margin-top: 50px;
-       	margin-bottom: 50px;
-       	background: none;
-       }
+@section('content')
+<style>/*Image sidan css*/
+         {{--.full {--}}
+           {{--background: url("/{{$images[0]->img}}") no-repeat center center fixed;--}}
 
-       .full {
-         background: url("{{$images[0]->img}}") no-repeat center center fixed;
-         -webkit-background-size: cover;
-         -moz-background-size: cover;
-         -o-background-size: cover;
-         background-size: cover;
-       }
+       {{--}--}}
+</style>
 
-
-       #image-text {
-       color:white;
-       }
-       footer {
-          background-color: transparent;
-       }
-
-       </style>
- <!-- Page Content -->
 <section>
 <div id="image-container" class="container ">
         <div class="row">
@@ -33,7 +22,6 @@
                 <p>{{$images[0]->text}}</p>
             </div>
         </div>
-        <!-- /.row -->
     </div>
     <a class="left carousel-control" href="/galleri/{{$images[1]->id}}" role="button" data-slide="prev">
            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -43,6 +31,10 @@
            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
            <span class="sr-only">Next</span>
        </a>
-    <!-- /.container -->
 </section>
+@endsection
+@section('footer')
+    <script>
+           $('.full').css('background','url(/{{$images[0]->img}}) no-repeat center center fixed');
+    </script>
 @endsection

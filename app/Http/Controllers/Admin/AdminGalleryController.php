@@ -50,9 +50,9 @@ class AdminGalleryController extends Controller
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-           // $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
-            $filename = $this->storeImage('../httpd.www/img/gallery/', $file);
-            $input['img'] = 'img/gallery/' . $filename;
+            $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
+           // $filename = $this->storeImage('../httpd.www/img/gallery/', $file);
+            $input['img'] = '/img/gallery/' . $filename;
             Image::create($input);
         } else {
             flash()->error('No picture chosen');

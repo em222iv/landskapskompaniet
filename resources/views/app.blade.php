@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="full" lang="en">
+<html @yield('gallery-picture')  lang="en">
 <head>
     {{--<link rel="icon"--}}
       {{--type="image/png"--}}
@@ -15,6 +15,7 @@
     <link href="{{ asset('/css/ripples.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/material.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet">
+    @yield('head')
     <meta property="og:site_name" content="">
     <meta property="og:title" content="Landskapskompaniet,träd,tree,arborist,plog,snö,plogning,träfällning,trädtjänster, Trädfällning Sektionsfällning Trädfällare Trädvård Trädbeskärning Trädarbete Norrtälje Rimbo Hallstavik Väddö Grisslehamn">
     <meta property="og:description" content="Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner runt Stockholm, Norrtälje, Rimbo, Halstavik!">
@@ -105,7 +106,7 @@
     				</div>
     			</div>
     		</footer>
-<a class="back-to-top" style="display: inline;" href="#"><div class="glyphicon glyphicon-circle-arrow-up"></div><div class="ripple-wrapper"></div></a>
+<a class="back-to-top" style="display: inline;" href="#"><i class="mdi-navigation-expand-less"></i><div class="ripple-wrapper"></div></a>
 	<!-- Scripts -->
 
     {{--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>--}}

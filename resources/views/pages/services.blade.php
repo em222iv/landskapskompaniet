@@ -8,13 +8,13 @@
 <section id="portfolio" class="bg-light-gray">
     <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-offset-2  text-center">
+        <div class="col-lg-8 col-lg-offset-2  text-center">
          <h3 class="section-heading">Landskapskompaniet</h3>
             <h3 class="section-subheading text-muted">Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner!</h3>
         </div>
     </div>
 
-    <div class="col-lg-8 col-md-offset-2  text-center">
+    <div class="col-lg-8 col-lg-offset-2  text-center">
          <ul class="list-inline intro-social-buttons">
                 <li>
                   <a href="#tjanster" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Tjänster</span></a>
@@ -46,7 +46,7 @@
 
     <a name="tjanster"></a>
     <div class="col-md-12"> <hr class="intro-divider">
-      <div class="col-lg-8 col-md-offset-2  text-center">
+      <div class="col-lg-8 col-lg-offset-2  text-center">
        <h3 class="section-heading">Tjänster</h3>
       </div>
     </div>
