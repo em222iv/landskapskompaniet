@@ -7,9 +7,8 @@ class Carousel extends Model
 
     protected $fillable = [
         'img',
-        'img-path',
         'title',
-        'body'
+        'text'
 
     ];
 

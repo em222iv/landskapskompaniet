@@ -17,7 +17,7 @@
                 <h4>Deltjänster</h4>
                 <ul>
                     @foreach($data['service']->sub_services as $subservice)
-                     <a href="#{{$subservice['head-title']}}"><li>{{$subservice['head-title']}} {{$subservice['sub-title']}}</li></a>
+                     <a href="#{{$subservice->title}}"><li>{{$subservice->title}}</li></a>
                      @endforeach
                 </ul>
             </div>
@@ -29,13 +29,13 @@
             </div>
              @foreach($data['services'] as $service)
                 <div class="service-panel col-md-2 col-sm-6 portfolio-item">
-                   <a href="tjänster/{{$service->title}}" class="portfolio-link other-services-img" data-toggle="modal">
+                   <a href="/tjänster/{{$service->id}}" class="portfolio-link other-services-img" data-toggle="modal">
                        <div class="portfolio-hover">
                            <div class="portfolio-hover-content">
                                <i class="fa fa-plus fa-3x"></i>
                            </div>
                        </div>
-                       <img src="{{$service->img}}" id="services-service-img" class=" img-responsive" alt="">
+                       <img src="/{{$service->img}}" id="services-service-img" class=" img-responsive" alt="">
                    </a>
                    <div class="portfolio-caption">
                        <h4>{{$service->title}}</h4>
@@ -53,15 +53,13 @@
     <div class="container">
         <div class="row">
            @foreach($data['service']->sub_services as $subservice)
-
                 <div class="row featurette" >
-
                     <div class="col-md-3" id="subserivce-img-holder">
-                      <a name="{{$subservice['head-title']}}"></a>
-                        <img class="featurette-image img-responsive center-block"  id="subservice-holder-img"  src="{{$subservice->img}}" data-holder-rendered="true">
+                      <a name="{{$subservice->title}}"></a>
+                        <img class="featurette-image img-responsive center-block"  id="subservice-holder-img"  src="/{{$subservice->img}}" data-holder-rendered="true">
                     </div>
                      <div class="col-md-9" >
-                        <h2 class="featurette-heading">{{$subservice['head-title']}}<span class="text-muted">  {{$subservice['sub-title']}}</span></h2>
+                        <h2 class="featurette-heading">{{$subservice->title}}</h2>
                         <p class="lead">{{$subservice->text}}</p>
                     </div>
                 </div>

@@ -45,13 +45,14 @@ class CarouselController extends Controller
      */
     public function store(CarouselRequest $request)
     {
-        if (Request::hasFile('img-path')) {
+        $input = $request->all();
+        if (Request::hasFile('img')) {
             //file
-            $file = Input::file('img-path');
-           // $filename = $this->storeImage(public_path() . '/img/carousel/', $file);
+            $file = Input::file('img');
+            //$filename = $this->storeImage(public_path() . '/img/carousel/', $file);
             $filename = $this->storeImage('../httpd.www/img/carousel/', $file);
-            $input['img-path'] = 'img/carousel/' . $filename;
-            Carousel::create($request->all());
+            $input['img'] = 'img/carousel/' . $filename;
+            Carousel::create($input);
             return redirect('/admin/carousels');
         } else {
             flash()->error('no picture added');
@@ -78,17 +79,21 @@ class CarouselController extends Controller
      */
     public function update(Carousel $carousel, CarouselRequest $request)
     {
-        if (Request::hasFile('img-path')) {
-            $file = Input::file('img-path');
-           // $filename = $this->storeImage(public_path() . '/img/carousel/', $file);
-            $filename = $this->storeImage('../httpd.www/img/carousel/', $file);
-            $request['img-path'] = 'img/carousel/' . $filename;
-            $this->destroyImage($carousel['img-path']);
-            $carousel->update($request->all());
+        $input = $request->all();
+        if (Request::hasFile('img')) {
+            $file = Input::file('img');
+
+           //$filename = $this->storeImage(public_path() . '/img/carousel/', $file);
+           $filename = $this->storeImage('../httpd.www/img/carousel/', $file);
+            $input['img'] = 'img/carousel/' . $filename;
+            if(File::exists($carousel['img'])) {
+                $this->destroyImage($carousel['img']);
+            }
+            $carousel->update($input);
             return redirect('/admin/carousels');
         } else {
-            $request['img-path'] = $carousel['img-path'];
-            $carousel->update($request->all());
+            $input['img'] = $carousel['img'];
+            $carousel->update($input);
             return view('admin.carousels.edit');
         }
     }
@@ -101,8 +106,7 @@ class CarouselController extends Controller
      */
     public function destroy(Carousel $carousel)
     {
-       // unlink(public_path() . $carousel['img-path']);
-          unlink('../httpd.www/img/service/'.$carousel['img-path']);
+       $this->destroyImage($carousel->img);
         $carousel->delete();
         return redirect('/admin/carousels');
     }
@@ -114,7 +118,7 @@ class CarouselController extends Controller
     private function storeImage($filepath, $file)
     {
         $extension = $file->getClientOriginalExtension();
-        $filename = str_random(6) . '.' . $extension;
+        $filename = str_random(6).'.'.$extension;
         $file->move($filepath, $filename);;
         return $filename;
     }

@@ -8,7 +8,7 @@
        }
 
        .full {
-         background: url("{{$images[0]->image}}") no-repeat center center fixed;
+         background: url("{{$images[0]->img}}") no-repeat center center fixed;
          -webkit-background-size: cover;
          -moz-background-size: cover;
          -o-background-size: cover;
@@ -30,7 +30,7 @@
         <div class="row">
             <div id="image-text" class="col-md-6 col-sm-12">
                 <h1>{{$images[0]->title}}</h1>
-                <p>{{$images[0]->body}}</p>
+                <p>{{$images[0]->text}}</p>
             </div>
         </div>
         <!-- /.row -->

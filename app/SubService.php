@@ -6,8 +6,7 @@ class SubService extends Model
 {
 
     protected $fillable = [
-        'head-title',
-        'sub-title',
+        'title',
         'text',
         'img',
     ];

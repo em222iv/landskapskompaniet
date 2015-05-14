@@ -33,29 +33,9 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-
-        // instagram flöde
-        $userid = "1459532749";
-        $instaAccessToken = "1459532749.ab103e5.4e9c9b38a54145338fc7263289159c95";
-
-        $instaresult = $this->fetchData("https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$instaAccessToken}");
-        $instaresult = json_decode($instaresult);
-        foreach ($instaresult->data as $post) {
-            $instaimg = $post->images->standard_resolution->url;
-            // $instatags = $post->tags;
-            $instatext = $post->caption->text;
-            break;
-        }
-
-//        $groupId = "landskapskompaniet";
-//        $fbAccesstoken = "CAACEdEose0cBAOM9hJE2h9sjbqWlOkGG7hgnZAGJKo5GrvjBuVtahpXdS5Gg76qJBHX6m386z5InRmXgMy2JZCZAeuONPPV2H4vC1KlNxTZAo650Gny32K4NkPJKcc5vFB2s6MddYoIe6bDWvv5y9Ab6ISPAODWwna2QOdKkAdW40whZAgO5Ad6qciZB6WnWsoxqyakvRHl6bYDGaeFcBUOMMO28EEbNwZD";
-
-
         $carousels = Carousel::all();
         $data = array(
-            'carousels' => $carousels,
-            'instaimg' => $instaimg,
-            'instatext' => $instatext
+            'carousels' => $carousels
         );
         return view('pages.welcome')->with('data', $data);
     }

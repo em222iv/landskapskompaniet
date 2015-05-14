@@ -15,7 +15,12 @@
     <link href="{{ asset('/css/ripples.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/material.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet">
-
+    <meta property="og:site_name" content="">
+    <meta property="og:title" content="Landskapskompaniet,träd,tree,arborist,plog,snö,plogning,träfällning,trädtjänster, Trädfällning Sektionsfällning Trädfällare Trädvård Trädbeskärning Trädarbete Norrtälje Rimbo Hallstavik Väddö Grisslehamn">
+    <meta property="og:description" content="Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner runt Stockholm, Norrtälje, Rimbo, Halstavik!">
+    <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+    <meta property="og:url" content="http://www.landskapskompaniet.se">
+    <meta name="google-site-verification" content="UK8RloC3F3e0qvKoGlV4VSNSUKN-f78Vikf3w5nLSpo" />
     <!-- Fonts -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -100,13 +105,15 @@
     				</div>
     			</div>
     		</footer>
-<a class="back-to-top" style="display: inline;" href="#"><div class="glyphicon glyphicon-circle-arrow-up"></div></a>
+<a class="back-to-top" style="display: inline;" href="#"><div class="glyphicon glyphicon-circle-arrow-up"></div><div class="ripple-wrapper"></div></a>
 	<!-- Scripts -->
 
     {{--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>--}}
     <script src="http://code.jquery.com/jquery.js"></script>
 
        <script src="{{ asset('/js/select2.min.js') }}"></script>
+
+
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script>
@@ -116,10 +123,8 @@
     </script>
     <script src="{{ asset('/js/ripples.min.js') }}"></script>
     <script src="{{ asset('/js/material.min.js') }}"></script>
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
     <script src="{{ asset('/js/scroll-up-button.js') }}"></script>
-
 @yield('footer')
 </body>
 <!-- FOOTER -->

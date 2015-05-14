@@ -3,8 +3,8 @@
     {!! Form::file('img',['class'=>'form-control']) !!}
    </div>
    <div class="form-group">
-    {!! Form::label('head-title','Svart Titel:') !!}
-    {!! Form::text('head-title',null,['class'=>'form-control']) !!}
+    {!! Form::label('title','Titel:') !!}
+    {!! Form::text('title',null,['class'=>'form-control']) !!}
    </div>
    <div class="form-group">
     {!! Form::label('text','Text:') !!}

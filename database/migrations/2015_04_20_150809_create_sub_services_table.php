@@ -36,7 +36,6 @@ class CreateSubServicesTable extends Migration
      */
     public function down()
     {
-
         Schema::drop('sub_services');
         Schema::drop('service_sub_service');
 

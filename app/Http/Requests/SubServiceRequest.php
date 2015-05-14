@@ -23,7 +23,7 @@ class SubServiceRequest extends Request
     public function rules()
     {
         return [
-            'head-title' => 'required|min:3',
+            'title' => 'required|min:3',
             'text' => 'required'
         ];
     }

@@ -28,9 +28,8 @@ class CarouselRequest extends Request
     {
         return [
             'title' => 'required',
-            'body' => 'required',
-            'img' => 'required',
-            'img-path' => 'required',
+            'text' => 'required',
+            'img' => 'required'
 
         ];
     }

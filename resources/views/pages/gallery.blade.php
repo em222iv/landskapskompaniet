@@ -12,7 +12,7 @@
             @foreach($images as $image)
                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                      <a class="thumbnail" href="/galleri/{{$image->id}}">
-                         <img class="img-responsive gallery gallery-picture" src="{{$image->image}}" alt="">
+                         <img class="img-responsive gallery gallery-picture" src="{{$image->img}}" alt="">
                      </a>
                  </div>
             @endforeach

@@ -15,11 +15,11 @@
          @else
             <div class="item">
          @endif
-           <img class="slide-image" src="{{ $carousel['img-path'] }}" alt="Slide {{$carousel->id}}">
+           <img class="slide-image" src="{{$carousel->img}}" alt="Slide {{$carousel->id}}">
            <div class="container">
                <div class="carousel-caption">
                    <h1>{{ $carousel->title }}</h1>
-                   <p>{{$carousel->body}}</p>
+                   <p>{{$carousel->text}}</p>
                </div>
            </div>
         </div>
@@ -62,13 +62,20 @@
            {{-- <p><a class="btn btn-default" href="#" role="button">Facebook-sida »</a></p>--}}
         </div>
         <div class="col-lg-4">
-            <a class="group" rel="group1" href="https://instagram.com/explore/tags/landskapskompaniet/"><img class="img-circle" alt="Generic placeholder image" width="140" height="140" src="{{$data['instaimg']}}"></a>
+            <a class="group" rel="group1" href="https://instagram.com/explore/tags/landskapskompaniet/"><img id="instagram-picture" class="img-circle" alt="Generic placeholder image" width="140" height="140" src=""></a>
                 <h2>Instagram</h2>
-                <p>{{$data['instatext']}}</p>
-
+                <div id="instagram-text"></div>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 </div>
+<div class="instagram"></div>
 <div id="fb-root"></div>
-<script src="{{ asset('/js/fb-feed.js') }}"></script>
+
 @endsection
+@section('footer')
+    <script src="{{ asset('/js/fb-feed.js') }}"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.min.js"></script>
+     <script src="{{ asset('/js/potomak-insta.min.js') }}"></script>
+@endsection
+
+

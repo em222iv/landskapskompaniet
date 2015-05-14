@@ -47,28 +47,18 @@ class AdminGalleryController extends Controller
      */
     public function store(GalleryRequest $request)
     {
-        if (Request::hasFile('image')) {
-            $file = Input::file('image');
+        $input = $request->all();
+        if (Request::hasFile('img')) {
+            $file = Input::file('img');
            // $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
             $filename = $this->storeImage('../httpd.www/img/gallery/', $file);
-            $request['image'] = '/img/gallery/' . $filename;
-            Image::create($request->all());
+            $input['img'] = 'img/gallery/' . $filename;
+            Image::create($input);
         } else {
             flash()->error('No picture chosen');
             return view('admin.gallery.create');
         }
         return redirect('/admin/gallery');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -90,17 +80,20 @@ class AdminGalleryController extends Controller
      */
     public function update(Image $image, GalleryRequest $request)
     {
-        if (Request::hasFile('image')) {
-            $file = Input::file('image');
+        $input = $request->all();
+        if (Request::hasFile('img')) {
+            $file = Input::file('img');
 
      //       $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
             $filename = $this->storeImage('../httpd.www/img/gallery/', $file);
-            $this->destroyImage($image['image']);
-            $request['image'] = '/img/gallery/' . $filename;
-            $image->update($request->all());
+
+
+            $this->destroyImage($image->img);
+            $input['img'] = '/img/gallery/' . $filename;
+            $image->update($input);
         } else {
-            $request['image'] = $image['image'];
-            $image->update($request->all());
+            $input['img'] = $image['img'];
+            $image->update($input);
             return redirect('/admin/gallery');
         }
 
@@ -116,8 +109,7 @@ class AdminGalleryController extends Controller
      */
     public function destroy(Image $image)
     {
-        unlink(public_path() . $image['image']);
-        //  unlink('../httpd.www/img/service/'.$image['image']);
+        $this->destroyImage($image['img']);
         $image->delete();
         return redirect('/admin/gallery');
     }
@@ -138,7 +130,7 @@ class AdminGalleryController extends Controller
     private function destroyImage($image)
     {
        // unlink(public_path() . $image);
-          unlink('../httpd.www/img/service/'.$image);
+          unlink($image);
     }
 
 }

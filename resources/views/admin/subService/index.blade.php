@@ -25,12 +25,12 @@
                        <tr>
                          <td>
                              <h4>
-                                 <a href="/admin/subservice/{{ $subservice->id }}/edit">{{$subservice['head-title']}} {{$subservice['sub-title']}}</a>
+                                 <a href="/admin/subservice/{{ $subservice->id }}/edit">{{$subservice->title}}</a>
                              </h4>
                          </td>
                            <td>
                                @foreach($subservice->services as $service)
-                                   <a href="service/{{$service->id}}/edit">{{$service['title']}}</a> |
+                                   <a href="service/{{$service->id}}/edit">{{$service->title}}</a> |
                                @endforeach
                            </td>
 
