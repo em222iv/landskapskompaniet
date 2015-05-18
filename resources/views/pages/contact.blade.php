@@ -18,20 +18,27 @@
                     {{--<iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=59.776794,18.613586&amp;spn=56.506174,79.013672&amp;t=m&amp;z=9&amp;output=embed"></iframe>--}}
                 </div>
                 <div class="col-md-4">
-                    <p>Telefon:
-                        <strong>0736511977</strong>
-                    </p>
-                    <p>Email:
-                        <strong><a href="mailto:name@example.com">landskapskompaniet@gmail.com</a></strong>
-                    </p>
-                    <p>Adress:
-                        <strong>Råbyvägen 28
-                            <br>76172, Norrtälje</strong>
-                    </p>
-                    <p>
-                    Orgnr:  <strong>556994-4134</strong>
-                    </p>
-                   @include('_partials.contactButtons')
+                    <div class="center">
+                        <div>
+                            <i class="mdi-communication-business"></i><p><span>Råbyvägen 28</span><br>76172, Norrtälje</p>
+                        </div>
+                        <div>
+                            <i class="mdi-communication-phone"></i>
+                            <p>Telefon: <a href="tel:+1-303-499-7111">00736511977</a></p>
+                        </div>
+                        <div>
+                            <i class="mdi-communication-email"></i>
+                            <p>E-mail: <a href="mailto:webmaster@example.com">landskapskompaniet@gmail.com</a></p>
+                        </div>
+                        <p>
+                            Orgnr:  <strong>556994-4134</strong>
+                        </p>
+                        <div>
+                           <p>
+                            @include('_partials.contactButtons')
+                           </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>

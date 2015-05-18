@@ -87,9 +87,7 @@ class AdminServiceController extends Controller
            // $filename = $this->storeImage(public_path() . '/img/service/', $file);
             $filename = $this->storeImage('../httpd.www/img/service/', $file);
             $input['img'] = 'img/service/' . $filename;
-            if(File::exists($service['img'])) {
-                $this->destroyImage($service['img']);
-            }
+            $this->destroyImage($service['img']);
             $this->sync($service,$request);
             $service->update($input);
         } else {

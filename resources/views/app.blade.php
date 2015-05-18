@@ -96,14 +96,14 @@
     					<i class="mdi-communication-email"></i>
     					<p>E-mail: <a href="mailto:webmaster@example.com">landskapskompaniet@gmail.com</a></p>
     				</div>
-    			</div>
-    			<div class="footer-right">
-    				<p class="footer-company-about">
-    					<div id="footer-contact-header">Kontakta oss</div><p>@include('_partials.contactButtons')</p>
-    				</p>
-    				<div class="footer-icons">
-                       @include('_partials.socialButtons')
-    				</div>
+                    </div>
+                    <div class="footer-right">
+                        <p class="footer-company-about">
+                            <div id="footer-contact-header">Kontakta oss</div><p>@include('_partials.contactButtons')</p>
+                        </p>
+                        <div class="footer-icons">
+                           @include('_partials.socialButtons')
+                    </div>
     			</div>
     		</footer>
 <a class="back-to-top" style="display: inline;" href="#"><i class="mdi-navigation-expand-less"></i><div class="ripple-wrapper"></div></a>

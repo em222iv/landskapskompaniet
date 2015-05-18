@@ -31,16 +31,6 @@
 
          </ul>
     </div>
-
-    {{--<div class="btn-group btn-group-justified">--}}
-        {{--<a href="javascript:void(0)" class="btn btn-default">Tjänster</a>--}}
-        {{--<a href="javascript:void(0)" class="btn btn-default">Försäkringar</a>--}}
-         {{--<a href="javascript:void(0)" class="btn btn-default">Priser</a>--}}
-         {{--<a href="javascript:void(0)" class="btn btn-default">RUT</a>--}}
-
-    {{--</div>--}}
-
-
     <a name="tjanster"></a>
     <div class="col-md-12"> <hr class="intro-divider">
       <div class="col-lg-8 col-lg-offset-2  text-center">
@@ -52,7 +42,7 @@
                 <div class="bs-component">
                     @foreach($services as $service)
                         <div class="service-panel col-md-3 col-sm-6 portfolio-item">
-                            <a href="tjänster/{{$service->id}}" class="portfolio-link other-services-img" data-toggle="modal">
+                            <a href="/tjänster/{{$service->id}}" class="portfolio-link other-services-img" data-toggle="modal">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content">
                                         <i class="fa fa-plus fa-3x"></i>
