@@ -80,13 +80,15 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 col-sm-6">
+                            @include('_partials.contactButtons')
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Priser<br></h2>
-                            <p class="lead">Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba </p>
-                             @include('_partials.contactButtons')
+                            <h3 class="section-heading">Priser<br></h3>
+                            <p>Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba </p>
+
                         </div>
                         <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+
                             <img class="img-responsive" src="http://digital-photography-school.com/wp-content/uploads/flickr/3570689413_a5695705d1_o.jpg" alt="">
                         </div>
                     </div>
@@ -99,8 +101,8 @@
                        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                            <hr class="section-heading-spacer">
                            <div class="clearfix"></div>
-                           <h2 class="section-heading">Försäkran och<br>Garantiner</h2>
-                           <p class="lead">bla balba lbalb lbalb dlda lbla <a href="#services">våra tjänster</a>nlablab bla bla bla lablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla b blalbb</p>
+                           <h3 class="section-heading">Försäkran och<br>Garantiner</h3>
+                           <p>bla balba lbalb lbalb dlda lbla <a href="#services">våra tjänster</a>nlablab bla bla bla lablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla blablab bla bla bla b blalbb</p>
                        </div>
                        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                            <img class="img-responsive" src="http://digital-photography-school.com/wp-content/uploads/flickr/3570689413_a5695705d1_o.jpg" alt="">
@@ -116,8 +118,8 @@
                        <div class="col-lg-5 col-sm-6">
                            <hr class="section-heading-spacer">
                            <div class="clearfix"></div>
-                           <h2 class="section-heading">Tjänster för<br> RUT-avdrag?</h2>
-                            <p class="lead">bla balba lbalb lbalb dlda lbla <a href="#services">våra tjänster</a>nlablab bla bla bla blalbb</p>
+                           <h3 class="section-heading">Tjänster för<br> RUT-avdrag?</h3>
+                            <p>bla balba lbalb lbalb dlda lbla <a href="#services">våra tjänster</a>nlablab bla bla bla blalbb</p>
                        </div>
                        <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                            <img class="img-responsive" src="http://digital-photography-school.com/wp-content/uploads/flickr/3570689413_a5695705d1_o.jpg" alt="">
@@ -131,7 +133,6 @@
                   <div class="container">
                     {{--<hr class="section-heading-spacer">--}}
                       <div class="row">
-
                           <div class="col-sm-offset-2 col-sm-8">
                                 <hr id="arbrist-divider" class="section-heading-spacer">
                               <div class="clearfix"></div>

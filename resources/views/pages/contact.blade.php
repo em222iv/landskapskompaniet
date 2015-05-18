@@ -38,49 +38,52 @@
         </div>
     </div>
 </section>
+<section id="team" class="bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h4 class="section-heading">Sammarbetspartner</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
+                        <h4>Kay Garland</h4>
+                        <p class="text-muted">Lead Designer</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
+                        <h4>Larry Parker</h4>
+                        <p class="text-muted">Lead Marketer</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
+                        <h4>Diana Pertersen</h4>
+                        <p class="text-muted">Lead Developer</p>
+                        {{--<ul class="list-inline social-buttons">--}}
+                            {{--<li><a href="#"><i class="fa fa-twitter"></i></a>--}}
+                            {{--</li>--}}
+                            {{--<li><a href="#"><i class="fa fa-facebook"></i></a>--}}
+                            {{--</li>--}}
+                            {{--<li><a href="#"><i class="fa fa-linkedin"></i></a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    </div>
+                </div>
+            </div>
 
-<section id="partners">
-    <div id="partners-row" class="row">
-        <div id="partner-heading" class="col-lg-12 text-center">
-            <h3 class="section-heading">Sammarbetspartners</h3>
-            <h4 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h4>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="class col-lg-12">
-    <div class="col-sm-3">
-        <div class="team-member">
-            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
-            <h4>Lättviksmotor</h4>
-            <p class="text-muted">VD</p>
-
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="team-member">
-            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
-            <h4>Britten</h4>
-            <p class="text-muted">VD</p>
-
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="team-member">
-            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
-            <h4>Någon annan</h4>
-            <p class="text-muted">VD</p>
-
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="team-member">
-            <img src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10464294_10153154647470993_1619602019026095887_n.jpg?oh=036c32ee172bedb643ec3c0432f112c6&amp;oe=557296E8" class=" img-circle" alt="">
-            <h4>Någon annnan, annan</h4>
-            <p class="text-muted">VD</p>
-
-        </div>
-    </div>
-    </div>
-</section>
+    </section>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
      <script>
  var geocoder;

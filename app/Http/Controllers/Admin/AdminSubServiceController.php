@@ -92,8 +92,6 @@ class AdminSubServiceController extends Controller
             $input['img'] = 'img/subservice/' . $filename;
             if(File::exists($subservice['img'])) {
                 $this->destroyImage($subservice['img']);
-            }else {
-
             }
             $subservice->update($input);
             $this->sync($subservice,$request);

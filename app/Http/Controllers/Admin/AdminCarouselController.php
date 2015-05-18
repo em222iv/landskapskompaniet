@@ -47,7 +47,6 @@ class CarouselController extends Controller
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
-            //file
             $file = Input::file('img');
             //$filename = $this->storeImage(public_path() . '/img/carousel/', $file);
             $filename = $this->storeImage('../httpd.www/img/carousel/', $file);

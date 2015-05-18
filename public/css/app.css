@@ -423,6 +423,10 @@ section h3.section-subheading {
 #portfolio * {
     z-index: 2;
 }
+#portfolio p {
+    font-size: 15px;
+}
+
 
 @media (min-width: 767px) {
     #portfolio .portfolio-item {

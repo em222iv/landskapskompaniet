@@ -43,7 +43,7 @@
 @media (min-width: 1200px) {
     .navbar-nav > li {
         float: right;
-        margin-left: 136px;
+        margin-left: 131px;
     }
 
     .dropdown:hover .dropdown-menu {
@@ -64,7 +64,7 @@
 @media (max-width: 1199px) and (min-width: 990px) {
     .navbar-nav > li {
         float: right;
-        margin-left: 85px;
+        margin-left: 80px;
     }
 
     .menu-social {
@@ -75,7 +75,7 @@
 @media (max-width: 991px) and (min-width: 500px) {
     .navbar-nav > li {
         float: right;
-        margin-left: 31px;
+        margin-left: 26px;
     }
 
     .menu-social {
@@ -91,6 +91,11 @@
     .navbar-nav > li {
 
     }
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
 
     /*.thumb {*/
     /*overflow:hidden;*/
