@@ -12,16 +12,23 @@ class ServiceController extends Controller
      *
      * @return Response
      */
+    protected $service;
+
+    public function __construct(Service $service)
+    {
+        $this->service = $service;
+    }
+
     public function index()
     {
-        $services = Service::all();
+        $services = $this->service->all();
 
         return view('pages.services')->with('services', $services);
     }
 
     public function show(Service $service)
     {
-        $services = Service::all();
+        $services = $this->service->all();
 
         $serviceData = array(
             'services' => $services,

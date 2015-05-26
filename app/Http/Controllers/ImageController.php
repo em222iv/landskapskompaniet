@@ -11,11 +11,24 @@ class ImageController extends Controller
      *
      * @return Response
      */
+
+    protected $image;
+
+    public function __construct(Image $image)
+    {
+        $this->image = $image;
+    }
+
+    public function index()
+    {
+        $images = $this->image->all();
+        return view('pages.gallery')->with('images', $images);
+    }
     public function show(Image $image)
     {
 
         $id = $image->id;
-        $dbImages = Image::all();
+        $dbImages = $this->image->all();
         $images = [];
         $index = 0;
         foreach ($dbImages as $image) {

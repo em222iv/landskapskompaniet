@@ -13,11 +13,4 @@ class ContactController extends Controller
     {
         return view('pages.contact');
     }
-
-    public function Store(Requests\JobRequest $request)
-    {
-        JobRequest::create($request->all());
-        return redirect('/');
-
-    }
 }

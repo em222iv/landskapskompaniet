@@ -8,7 +8,7 @@ Route::get('/kontakt', ['as' => 'contact', 'uses' => 'ContactController@index'])
 //about
 Route::get('/landskapskompaniet', ['as' => 'about', 'uses' => 'AboutController@index']);
 //gallery
-Route::get('/galleri', ['as' => 'gallery', 'uses' => 'GalleryController@index']);
+Route::get('/galleri', ['as' => 'gallery', 'uses' => 'ImageController@index']);
 Route::get('/galleri/{image}', [ 'uses' => 'ImageController@show','as' => 'image']);
 //service
 Route::get('/tjänster', ['as' => 'services', 'uses' => 'ServiceController@index']);
@@ -23,6 +23,6 @@ Route::controllers([
 ]);
 Route::get('admin', ['as' => 'admin.home', 'uses' => 'Admin\HomeController@index']);
 Route::resource('/admin/carousels', 'Admin\CarouselController');
-Route::resource('/admin/gallery', 'Admin\AdminGalleryController');
+Route::resource('/admin/gallery', 'Admin\AdminImageController');
 Route::resource('/admin/service', 'Admin\AdminServiceController');
 Route::resource('/admin/subservice', 'Admin\AdminSubServiceController');

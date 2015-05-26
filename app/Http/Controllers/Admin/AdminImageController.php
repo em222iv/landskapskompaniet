@@ -7,19 +7,16 @@ use Illuminate\Support\Facades\Input;
 use App\Image;
 use Request;
 
-class AdminGalleryController extends Controller
+class AdminImageController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function __construct()
+    protected $image;
+
+    public function __construct(Image $image)
     {
         $this->middleware('auth');
+        $this->image = $image;
     }
-
     /**
      * Display a listing of the resource.
      *

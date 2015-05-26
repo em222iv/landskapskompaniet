@@ -10,9 +10,12 @@ use Request;
 
 class AdminServiceController extends Controller
 {
-    public function __construct()
+    protected $service;
+
+    public function __construct(Service $service)
     {
         $this->middleware('auth');
+        $this->service = $service;
     }
 
     /**

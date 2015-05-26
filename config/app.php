@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => 'true',
+    'debug' => 'false',
 
     /*
     |--------------------------------------------------------------------------
@@ -138,6 +138,7 @@ return [
         'Illuminate\Html\HtmlServiceProvider',
         'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
+
         /*
          * Application Service Providers...
          */
@@ -199,6 +200,7 @@ return [
         'Html' => 'Illuminate\Html\HtmlFacade',
         'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
         'Flash' => 'Laracasts\Flash\Flash',
+        'phpunit' =>  'Illuminate\Foundation\Testing\TestCase',
 
     ],
 

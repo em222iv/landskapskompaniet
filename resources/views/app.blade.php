@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html @yield('gallery-picture')  lang="en">
 <head>
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Norrtälje",
+            "postalCode": "76172",
+            "streetAddress": "Råbyvägen 28"
+          },
+          "email": "landskapskompaniet@gmail.com",
+          "name": "landskapskompaniet.se",
+          "telephone": "00736511977",
+          "mainEntityOfPage": "Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner!"
+        }
+    </script>
     {{--<link rel="icon"--}}
       {{--type="image/png"--}}
       {{--href="{{ asset('/img/aa929c2e3d896ba28c96432a58ab6fb9.ico/android-icon-36x36.png') }}">--}}
@@ -10,6 +26,7 @@
     <META NAME="description" CONTENT="Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner!">
     <META NAME="keywords" CONTENT="landskapskompaniet,träd,tree,arborist,plog,snö,plogning,träfällning,trädtjänster">
 	<title>Landskapskompaniet</title>
+	 <link rel="shortcut icon" href="{{ asset('/img/favicon/LK-favicon.png') }}" >
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/landskap.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/ripples.min.css') }}" rel="stylesheet">
@@ -22,6 +39,7 @@
     <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
     <meta property="og:url" content="http://www.landskapskompaniet.se">
     <meta name="google-site-verification" content="UK8RloC3F3e0qvKoGlV4VSNSUKN-f78Vikf3w5nLSpo" />
+
     <!-- Fonts -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
