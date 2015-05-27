@@ -7,7 +7,7 @@
  */
 use App\User;
 
-class LoginTest extends TestCase
+class loginTest extends TestCase
 {
     /*
      *Starting session for test
@@ -32,6 +32,7 @@ class LoginTest extends TestCase
             'password' => Hash::make('password')
         ]);
     }
+
     /**
      * Test: test if created admin exists
      */

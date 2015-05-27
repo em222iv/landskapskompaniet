@@ -1,10 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use App\JobRequest;
-use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {

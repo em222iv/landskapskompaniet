@@ -10,6 +10,7 @@
             <a href="/admin/gallery" class="btn btn-flat btn-info">Galleri</a>
             <a href="/admin/service" class="btn btn-flat btn-primary">Tjänster</a>
             <a href="/admin/subservice" class="btn btn-flat btn-default">Deltjänster</a>
+            <a href="/admin/email/create" class="btn btn-flat btn-default">Email</a>
        </div>
      </div>
 </section>

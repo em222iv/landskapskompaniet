@@ -6,16 +6,19 @@ use App\Http\Requests\GalleryRequest;
 use Illuminate\Support\Facades\Input;
 use App\Image;
 use Request;
+use App\Models\ImageHandler;
 
 class AdminImageController extends Controller
 {
 
     protected $image;
+    protected $imageHandler;
 
-    public function __construct(Image $image)
+    public function __construct(Image $image,ImageHandler $imageHandler)
     {
         $this->middleware('auth');
         $this->image = $image;
+        $this->imageHandler = $imageHandler;
     }
     /**
      * Display a listing of the resource.
@@ -47,8 +50,8 @@ class AdminImageController extends Controller
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
-           // $filename = $this->storeImage('../httpd.www/img/gallery/', $file);
+            $filename = $this->imageHandler->storeImage(public_path() . '/img/gallery/', $file);
+           // $filename = $this->imageHandler->storeImage('../httpd.www/img/gallery/', $file);
             $input['img'] = '/img/gallery/' . $filename;
             Image::create($input);
         } else {
@@ -81,11 +84,9 @@ class AdminImageController extends Controller
         if (Request::hasFile('img')) {
             $file = Input::file('img');
 
-     //       $filename = $this->storeImage(public_path() . '/img/gallery/', $file);
-            $filename = $this->storeImage('../httpd.www/img/gallery/', $file);
-
-
-            $this->destroyImage($image->img);
+     //       $filename = $this->imageHandler->storeImage(public_path() . '/img/gallery/', $file);
+            $filename = $this->imageHandler->storeImage('../httpd.www/img/gallery/', $file);
+            $this->imageHandler->destroyImage($image->img);
             $input['img'] = '/img/gallery/' . $filename;
             $image->update($input);
         } else {
@@ -106,7 +107,7 @@ class AdminImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        $this->destroyImage($image['img']);
+        $this->imageHandler->destroyImage($image['img']);
         $image->delete();
         return redirect('/admin/gallery');
     }
@@ -116,18 +117,8 @@ class AdminImageController extends Controller
      * @param $file
      * @return filename
      */
-    private function storeImage($filepath, $file)
-    {
-        $extension = $file->getClientOriginalExtension();
-        $filename = str_random(6) . '.' . $extension;
-        $file->move($filepath, $filename);
-        return $filename;
-    }
 
-    private function destroyImage($image)
-    {
-       // unlink(public_path() . $image);
-          unlink($image);
-    }
+
+
 
 }

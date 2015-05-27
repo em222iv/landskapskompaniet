@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Controller;
 use App\SubService;
+use App\Models\ImageHandler;
 use App\Service;
 use App\Http\Requests\SubServiceRequest;
 use Illuminate\Support\Facades\Input;
@@ -13,9 +14,14 @@ use Request;
 class AdminSubServiceController extends Controller
 {
 
-    public function __construct()
+    protected $subservice;
+    protected $imageHandler;
+
+    public function __construct(SubService $subservice, ImageHandler $imageHandler)
     {
         $this->middleware('auth');
+        $this->subservice = $subservice;
+        $this->imageHandler = $imageHandler;
     }
 
     /**
@@ -52,7 +58,7 @@ class AdminSubServiceController extends Controller
         if (Request::hasFile('img')) {
             $file = Input::file('img');
        //    $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
-            $filename = $this->storeImage('../httpd.www/img/subservice/', $file);
+            $filename = $this->imageHandler->storeImage('../httpd.www/img/subservice/', $file);
             $input['img'] = 'img/subservice/'.$filename;
             $subservice = SubService::create($input);
             $this->sync($subservice,$request);
@@ -88,11 +94,9 @@ class AdminSubServiceController extends Controller
         if (Request::hasFile('img')) {
             $file = Input::file('img');
          //   $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
-            $filename = $this->storeImage('../httpd.www/img/subservice/', $file);
+            $filename = $this->imageHandler->storeImage('../httpd.www/img/subservice/', $file);
             $input['img'] = 'img/subservice/' . $filename;
-            if(File::exists($subservice['img'])) {
-                $this->destroyImage($subservice['img']);
-            }
+            $this->imageHandler->destroyImage($subservice['img']);
             $subservice->update($input);
             $this->sync($subservice,$request);
         } else {
@@ -111,7 +115,7 @@ class AdminSubServiceController extends Controller
      */
     public function destroy(SubService $subservice)
     {
-        $this->destroyImage($subservice['img']);
+        $this->imageHandler->destroyImage($subservice['img']);
         $subservice->delete();
         return redirect('/admin/subservice');
     }
@@ -123,24 +127,4 @@ class AdminSubServiceController extends Controller
         $model->services()->sync($request->input('service_list', []));
 
     }
-
-
-    /**
-     * @param $filepath
-     * @param $file
-     * @return filename
-     */
-    private function storeImage($filepath, $file)
-    {
-        $extension = $file->getClientOriginalExtension();
-        $filename = str_random(6) . '.' . $extension;
-        $file->move($filepath, $filename);
-        return $filename;
-    }
-    private function destroyImage($image)
-    {
-        // unlink(public_path() . $image);
-        unlink($image);
-    }
-
 }

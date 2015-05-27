@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Image;
+use Illuminate\Support\Facades\Mail;
 use Request;
 
 class ImageController extends Controller
@@ -21,9 +22,12 @@ class ImageController extends Controller
 
     public function index()
     {
+
         $images = $this->image->all();
+
         return view('pages.gallery')->with('images', $images);
     }
+
     public function show(Image $image)
     {
 

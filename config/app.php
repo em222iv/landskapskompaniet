@@ -200,7 +200,7 @@ return [
         'Html' => 'Illuminate\Html\HtmlFacade',
         'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
         'Flash' => 'Laracasts\Flash\Flash',
-        'phpunit' =>  'Illuminate\Foundation\Testing\TestCase',
+        'phpunit' =>  'Illuminate\Foundation\Testing\TestCase'
 
     ],
 

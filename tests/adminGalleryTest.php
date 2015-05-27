@@ -7,7 +7,7 @@
  */
 use App\Image;
 
-class GalleryTest extends TestCase
+class adminGalleryTest extends TestCase
 {
     /*
      *Starting session for test
@@ -32,7 +32,7 @@ class GalleryTest extends TestCase
     }
     public function test_edit()
     {
-        $image = Image::where('title', '=', 'image-name');
+        Image::where('title', '=', 'image-name');
         //var_dump($image);
     }
     /**

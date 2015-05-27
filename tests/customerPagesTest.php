@@ -7,12 +7,12 @@
  */
 use App\Service;
 use App\Image;
-class customersPagesTest extends TestCase
+class customerPagesTest extends TestCase
 {
     /**
      * testing welcome page
      */
-    public function testWelcomeData()
+    public function test_WelcomeData()
     {
         $this->call('GET', '/');
         $this->assertViewHas('data');
@@ -20,7 +20,7 @@ class customersPagesTest extends TestCase
     /**
      * testing gallery page
      */
-    public function testGalleryData()
+    public function test_GalleryData()
     {
         $this->call('GET', '/galleri');
         $this->assertViewHas('images');
@@ -28,7 +28,7 @@ class customersPagesTest extends TestCase
     /**
      * testing image page
      */
-    public function testImageData()
+    public function test_ImageData()
     {
         $image = Image::first();
         $this->call('GET', '/galleri/'.$image->id);
@@ -37,7 +37,7 @@ class customersPagesTest extends TestCase
     /**
      * testing Services page
      */
-    public function testServicesData()
+    public function test_ServicesData()
     {
         $this->call('GET', '/tjänster');
         $this->assertViewHas('services');
@@ -45,9 +45,9 @@ class customersPagesTest extends TestCase
     /**
      * testing Service page
      */
-    public function testServiceData()
+    public function test_ServiceData()
     {
-       $service = Service::first();
+        $service = Service::first();
         $this->call('GET', '/tjänster/'.$service->id);
         $this->assertViewHas('data');
     }

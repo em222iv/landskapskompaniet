@@ -23,7 +23,7 @@ class mockeryTest extends TestCase
         Mockery::close();
     }
 
-    function testMockeryWorks() {
+    function test_MockeryWorks() {
         $images = Image::all();
         $mock = Mockery::mock('Image');
         $mock->shouldReceive('index')->once()->andReturn($images);

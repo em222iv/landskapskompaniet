@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ImageHandler;
 use App\Service;
 use Illuminate\Support\Facades\Input;
 use App\SubService;
@@ -8,14 +9,18 @@ use App\Http\Requests\ServiceRequest;
 use Request;
 
 
+
+
 class AdminServiceController extends Controller
 {
     protected $service;
+    protected $imageHandler;
 
-    public function __construct(Service $service)
+    public function __construct(Service $service, ImageHandler $imageHandler)
     {
         $this->middleware('auth');
         $this->service = $service;
+        $this->imageHandler = $imageHandler;
     }
 
     /**
@@ -50,11 +55,10 @@ class AdminServiceController extends Controller
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
+            //$filename = $this->imageHandler->storeImage(public_path() . '/img/service/', $file);
+            $filename = $this->imageHandler->storeImage('../httpd.www/img/service/', $file);
 
-            //$filename = $this->storeImage(public_path() . '/img/service/', $file);
-            $filename = $this->storeImage('../httpd.www/img/service/', $file);
-
-            $input['img'] = 'img/service/' . $filename;
+            $input['img'] = '/img/service/' . $filename;
             $service = Service::create($input);
             $this->sync($service,$request);
         } else {
@@ -87,10 +91,10 @@ class AdminServiceController extends Controller
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-           // $filename = $this->storeImage(public_path() . '/img/service/', $file);
-            $filename = $this->storeImage('../httpd.www/img/service/', $file);
+            $filename = $this->imageHandler->storeImage(public_path() . '/img/service/', $file);
+           // $filename = $this->imageHandler->storeImage('../httpd.www/img/service/', $file);
             $input['img'] = 'img/service/' . $filename;
-            $this->destroyImage($service['img']);
+            $this->imageHandler->destroyImage($service['img']);
             $this->sync($service,$request);
             $service->update($input);
         } else {
@@ -110,7 +114,7 @@ class AdminServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        $this->destroyImage($service['img']);
+        $this->imageHandler->destroyImage($service['img']);
         //  unlink('../httpd.www/img/service/'.$service['img']);
         $service->delete();
         return redirect('/admin/service');
@@ -124,22 +128,5 @@ class AdminServiceController extends Controller
 
     }
 
-    /**
-     * @param $filepath
-     * @param $file
-     * @return filename
-     */
-    private function storeImage($filepath, $file)
-    {
-        $extension = $file->getClientOriginalExtension();
-        $filename = str_random(6) . '.' . $extension;
-        $file->move($filepath, $filename);
-        return $filename;
-    }
-    private function destroyImage($image)
-    {
-        //unlink(public_path() . $image);
-        unlink($image);
-    }
 
 }

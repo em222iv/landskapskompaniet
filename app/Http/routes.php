@@ -14,6 +14,9 @@ Route::get('/galleri/{image}', [ 'uses' => 'ImageController@show','as' => 'image
 Route::get('/tjänster', ['as' => 'services', 'uses' => 'ServiceController@index']);
 Route::get('/tjänster/{service}', [ 'uses' => 'ServiceController@show','as' => 'service']);
 
+
+Route::post('/email', ['as' => 'email', 'uses' => 'EmailController@store']);
+
 //admin
 //Auth
 Route::get('auth/register', ['middleware' => 'auth', 'as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
@@ -21,8 +24,10 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+Route::get('/admin/email/create', ['as' => 'admin.email.create', 'uses' => 'AdminEmailController@create']);
+Route::post('/admin/email', ['as' => 'admin.email', 'uses' => 'AdminEmailController@send']);
 Route::get('admin', ['as' => 'admin.home', 'uses' => 'Admin\HomeController@index']);
-Route::resource('/admin/carousels', 'Admin\CarouselController');
+Route::resource('/admin/carousels', 'Admin\AdminCarouselController');
 Route::resource('/admin/gallery', 'Admin\AdminImageController');
 Route::resource('/admin/service', 'Admin\AdminServiceController');
 Route::resource('/admin/subservice', 'Admin\AdminSubServiceController');
