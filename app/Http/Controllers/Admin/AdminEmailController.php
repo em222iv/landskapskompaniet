@@ -3,29 +3,23 @@
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Mail;
-use App\Email;
 use Request;
+use App\Http\Requests\SendEmailRequest;
 
 class AdminEmailController extends Controller {
 
-    protected $email;
-
-        public function __construct(Email $email)
-    {
-        $this->middleware('auth');
-        $this->email = $email;
-
-    }
 
     public function create() {
 
        return view('admin.email.create');
     }
-    public function send() {
+    public function send(SendEmailRequest $request) {
 
-        $input = Request::all();
+        $input = $request->all();
+
 //        dd($this->email->lists('email'));
-        Mail::raw($input['text'], function($message)
+
+        Mail::send($input['text'], function($message)
         {
             $message->from('erikper.magnusson@gmail.com', 'Landskapskompaniet');
 
