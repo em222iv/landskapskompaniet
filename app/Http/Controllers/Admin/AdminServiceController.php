@@ -105,7 +105,6 @@ class AdminServiceController extends Controller
         return redirect('/admin/service');
     }
 
-
     /**
      * Remove the specified resource from storage.
      *

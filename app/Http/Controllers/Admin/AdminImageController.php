@@ -80,7 +80,7 @@ class AdminImageController extends Controller
         if (Request::hasFile('img')) {
             $file = Input::file('img');
             $filename = ImageHandler::storeImage('gallery', $file);
-            ImageHandler::destroyImage($image);
+            ImageHandler::destroyImage($image['img']);
 
             $input['img'] = '/img/gallery/' . $filename;
             $image->update($input);
@@ -99,7 +99,7 @@ class AdminImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        ImageHandler::destroyImage($image);
+        ImageHandler::destroyImage($image['img']);
         $image->delete();
         return redirect('/admin/gallery');
     }

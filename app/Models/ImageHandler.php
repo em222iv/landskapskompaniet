@@ -30,8 +30,8 @@ class ImageHandler{
  */
     public static function storeImage($filepath,$file)
     {
-//       $filepathbase = '../httpd.www/img/';
-        $filepathbase = public_path().'/img/';
+        $filepathbase = '../httpd.www/img/';
+//        $filepathbase = public_path().'/img/';
         $extension = $file->getClientOriginalExtension();
         $filename = str_random(6).'.'.$extension;
         $file->move($filepathbase.$filepath.'/', $filename);;
@@ -45,8 +45,15 @@ class ImageHandler{
  */
     public static function destroyImage($image)
     {
-        unlink(public_path() . $image);
+       // unlink(public_path() . $image);
         // unlink($image);
-        // unlink('../httpd.www/img/service/'.$service['img']);
+        if(file_exists('../httpd.www/'.$image)){
+            unlink('../httpd.www/'.$image);
+        }
+        else {
+            //lägg in en flash
+            return;
+        }
+
     }
 }

@@ -14,10 +14,6 @@
                           <th>
                             Tillhör Tjänster
                         </th>
-
-
-
-
                     </tr>
                  </thead>
             @foreach($subservices as $subservice)
