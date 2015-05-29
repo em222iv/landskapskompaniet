@@ -24,8 +24,8 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-Route::get('/admin/email/create', ['as' => 'admin.email.create', 'uses' => 'AdminEmailController@create']);
-Route::post('/admin/email', ['as' => 'admin.email', 'uses' => 'AdminEmailController@send']);
+Route::get('admin/email/create', ['as' => 'admin.email.create', 'uses' => 'Admin\AdminEmailController@create']);
+Route::post('admin/email', ['as' => 'admin.email', 'uses' => 'Admin\AdminEmailController@send']);
 Route::get('admin', ['as' => 'admin.home', 'uses' => 'Admin\HomeController@index']);
 Route::resource('/admin/carousels', 'Admin\AdminCarouselController');
 Route::resource('/admin/gallery', 'Admin\AdminImageController');

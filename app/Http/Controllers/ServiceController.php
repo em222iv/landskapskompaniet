@@ -9,7 +9,7 @@ class ServiceController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     *Injected with Serivce
      * @return Response
      */
     protected $service;
@@ -19,6 +19,9 @@ class ServiceController extends Controller
         $this->service = $service;
     }
 
+    /**
+     * @return view showing services
+     */
     public function index()
     {
         $services = $this->service->all();
@@ -26,6 +29,10 @@ class ServiceController extends Controller
         return view('pages.services')->with('services', $services);
     }
 
+    /**
+     * @param Service $service
+     * @return show service
+     */
     public function show(Service $service)
     {
         $services = $this->service->all();

@@ -10,15 +10,15 @@ use App\Models\ImageHandler;
 
 class AdminImageController extends Controller
 {
-
+    /**
+     * @var inject image
+     * Controller need authentication
+     */
     protected $image;
-    protected $imageHandler;
-
-    public function __construct(Image $image,ImageHandler $imageHandler)
+    public function __construct(Image $image)
     {
         $this->middleware('auth');
         $this->image = $image;
-        $this->imageHandler = $imageHandler;
     }
     /**
      * Display a listing of the resource.
@@ -43,15 +43,14 @@ class AdminImageController extends Controller
 
     /**
      * @param GalleryRequest $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     * @return gallery view
      */
     public function store(GalleryRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            $filename = $this->imageHandler->storeImage(public_path() . '/img/gallery/', $file);
-           // $filename = $this->imageHandler->storeImage('../httpd.www/img/gallery/', $file);
+            $filename = ImageHandler::storeImage('gallery', $file);
             $input['img'] = '/img/gallery/' . $filename;
             Image::create($input);
         } else {
@@ -62,10 +61,8 @@ class AdminImageController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return Response
+     * @param Image $image
+     * @return gallery edit view with image
      */
     public function edit(Image $image)
     {
@@ -73,20 +70,18 @@ class AdminImageController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     * @return Response
+     * @param Image $image
+     * @param GalleryRequest $request
+     * @return gallery view
      */
     public function update(Image $image, GalleryRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
+            $filename = ImageHandler::storeImage('gallery', $file);
+            ImageHandler::destroyImage($image);
 
-     //       $filename = $this->imageHandler->storeImage(public_path() . '/img/gallery/', $file);
-            $filename = $this->imageHandler->storeImage('../httpd.www/img/gallery/', $file);
-            $this->imageHandler->destroyImage($image->img);
             $input['img'] = '/img/gallery/' . $filename;
             $image->update($input);
         } else {
@@ -94,31 +89,18 @@ class AdminImageController extends Controller
             $image->update($input);
             return redirect('/admin/gallery');
         }
-
         return redirect('/admin/gallery');
         flash()->success('Updated');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
+     * @param Image $image
+     * @return returns gallery view
      */
     public function destroy(Image $image)
     {
-        $this->imageHandler->destroyImage($image['img']);
+        ImageHandler::destroyImage($image);
         $image->delete();
         return redirect('/admin/gallery');
     }
-
-    /**
-     * @param $filepath
-     * @param $file
-     * @return filename
-     */
-
-
-
-
 }

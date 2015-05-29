@@ -9,7 +9,7 @@ class ImageController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     *injected with Image
      * @return Response
      */
 
@@ -20,6 +20,9 @@ class ImageController extends Controller
         $this->image = $image;
     }
 
+    /**
+     * @return gallery view with images
+     */
     public function index()
     {
 
@@ -28,9 +31,12 @@ class ImageController extends Controller
         return view('pages.gallery')->with('images', $images);
     }
 
+    /**
+     * @param Image $image
+     * @return Image View with chosen images with pre- and post- picture
+     */
     public function show(Image $image)
     {
-
         $id = $image->id;
         $dbImages = $this->image->all();
         $images = [];
@@ -59,7 +65,6 @@ class ImageController extends Controller
             }
             $index++;
         }
-
         return view('pages.image',compact('images', $images));
     }
 }

@@ -40,7 +40,7 @@ Breadcrumbs::register('admin.home', function ($breadcrumbs) {
 //admin carousel
 Breadcrumbs::register('admin.home', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Admin: ' . Auth::User()->name, route('admin.home'));
+    $breadcrumbs->push("Admin: ".Auth::User()->name, route('admin.home'));
 });
 Breadcrumbs::register('admin.carousels.index', function ($breadcrumbs) {
     $breadcrumbs->parent('admin.home');
@@ -54,8 +54,6 @@ Breadcrumbs::register('admin.carousels.edit', function ($breadcrumbs, $carousel)
     $breadcrumbs->parent('admin.carousels.index');
     $breadcrumbs->push($carousel->title, route('admin.carousels.edit'));
 });
-
-
 //admin gallery
 Breadcrumbs::register('admin.gallery.index', function ($breadcrumbs) {
     $breadcrumbs->parent('admin.home');
@@ -76,13 +74,13 @@ Breadcrumbs::register('admin.service.index', function ($breadcrumbs) {
 });
 Breadcrumbs::register('admin.service.create', function ($breadcrumbs) {
     $breadcrumbs->parent('admin.service.index');
-    $breadcrumbs->push('Lägg till tjänst', route('admin.service.create'));
+    $breadcrumbs->push('Skapa Tjänst', route('admin.service.create'));
 });
 Breadcrumbs::register('admin.service.edit', function ($breadcrumbs,$service) {
     $breadcrumbs->parent('admin.service.index');
     $breadcrumbs->push($service->title, route('admin.service.edit'));
 });
-//admin service
+//admin subservice
 Breadcrumbs::register('admin.subservice.index', function ($breadcrumbs) {
     $breadcrumbs->parent('admin.home');
     $breadcrumbs->push('Deltjänster', route('admin.subservice.index'));
@@ -95,3 +93,14 @@ Breadcrumbs::register('admin.subservice.edit', function ($breadcrumbs,$subservic
     $breadcrumbs->parent('admin.subservice.index');
     $breadcrumbs->push($subservice['head-title'], route('admin.subservice.edit'));
 });
+//admin email
+Breadcrumbs::register('admin.subservice.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.home');
+    $breadcrumbs->push('Deltjänster', route('admin.subservice.index'));
+});
+Breadcrumbs::register('admin.email.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.home');
+    $breadcrumbs->push('Mail', route('admin.email.create'));
+});
+
+

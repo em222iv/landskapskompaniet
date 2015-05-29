@@ -6,13 +6,10 @@ class AboutController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-
         return view('pages.about');
     }
 }

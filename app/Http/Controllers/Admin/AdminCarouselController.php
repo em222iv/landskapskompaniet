@@ -12,20 +12,21 @@ use Request;
 
 class AdminCarouselController extends Controller
 {
+    /**
+     * @var inject carousel
+     * Controller need authentication
+     */
     protected $carousel;
-    protected $imageHandler;
-
-    public function __construct(Carousel $carousel, ImageHandler $imageHandler)
+    public function __construct(Carousel $carousel)
     {
         $this->middleware('auth');
         $this->carousel = $carousel;
-        $this->imageHandler = $imageHandler;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return slider view
      */
     public function index()
     {
@@ -36,7 +37,7 @@ class AdminCarouselController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return carousel create view
      */
     public function create()
     {
@@ -44,10 +45,9 @@ class AdminCarouselController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param CreateCarouselRequest $request
-     * @return Response
+     * Store newly created Carousel
+     * @param CarouselRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function store(CarouselRequest $request)
     {
@@ -55,9 +55,8 @@ class AdminCarouselController extends Controller
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            //$filename = $this->storeImage(public_path() . '/img/carousel/', $file);
-            $filename = $this->imageHandler->storeImage('../httpd.www/img/carousel/', $file);
-            $input['img'] = 'img/carousel/' . $filename;
+            $filename = ImageHandler::storeImage('carousel', $file);
+            $input['img'] = '/img/carousel/' . $filename;
             Carousel::create($input);
             return redirect('/admin/carousels');
         } else {
@@ -80,19 +79,17 @@ class AdminCarouselController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
-     * @return Response
+     * @param  Carousel $carousel, CarouselRequests
+     * @return carousel view
      */
     public function update(Carousel $carousel, CarouselRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-
-           //$filename = $this->storeImage(public_path() . '/img/carousel/', $file);
-            $filename = $this->imageHandler->storeImage('../httpd.www/img/carousel/', $file);
-            $input['img'] = 'img/carousel/' . $filename;
-            $this->imageHandler->destroyImage($carousel['img']);
+            $filename = ImageHandler::storeImage('carousel', $file);
+            ImageHandler::destroyImage($carousel['img']);
+            $input['img'] = '/img/carousel/' . $filename;
             $carousel->update($input);
             return redirect('/admin/carousels');
         } else {
@@ -103,23 +100,15 @@ class AdminCarouselController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
+     * @param Carousel $carousel
+     * call ImageHandler to detele image file
+     * @return caroulse view
      */
     public function destroy(Carousel $carousel)
     {
-       $this->imageHandler->destroyImage($carousel->img);
+        ImageHandler::destroyImage($carousel['img']);
         $carousel->delete();
         return redirect('/admin/carousels');
     }
-    /**
-     * @param $filepath
-     * @param $file
-     * @return filename
-     */
-
-
 
 }

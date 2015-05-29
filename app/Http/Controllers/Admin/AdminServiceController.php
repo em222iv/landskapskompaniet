@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\ImageHandler;
 use App\Service;
 use Illuminate\Support\Facades\Input;
@@ -8,19 +9,19 @@ use App\SubService;
 use App\Http\Requests\ServiceRequest;
 use Request;
 
-
-
-
 class AdminServiceController extends Controller
 {
+    /**
+     * @var inject service and subservice
+     * Controller needs authentication
+     */
     protected $service;
-    protected $imageHandler;
-
-    public function __construct(Service $service, ImageHandler $imageHandler)
+    protected $subservice;
+    public function __construct(Service $service,SubService $subService)
     {
         $this->middleware('auth');
         $this->service = $service;
-        $this->imageHandler = $imageHandler;
+        $this->subservice = $subService;
     }
 
     /**
@@ -30,34 +31,32 @@ class AdminServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $services = $this->service->all();
         return view('admin.service.index')->with('services', $services);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return create view with subservices
      */
     public function create()
     {
-        $subservices = SubService::lists('title', 'id');
+        $subservices = $this->service->lists('title', 'id');
         return view('admin.service.create', compact('subservices'));
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
+     * @param ServiceRequest $request
+     * @return service view if correct/else back to create
      */
     public function store(ServiceRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            //$filename = $this->imageHandler->storeImage(public_path() . '/img/service/', $file);
-            $filename = $this->imageHandler->storeImage('../httpd.www/img/service/', $file);
-
+            $filename = ImageHandler::storeImage('service', $file);
             $input['img'] = '/img/service/' . $filename;
             $service = Service::create($input);
             $this->sync($service,$request);
@@ -71,30 +70,31 @@ class AdminServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
-     * @return Response
+     * @param Service $service
+     * @return \Illuminate\View\View
      */
     public function edit(Service $service)
     {
-        $subservices = SubService::lists('title', 'id');
+
+        $subservices = $this->subservice->lists('title', 'id');
         return view('admin.service.edit', compact('subservices', 'service'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
-     * @return Response
+     * @param Service $service
+     * @param ServiceRequest $request
+     * @return service view
      */
     public function update(Service $service, ServiceRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-            $filename = $this->imageHandler->storeImage(public_path() . '/img/service/', $file);
-           // $filename = $this->imageHandler->storeImage('../httpd.www/img/service/', $file);
-            $input['img'] = 'img/service/' . $filename;
-            $this->imageHandler->destroyImage($service['img']);
+            $filename = ImageHandler::storeImage('service', $file);
+            $input['img'] = '/img/service/' . $filename;
+            ImageHandler::destroyImage($service['img']);
             $this->sync($service,$request);
             $service->update($input);
         } else {
@@ -109,13 +109,13 @@ class AdminServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
-     * @return Response
+     * @param Service $service
+     * calls ImageHandler to detele image file
+     * @return caroulse view
      */
     public function destroy(Service $service)
     {
-        $this->imageHandler->destroyImage($service['img']);
-        //  unlink('../httpd.www/img/service/'.$service['img']);
+        ImageHandler::destroyImage($service['img']);
         $service->delete();
         return redirect('/admin/service');
     }

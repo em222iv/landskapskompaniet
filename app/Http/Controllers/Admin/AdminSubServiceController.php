@@ -13,15 +13,17 @@ use Request;
 
 class AdminSubServiceController extends Controller
 {
-
+    /**
+     * @var inject subservice and service
+     * Controller need authentication
+     */
     protected $subservice;
-    protected $imageHandler;
-
-    public function __construct(SubService $subservice, ImageHandler $imageHandler)
+    protected $serivce;
+    public function __construct(SubService $subservice, Service $service)
     {
         $this->middleware('auth');
         $this->subservice = $subservice;
-        $this->imageHandler = $imageHandler;
+        $this->service = $service;
     }
 
     /**
@@ -31,34 +33,32 @@ class AdminSubServiceController extends Controller
      */
     public function index()
     {
-        $subservices = SubService::all();
+        $subservices = $this->subservice->all();
         return view('admin.subService.index')->with('subservices', $subservices);
     }
 
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
+     * @return subservice create view with services
      */
     public function create()
     {
-        $services = Service::lists('title', 'id');
+        $services = $this->subservice->lists('title', 'id');
         return view('admin.subService.create', compact('services'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @return Response
+     * @param SubServiceRequest $request
+     * @return subservice view
      */
     public function store(SubServiceRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-       //    $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
-            $filename = $this->imageHandler->storeImage('../httpd.www/img/subservice/', $file);
+            $filename = ImageHandler::storeImage('subservice', $file);
             $input['img'] = 'img/subservice/'.$filename;
             $subservice = SubService::create($input);
             $this->sync($subservice,$request);
@@ -68,35 +68,36 @@ class AdminSubServiceController extends Controller
             return view('admin.subService.create');
         }
         return redirect('/admin/subservice');
+        flash()->success('Skapad!');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
-     * @return Response
+     * @param SubService $subservice
+     * @return subservice view
      */
     public function edit(SubService $subservice)
     {
-        $services = Service::lists('title', 'id');
+        $services = $this->service->lists('title', 'id');
         return view('admin.subService.edit', compact('services', 'subservice'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
-     * @return Response
+     * @param SubService $subservice
+     * @param SubServiceRequest $request
+     * @return subservice view
      */
     public function update(SubService $subservice, SubServiceRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
             $file = Input::file('img');
-         //   $filename = $this->storeImage(public_path() . '/img/subservice/', $file);
-            $filename = $this->imageHandler->storeImage('../httpd.www/img/subservice/', $file);
+            $filename = ImageHandler::storeImage('subservice', $file);
             $input['img'] = 'img/subservice/' . $filename;
-            $this->imageHandler->destroyImage($subservice['img']);
+            ImageHandler::destroyImage($subservice['img']);
             $subservice->update($input);
             $this->sync($subservice,$request);
         } else {
@@ -110,12 +111,12 @@ class AdminSubServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
-     * @return Response
+     * @param SubService $subservice
+     * return subservice view
      */
     public function destroy(SubService $subservice)
     {
-        $this->imageHandler->destroyImage($subservice['img']);
+        ImageHandler::destroyImage($subservice['img']);
         $subservice->delete();
         return redirect('/admin/subservice');
     }
