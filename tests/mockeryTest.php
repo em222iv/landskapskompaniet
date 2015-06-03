@@ -28,6 +28,7 @@ class mockeryTest extends TestCase
         $mock = Mockery::mock('Image');
         $mock->shouldReceive('index')->once()->andReturn($images);
         $mock->index();
+
     }
 
     function test_create_service() {
