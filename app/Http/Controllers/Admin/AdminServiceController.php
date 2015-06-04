@@ -54,16 +54,12 @@ class AdminServiceController extends Controller
     public function store(ServiceRequest $request)
     {
         $input = $request->all();
-        if (Request::hasFile('img')) {
-            $file = Input::file('img');
-            $filename = ImageHandler::storeImage('service', $file);
-            $input['img'] = '/img/service/' . $filename;
-            $service = Service::create($input);
-            $this->sync($service,$request);
-        } else {
-            flash()->error('no picture added');
-            return view('admin.service.create');
-        }
+        $file = Input::file('img');
+        $filename = ImageHandler::storeImage('service', $file);
+        $input['img'] = '/img/service/' . $filename;
+        $service = Service::create($input);
+        $this->sync($service,$request);
+
         return redirect('/admin/service');
     }
 

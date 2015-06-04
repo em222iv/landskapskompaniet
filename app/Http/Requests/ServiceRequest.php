@@ -25,6 +25,7 @@ class ServiceRequest extends Request
         return [
             'title' => 'required',
             'text' => 'required',
+            'img' => 'required|min:50'
 
         ];
     }

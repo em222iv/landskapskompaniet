@@ -4,7 +4,7 @@
 <section id="subservices">
      <div class="row">
         <div class="col-md-8 col-md-offset-2 text-center">
-        <a href="subservice/create" ><div class="btn btn-primary">Skapa deltjänst</div></a>
+        <a href="{{route('admin.subservice.create')}}" ><div class="btn btn-primary">Skapa deltjänst</div></a>
                 <table class="table table-striped">
                 <thead>
                     <tr>

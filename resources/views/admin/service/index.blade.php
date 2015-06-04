@@ -3,7 +3,7 @@
     <section id="service-section">
         <div id="table-row" class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
-            <a href="service/create" ><div class="btn btn-primary">Skapa Tjänst</div></a>
+            <a href="{{route('admin.service.create')}}" ><div class="btn btn-primary">Skapa Tjänst</div></a>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>

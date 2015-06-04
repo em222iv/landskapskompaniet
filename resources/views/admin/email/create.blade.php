@@ -18,7 +18,5 @@
 @section('footer')
     <script>
         var tag = $('#email-form');
-
-
     </script>
 @endsection

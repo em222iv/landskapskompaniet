@@ -58,14 +58,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" id="brand" href="/hem">Landskapskompaniet</a>
+                        <a class="navbar-brand" id="brand" href="{{route('home')}}">Landskapskompaniet</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
                         <ul class="nav navbar-nav navbar-inner">
-                            <li><a href="/kontakt">Kontakta oss</a></li>
-                            <li><a href="/galleri">Galleri</a></li>
-                            <li><a href="/tjänster">Tjänster</a></li>
-                            <li><a href="/landskapskompaniet">Om oss</a></li>
+                            <li><a href="{{route('contact')}}">Kontakta oss</a></li>
+                            <li><a href="{{route('gallery')}}">Galleri</a></li>
+                            <li><a href="{{route('services')}}">Tjänster</a></li>
+                            <li><a href="{{route('about')}}">Om oss</a></li>
                         </ul>
                         <div class="menu-social">
                             @include('_partials.socialButtons')
@@ -77,7 +77,7 @@
              <div class="form-actions">
                 <a href="{{ URL::previous() }}"><div class="icon-preview"><i id="prev-button"  class="mdi-navigation-chevron-left"></i></div></a>
                 @if(Auth::check())
-                    <a href="/admin"><div class="icon-preview"><i id="admin-button"  class="mdi-navigation-apps"></i></div></a>
+                    <a href="{{route('admin.home')}}"><div class="icon-preview"><i id="admin-button"  class="mdi-navigation-apps"></i></div></a>
                 @endif
 
             </div>
@@ -85,19 +85,20 @@
     </div>
 
 	@yield('content')
+    @include('flash::message')
     <footer class="footer-distributed">
     			<div class="footer-left">
     				<h4>LANDSKAPSKOMPANIET AB</h4>
     				<p class="footer-links">
-    					<a href="#">Hem</a>
+    					<a href="{{route('home')}}">Hem</a>
     					·
-    					<a href="#">Tjänster</a>
+    					<a href="{{route('services')}}">Tjänster</a>
     					·
-    					<a href="#">Galleri</a>
+    					<a href="{{route('gallery')}}">Galleri</a>
     					·
-    					<a href="#">Kontakta oss</a>
+    					<a href="{{route('contact')}}">Kontakta oss</a>
     					·
-    					<a href="#">Om oss</a>
+    					<a href="{{route('about')}}">Om oss</a>
     				</p>
     				 {!! Form::open(['url'=>'email', 'files' => true]) !!}
                             <div class="form-group">

@@ -51,18 +51,12 @@ class AdminCarouselController extends Controller
      */
     public function store(CarouselRequest $request)
     {
-
         $input = $request->all();
-        if (Request::hasFile('img')) {
-            $file = Input::file('img');
-            $filename = ImageHandler::storeImage('carousel', $file);
-            $input['img'] = '/img/carousel/' . $filename;
-            Carousel::create($input);
-            return redirect('/admin/carousels');
-        } else {
-            flash()->error('no picture added');
-            return view('admin.carousels.create');
-        }
+        $file = Input::file('img');
+        $filename = ImageHandler::storeImage('carousel', $file);
+        $input['img'] = '/img/carousel/' . $filename;
+        Carousel::create($input);
+        return redirect('/admin/carousels');
     }
 
     /**
