@@ -18,7 +18,6 @@
                      </a>
                  </div>
              </div>
-              @include('flash::message')
             @endforeach
         </div>
     </div>

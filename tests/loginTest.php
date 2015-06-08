@@ -32,7 +32,6 @@ class loginTest extends TestCase
             'password' => Hash::make('password')
         ]);
     }
-
     /**
      * Test: test if created admin exists
      */
@@ -51,6 +50,16 @@ class loginTest extends TestCase
         $this->call('POST', '/auth/login', $this->user);
         $this->assertResponseStatus(302);
         $this->assertRedirectedToRoute('admin.home');
+    }
+    public function test_failed_login()
+    {
+        $this->user['password'] = 'pass';
+        $this->user = array_add($this->user,'_token',csrf_token());
+
+        $this->call('POST', '/auth/login', $this->user);
+        $this->assertResponseStatus(302);
+        $this->assertRedirectedToRoute('admin.home');
+        $this->assertSessionHasErrors('password');
     }
     /**
      * Test: Delete admin

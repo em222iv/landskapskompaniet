@@ -29,9 +29,6 @@ class CarouselRequest extends Request
         return [
             'title' => 'required',
             'text' => 'required',
-            'img' => 'required',
-            'img' => 'required|min:50'
-
         ];
     }
 

@@ -37,7 +37,6 @@ class AdminSubServiceController extends Controller
         return view('admin.subService.index')->with('subservices', $subservices);
     }
 
-
     /**
      * @return subservice create view with services
      */
@@ -64,11 +63,11 @@ class AdminSubServiceController extends Controller
             $this->sync($subservice,$request);
             flash()->success('created');
         } else {
-            flash()->error('no picture added');
+            flash()->error('Ingen bild vald');
             return view('admin.subService.create');
         }
+        flash()->success('Skapad');
         return redirect('/admin/subservice');
-        flash()->success('Skapad!');
     }
 
     /**
@@ -93,18 +92,21 @@ class AdminSubServiceController extends Controller
     public function update(SubService $subservice, SubServiceRequest $request)
     {
         $input = $request->all();
-        if (Request::hasFile('img')) {
+        if (Request::hasFile('img'))
+        {
             $file = Input::file('img');
             $filename = ImageHandler::storeImage('subservice', $file);
             $input['img'] = 'img/subservice/' . $filename;
             ImageHandler::destroyImage($subservice['img']);
             $subservice->update($input);
             $this->sync($subservice,$request);
-        } else {
+        } else
+        {
             $input['img'] = $subservice['img'];
             $subservice->update($input);
             $this->sync($subservice,$request);
         }
+        flash()->success('Uppdaterad');
         return redirect('/admin/subservice');
     }
 
@@ -124,8 +126,8 @@ class AdminSubServiceController extends Controller
     /**
      * sync parameter services
      */
-    private function sync($model,$request) {
+    private function sync($model,$request)
+    {
         $model->services()->sync($request->input('service_list', []));
-
     }
 }

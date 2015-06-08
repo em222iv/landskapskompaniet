@@ -54,12 +54,19 @@ class AdminServiceController extends Controller
     public function store(ServiceRequest $request)
     {
         $input = $request->all();
-        $file = Input::file('img');
-        $filename = ImageHandler::storeImage('service', $file);
-        $input['img'] = '/img/service/' . $filename;
-        $service = Service::create($input);
-        $this->sync($service,$request);
-
+        if (Request::hasFile('img'))
+        {
+            $file = Input::file('img');
+            $filename = ImageHandler::storeImage('service', $file);
+            $input['img'] = '/img/service/' . $filename;
+            $service = Service::create($input);
+            $this->sync($service,$request);
+        } else
+        {
+            flash()->error('Ingen bild vald');
+            return view('admin.service.create');
+        }
+        flash()->error('Skapad');
         return redirect('/admin/service');
     }
 
@@ -86,18 +93,21 @@ class AdminServiceController extends Controller
     public function update(Service $service, ServiceRequest $request)
     {
         $input = $request->all();
-        if (Request::hasFile('img')) {
+        if (Request::hasFile('img'))
+        {
             $file = Input::file('img');
             $filename = ImageHandler::storeImage('service', $file);
             $input['img'] = '/img/service/' . $filename;
             ImageHandler::destroyImage($service['img']);
             $this->sync($service,$request);
             $service->update($input);
-        } else {
+        } else
+        {
             $input['img'] = $service['img'];
             $service->update($input);
             $this->sync($service,$request);
         }
+        flash()->error('Uppdaterad');
         return redirect('/admin/service');
     }
 
@@ -117,10 +127,9 @@ class AdminServiceController extends Controller
     /**
      * sync parameter subservices
      */
-    private function sync($model,$request) {
-
+    private function sync($model,$request)
+    {
         $model->sub_services()->sync($request->input('sub_list',[]));
-
     }
 
 

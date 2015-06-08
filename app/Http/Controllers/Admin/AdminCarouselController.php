@@ -52,10 +52,18 @@ class AdminCarouselController extends Controller
     public function store(CarouselRequest $request)
     {
         $input = $request->all();
-        $file = Input::file('img');
-        $filename = ImageHandler::storeImage('carousel', $file);
-        $input['img'] = '/img/carousel/' . $filename;
-        Carousel::create($input);
+        if (Request::hasFile('img'))
+        {
+            $file = Input::file('img');
+            $filename = ImageHandler::storeImage('carousel', $file);
+            $input['img'] = '/img/carousel/' . $filename;
+            Carousel::create($input);
+        } else
+        {
+            flash()->error('Ingen bild vald');
+            return view('admin.carousel.create');
+        }
+        flash()->error('Skapad');
         return redirect('/admin/carousels');
     }
 
@@ -79,18 +87,20 @@ class AdminCarouselController extends Controller
     public function update(Carousel $carousel, CarouselRequest $request)
     {
         $input = $request->all();
-        if (Request::hasFile('img')) {
+        if (Request::hasFile('img'))
+        {
             $file = Input::file('img');
             $filename = ImageHandler::storeImage('carousel', $file);
             ImageHandler::destroyImage($carousel['img']);
             $input['img'] = '/img/carousel/' . $filename;
             $carousel->update($input);
-            return redirect('/admin/carousels');
-        } else {
+        } else
+        {
             $input['img'] = $carousel['img'];
             $carousel->update($input);
-            return view('admin.carousels.edit');
         }
+        flash()->error('Uppdaterad');
+        return redirect('/admin/carousels');
     }
 
     /**

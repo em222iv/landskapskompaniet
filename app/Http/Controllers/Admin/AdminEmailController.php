@@ -18,11 +18,13 @@ class AdminEmailController extends Controller {
         $this->email = $email;
     }
 
-    public function create() {
+    public function create()
+    {
         return view('admin.email.create');
     }
 
-    public function send(SendEmailRequest $request) {
+    public function send(SendEmailRequest $request)
+    {
         $this->input = $request->all();
 //        dd($this->email->lists('email'));
         Mail::raw($this->input['text'], function($message)

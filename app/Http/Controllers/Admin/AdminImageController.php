@@ -54,9 +54,10 @@ class AdminImageController extends Controller
             $input['img'] = '/img/gallery/' . $filename;
             Image::create($input);
         } else {
-            flash()->error('No picture chosen');
+            flash()->error('Ingen bild vald  ');
             return view('admin.gallery.create');
         }
+        flash()->success('Skapad');
         return redirect('/admin/gallery');
     }
 
@@ -81,16 +82,17 @@ class AdminImageController extends Controller
             $file = Input::file('img');
             $filename = ImageHandler::storeImage('gallery', $file);
             ImageHandler::destroyImage($image['img']);
-
             $input['img'] = '/img/gallery/' . $filename;
             $image->update($input);
         } else {
             $input['img'] = $image['img'];
             $image->update($input);
+            flash()->success('Uppdaterad');
             return redirect('/admin/gallery');
         }
+        flash()->success('Uppdaterad');
         return redirect('/admin/gallery');
-        flash()->success('Updated');
+
     }
 
     /**
