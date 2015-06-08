@@ -63,7 +63,7 @@ class AdminCarouselController extends Controller
             flash()->error('Ingen bild vald');
             return view('admin.carousel.create');
         }
-        flash()->error('Skapad');
+        flash()->success('Skapad');
         return redirect('/admin/carousels');
     }
 
@@ -99,7 +99,7 @@ class AdminCarouselController extends Controller
             $input['img'] = $carousel['img'];
             $carousel->update($input);
         }
-        flash()->error('Uppdaterad');
+        flash()->success('Uppdaterad');
         return redirect('/admin/carousels');
     }
 
@@ -112,6 +112,7 @@ class AdminCarouselController extends Controller
     {
         ImageHandler::destroyImage($carousel['img']);
         $carousel->delete();
+        flash()->success('Slider borttagen');
         return redirect('/admin/carousels');
     }
 

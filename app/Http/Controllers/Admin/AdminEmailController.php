@@ -32,6 +32,7 @@ class AdminEmailController extends Controller {
             $message->from('landskapskompaniet@gmail.com','Landskapskompaniet');
             $message->to($this->email->lists('email'))->subject($this->input['title']);
         });
+        flash()->success('Mail skickat');
         return view('admin.home');
     }
 }

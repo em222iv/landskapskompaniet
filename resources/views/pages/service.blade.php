@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<!-- Portfolio Item Row -->
+
  <section id="service" class="bg-light-gray">
     <div class="container">
         <div class="row">
@@ -74,7 +74,6 @@
                         </div>
                     </div>
                 @endforeach
-                <!-- /END THE FEATURETTES -->
             </div>
         </div>
     </section>

@@ -18,10 +18,8 @@ function facebookInit() {
                 "/landskapskompaniet/feed",
                 function (response) {
                     if (response && !response.error) {
-                        console.log(response['data'][0]);
                         var img = document.getElementById('facebook-picture');
                         var msg = document.getElementById('faceboook-message');
-                        //console.log(msg);
                         img.src = response['data'][0]['picture'];
                         msg.innerText = response['data'][0]['message'];
                     }

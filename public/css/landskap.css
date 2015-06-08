@@ -638,3 +638,13 @@ footer {
     margin-left:-15px;
     margin-right:-15px;
 }
+#flash-alert{
+    position: relative;
+    margin:auto;
+    width:80%;
+    z-index: 10000000;
+}
+.col-lg-4 img {
+    width:140px;
+    height: 140px;
+}

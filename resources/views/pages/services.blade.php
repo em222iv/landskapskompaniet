@@ -2,9 +2,6 @@
 
 @section('content')
 
-
-
-<!-- Portfolio Grid Section -->
 <section id="portfolio" class="bg-light-gray">
     <div class="container">
     <div class="row" id="service-title-row">
@@ -28,7 +25,6 @@
               <li>
                   <a href="#arborist" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Vad är en arborist?</span></a>
               </li>
-
          </ul>
     </div>
     <a name="tjanster"></a>
@@ -72,10 +68,8 @@
                             <div class="clearfix"></div>
                             <h3 class="section-heading">Priser<br></h3>
                             <p>Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba Bla balbalb aslba </p>
-
                         </div>
                         <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-
                             <img class="img-responsive" src="http://digital-photography-school.com/wp-content/uploads/flickr/3570689413_a5695705d1_o.jpg" alt="">
                         </div>
                     </div>
@@ -101,7 +95,6 @@
              <a name="arborist"></a>
               <div id="arborist-section" class="content-section-a">
                   <div class="container">
-                    {{--<hr class="section-heading-spacer">--}}
                       <div class="row">
                           <div class="col-sm-offset-2 col-sm-8">
                                 <hr id="arbrist-divider" class="section-heading-spacer">

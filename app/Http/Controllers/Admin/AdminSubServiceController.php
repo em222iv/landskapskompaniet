@@ -120,6 +120,7 @@ class AdminSubServiceController extends Controller
     {
         ImageHandler::destroyImage($subservice['img']);
         $subservice->delete();
+        flash()->success('Deltjänst borttagen');
         return redirect('/admin/subservice');
     }
 

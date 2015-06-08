@@ -35,7 +35,6 @@
         </a>
     </div>
 </div>
-
 <div id="introduction-container" class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
@@ -46,31 +45,27 @@
     <hr>
 </div>
 <div class="container marketing">
-<!-- Three columns of text below the carousel -->
     <div class="row">
         <div id="welcome-contact-content" class="col-lg-4">
          @include('_partials.contactButtons')
             <h2>Kontakta oss</h2>
             <p>Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner!</p>
-
-        </div><!-- /.col-lg-4 -->
+        </div>
         <div class="col-lg-4">
-            <a href="https://www.facebook.com/landskapskompaniet?fref=ts"><img id="facebook-picture" class="img-circle" src="" width="140" height="140"></a>
+            <a href="https://www.facebook.com/landskapskompaniet?fref=ts"><img id="facebook-picture" class="img-circle" src=""></a>
             <h2>Facebook</h2>
             <p id="faceboook-message"></p>
             <div class="fb-like" data-href="https://www.facebook.com/landskapskompaniet?fref=ts" data-width="100" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-           {{-- <p><a class="btn btn-default" href="#" role="button">Facebook-sida »</a></p>--}}
         </div>
         <div class="col-lg-4">
-            <a class="group" rel="group1" href="https://instagram.com/explore/tags/landskapskompaniet/"><img id="instagram-picture" class="img-circle" alt="Generic placeholder image" width="140" height="140" src=""></a>
-                <h2>Instagram</h2>
-                <div id="instagram-text"></div>
-        </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+            <a class="group" rel="group1" href="https://instagram.com/explore/tags/landskapskompaniet/"><img id="instagram-picture" class="img-circle" alt="Generic placeholder image" src=""></a>
+            <h2>Instagram</h2>
+            <div id="instagram-text"></div>
+        </div>
+    </div>
 </div>
 <div class="instagram"></div>
 <div id="fb-root"></div>
-
 @endsection
 @section('footer')
     <script src="{{ asset('/js/fb-feed.js') }}"></script>

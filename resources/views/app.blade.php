@@ -17,9 +17,6 @@
           "mainEntityOfPage": "Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner!"
         }
     </script>
-    {{--<link rel="icon"--}}
-      {{--type="image/png"--}}
-      {{--href="{{ asset('/img/aa929c2e3d896ba28c96432a58ab6fb9.ico/android-icon-36x36.png') }}">--}}
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,19 +24,13 @@
     <META NAME="keywords" CONTENT="landskapskompaniet,träd,tree,arborist,plog,snö,plogning,träfällning,trädtjänster">
 	<title>Landskapskompaniet</title>
 	 <link rel="shortcut icon" href="{{ asset('/img/favicon/LK-favicon.png') }}" >
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/app.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/landskap.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/ripples.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/material.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet">
     @yield('head')
-    <meta property="og:site_name" content="">
-    <meta property="og:title" content="Landskapskompaniet,träd,tree,arborist,plog,snö,plogning,träfällning,trädtjänster, Trädfällning Sektionsfällning Trädfällare Trädvård Trädbeskärning Trädarbete Norrtälje Rimbo Hallstavik Väddö Grisslehamn">
-    <meta property="og:description" content="Träd, grönytor och snöröjning! Våra proffesionella Arborister och Greenkeepers hjälper kommuner, kyrkor och privata kunder med deras landskapsvisioner runt Stockholm, Norrtälje, Rimbo, Halstavik!">
-    <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
-    <meta property="og:url" content="http://www.landskapskompaniet.se">
     <meta name="google-site-verification" content="UK8RloC3F3e0qvKoGlV4VSNSUKN-f78Vikf3w5nLSpo" />
-
     <!-- Fonts -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -73,6 +64,10 @@
                         @include('_partials.breadcrumbs')
                     </div>
                 </div>
+                <div id="flash-alert">
+                     @include('flash::message')
+                     @include('errors.errorlist')
+                </div>
             </nav>
              <div class="form-actions">
                 <a href="{{ URL::previous() }}"><div class="icon-preview"><i id="prev-button"  class="mdi-navigation-chevron-left"></i></div></a>
@@ -85,7 +80,7 @@
     </div>
 
 	@yield('content')
-    @include('flash::message')
+
     <footer class="footer-distributed">
     			<div class="footer-left">
     				<h4>LANDSKAPSKOMPANIET AB</h4>
@@ -107,9 +102,6 @@
                               {!! Form::submit('skicka',['class'=>'btn btn-primary']) !!}
                            </div>
                       {!! Form::close() !!}
-
-                       @include('errors.errorlist')
-                        {{--<p class="footer-company-name">Landkspaskompaniet © 2015</p>--}}
     			</div>
     			<div class="footer-center">
     				<div>
@@ -137,15 +129,9 @@
     		</footer>
 <a class="back-to-top" style="display: inline;" href="#"><i class="mdi-navigation-expand-less"></i><div class="ripple-wrapper"></div></a>
 	<!-- Scripts -->
-
-    {{--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>--}}
     <script src="http://code.jquery.com/jquery.js"></script>
-
-       <script src="{{ asset('/js/select2.min.js') }}"></script>
-
-
-
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('/js/select2.min.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script>
         $(function() {
             $.material.init();
@@ -155,6 +141,9 @@
     <script src="{{ asset('/js/material.min.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
     <script src="{{ asset('/js/scroll-up-button.js') }}"></script>
+    <script>
+        $('div#flash-alert').delay(3000).slideUp(300);
+    </script>
 @yield('footer')
 </body>
 <!-- FOOTER -->

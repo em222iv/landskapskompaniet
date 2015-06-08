@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\GalleryRequest;
+use App\Http\Requests\ImageRequest;
 use Illuminate\Support\Facades\Input;
 use App\Image;
 use Request;
@@ -45,7 +45,7 @@ class AdminImageController extends Controller
      * @param GalleryRequest $request
      * @return gallery view
      */
-    public function store(GalleryRequest $request)
+    public function store(ImageRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
@@ -75,7 +75,7 @@ class AdminImageController extends Controller
      * @param GalleryRequest $request
      * @return gallery view
      */
-    public function update(Image $image, GalleryRequest $request)
+    public function update(Image $image, ImageRequest $request)
     {
         $input = $request->all();
         if (Request::hasFile('img')) {
@@ -87,8 +87,6 @@ class AdminImageController extends Controller
         } else {
             $input['img'] = $image['img'];
             $image->update($input);
-            flash()->success('Uppdaterad');
-            return redirect('/admin/gallery');
         }
         flash()->success('Uppdaterad');
         return redirect('/admin/gallery');
@@ -103,6 +101,7 @@ class AdminImageController extends Controller
     {
         ImageHandler::destroyImage($image['img']);
         $image->delete();
+        flash()->success('Bild borttagen');
         return redirect('/admin/gallery');
     }
 }

@@ -66,7 +66,7 @@ class AdminServiceController extends Controller
             flash()->error('Ingen bild vald');
             return view('admin.service.create');
         }
-        flash()->error('Skapad');
+        flash()->success('Skapad');
         return redirect('/admin/service');
     }
 
@@ -78,7 +78,6 @@ class AdminServiceController extends Controller
      */
     public function edit(Service $service)
     {
-
         $subservices = $this->subservice->lists('title', 'id');
         return view('admin.service.edit', compact('subservices', 'service'));
     }
@@ -107,7 +106,7 @@ class AdminServiceController extends Controller
             $service->update($input);
             $this->sync($service,$request);
         }
-        flash()->error('Uppdaterad');
+        flash()->success('Uppdaterad');
         return redirect('/admin/service');
     }
 
@@ -122,6 +121,7 @@ class AdminServiceController extends Controller
     {
         ImageHandler::destroyImage($service['img']);
         $service->delete();
+        flash()->success('Tjänst borttagen');
         return redirect('/admin/service');
     }
     /**

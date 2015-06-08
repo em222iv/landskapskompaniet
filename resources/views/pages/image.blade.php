@@ -5,14 +5,7 @@
 @section('gallery-picture')
     class="full"
 @endsection
-
 @section('content')
-<style>/*Image sidan css*/
-         {{--.full {--}}
-           {{--background: url("/{{$images[0]->img}}") no-repeat center center fixed;--}}
-
-       {{--}--}}
-</style>
 
 <section>
 <div id="image-container" class="container ">
