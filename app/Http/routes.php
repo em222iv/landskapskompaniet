@@ -30,7 +30,7 @@ Route::get('admin', ['as' => 'admin.home', 'uses' => 'Admin\HomeController@index
 Route::get('admin/email/create', ['as' => 'admin.email.create', 'uses' => 'Admin\AdminEmailController@create']);
 Route::post('admin/email', ['as' => 'admin.email', 'uses' => 'Admin\AdminEmailController@send']);
 //RESTful resource routes
-Route::resource('/admin/slider', 'Admin\AdminCarouselController');
+Route::resource('/admin/carousels', 'Admin\AdminCarouselController');
 Route::resource('/admin/gallery', 'Admin\AdminImageController');
 Route::resource('/admin/service', 'Admin\AdminServiceController');
 Route::resource('/admin/subservice', 'Admin\AdminSubServiceController');
