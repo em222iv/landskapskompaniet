@@ -25,7 +25,7 @@
 	<title>Landskapskompaniet</title>
 	 <link rel="shortcut icon" href="{{ asset('/img/favicon/LK-favicon.png') }}" >
 	<link href="{{ asset('/css/app.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/landskap.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/landskap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/ripples.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/material.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet">

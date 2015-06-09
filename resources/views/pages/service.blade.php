@@ -40,7 +40,7 @@
                                                 <i class="fa fa-plus fa-3x"></i>
                                             </div>
                                         </div>
-                                        <img src="/{{$service->img}}" class="img-responsive" alt="">
+                                        <img src="{{$service->img}}" class="img-responsive" alt="">
                                         <div class="ripple-wrapper"></div>
                                     </a>
                                     <div class="portfolio-caption">
