@@ -21,10 +21,10 @@ class CreateSubServicesTable extends Migration
             $table->timestamps();
         });
         Schema::create('service_sub_service', function (Blueprint $table) {
-            $table->integer('service_id')->unsigned()->index();
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('Cascade');
-            $table->integer('sub_service_id')->unsigned()->index();
-            $table->foreign('sub_service_id')->references('id')->on('sub_services')->onDelete('Cascade');
+            $table->integer('service_id')->unsigned()->index()->nullable();
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('Cascade')->onUpdate('cascade');
+            $table->integer('sub_service_id')->unsigned()->index()->nullable();
+            $table->foreign('sub_service_id')->references('id')->on('sub_services')->onDelete('Cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -36,9 +36,8 @@ class CreateSubServicesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sub_services');
         Schema::drop('service_sub_service');
-
+        Schema::drop('sub_services');
     }
 
 }

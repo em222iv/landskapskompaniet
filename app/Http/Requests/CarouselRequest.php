@@ -27,7 +27,7 @@ class CarouselRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|unique',
             'text' => 'required',
         ];
     }

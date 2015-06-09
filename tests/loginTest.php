@@ -13,7 +13,7 @@ class loginTest extends TestCase
      *Starting session for test
      */
     private $user = array(
-        'email' => 'admin@gmail.com',
+        'email' => 'test@gmail.com',
         'password' => 'password',
     );
     public function setUp()
@@ -28,7 +28,7 @@ class loginTest extends TestCase
     public function test_create()
     {
         User::create([
-            'email' => 'admin@gmail.com',
+            'email' => 'test@gmail.com',
             'password' => Hash::make('password')
         ]);
     }
@@ -44,9 +44,7 @@ class loginTest extends TestCase
      */
     public function test_login()
     {
-
         $this->user = array_add($this->user,'_token',csrf_token());
-
         $this->call('POST', '/auth/login', $this->user);
         $this->assertResponseStatus(302);
         $this->assertRedirectedToRoute('admin.home');
@@ -55,19 +53,17 @@ class loginTest extends TestCase
     {
         $this->user['password'] = 'pass';
         $this->user = array_add($this->user,'_token',csrf_token());
-
         $this->call('POST', '/auth/login', $this->user);
         $this->assertResponseStatus(302);
-        $this->assertRedirectedToRoute('admin.home');
-        $this->assertSessionHasErrors('password');
+        $this->assertRedirectedTo('/auth/login');
+        $this->assertSessionHasErrors();
     }
     /**
      * Test: Delete admin
      */
     public function test_delete()
     {
-        User::where('email', '=', 'admin@gmail.com')->delete();
-
+        User::where('email', '=', 'test@gmail.com')->delete();
         $this->assertFalse(Auth::attempt($this->user));
     }
 }

@@ -24,23 +24,31 @@ class adminGalleryTest extends TestCase
     }
 
     /**
-     * Test: create administrator
+     * Test: create image
      */
     public function test_create()
     {
         Image::create($this->image);
     }
+
+    /**
+     * Test: edit image
+     */
     public function test_edit()
     {
-        Image::where('title', '=', 'image-name');
-        //var_dump($image);
+        $this->image['title'] = 'edited-name';
+        $image = Image::where('title', '=', 'image-name');
+        $image->update($this->image);
+        $this->assertTrue(Image::where('title', '=', 'edited-name')->exists());
+
     }
     /**
-     * Test: Delete admin
+     * Test: Delete image
      */
     public function test_delete()
     {
-        Image::where('title', '=', 'image-name')->delete();
+        Image::where('title', '=', 'edited-name')->delete();
+        $this->assertNotTrue(Image::where('title', '=', 'edited-name')->exists());
     }
 
 }

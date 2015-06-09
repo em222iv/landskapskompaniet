@@ -42,7 +42,7 @@ class AdminServiceController extends Controller
      */
     public function create()
     {
-        $subservices = $this->service->lists('title', 'id');
+        $subservices = $this->subservice->lists('title', 'id');
         return view('admin.service.create', compact('subservices'));
     }
 
@@ -98,8 +98,8 @@ class AdminServiceController extends Controller
             $filename = ImageHandler::storeImage('service', $file);
             $input['img'] = '/img/service/' . $filename;
             ImageHandler::destroyImage($service['img']);
-            $this->sync($service,$request);
             $service->update($input);
+            $this->sync($service,$request);
         } else
         {
             $input['img'] = $service['img'];

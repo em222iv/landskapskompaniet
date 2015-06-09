@@ -7,7 +7,7 @@
         <a href="{{route('admin.gallery.create')}}" ><div class="btn btn-primary">Lägg till bild</div></a>
             @foreach($images as $image)
              <div class="col-md-12">
-                 <div class="panel panel-default" style="background-image: url('/{{$image->img}}');background-repeat:no-repeat">
+                 <div class="panel panel-default" style="background-image: url('{{$image->img}}');background-repeat:no-repeat">
                      {!! Form::open(array('url' => 'admin/gallery/' . $image->id, 'class' => 'pull-right')) !!}
                        {!! Form::hidden('_method', 'DELETE')!!}
                        {!! Form::submit('Ta bort bild', array('class' => 'btn btn-warning')) !!}

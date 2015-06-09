@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class SubService extends Model
 {
-
     protected $fillable = [
         'title',
         'text',
@@ -20,7 +20,6 @@ class SubService extends Model
      * get list of ids assoiciated with $this article
      * @return array
      */
-
     public function getServiceListAttribute()
     {
         return $this->services->lists('id');

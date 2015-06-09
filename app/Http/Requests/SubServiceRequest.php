@@ -25,7 +25,6 @@ class SubServiceRequest extends Request
         return [
             'title' => 'required|min:3',
             'text' => 'required',
-            'img' => 'required|min:50'
         ];
     }
 

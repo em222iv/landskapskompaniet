@@ -10,6 +10,11 @@ use App\Http\Controllers\Admin;
 use App\Image;
 use App\Service;
 use \Mockery;
+
+/**
+ * Class mockeryTest
+ * Simple tests including mockery
+ */
 class mockeryTest extends TestCase
 {
 
@@ -18,12 +23,14 @@ class mockeryTest extends TestCase
         parent::setUp();
         Session::start();
     }
+
     public function tearDown()
     {
         Mockery::close();
     }
 
-    function test_MockeryWorks() {
+    function test_MockeryWorks()
+    {
         $images = Image::all();
         $mock = Mockery::mock('Image');
         $mock->shouldReceive('index')->once()->andReturn($images);
@@ -31,21 +38,18 @@ class mockeryTest extends TestCase
 
     }
 
-    function test_create_service() {
+    function test_create_service()
+    {
         $services = Service::lists('title', 'id');
         $mock = Mockery::mock('Service');
         $mock->shouldReceive('create')->once()->andReturnValues($services);
         $mock->create();
     }
-//    function test_store_service() {
-//        $service =  array([
-//            'title' => 'test-serivce',
-//            'text' => 'text-description',
-//            'img' => 'image/file/path'
-//        ]);
-//        $mock = Mockery::mock('Service',$service);
-//        $mock->shouldReceive('update')->once()->verifyCall('destroyImage');
-//        var_dump($mock->update());
-//    }
-}
+    function test_update_service()
+    {
 
+        $mock = Mockery::mock('Service');
+        $mock->shouldReceive('update')->once()->andReturn('d');
+        $mock->update();
+    }
+}

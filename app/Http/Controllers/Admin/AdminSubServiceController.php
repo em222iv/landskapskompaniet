@@ -42,7 +42,7 @@ class AdminSubServiceController extends Controller
      */
     public function create()
     {
-        $services = $this->subservice->lists('title', 'id');
+        $services = $this->service->lists('title', 'id');
         return view('admin.subService.create', compact('services'));
     }
 

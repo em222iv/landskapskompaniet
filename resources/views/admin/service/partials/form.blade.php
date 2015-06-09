@@ -21,7 +21,6 @@
    </div>
    @section('footer')
     <script type="text/javascript">
-    console.log('df');
        $('#sub_list').select2({
         placeholder: 'Välj deltjänster'
        });

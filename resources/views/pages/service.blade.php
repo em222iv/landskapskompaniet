@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <img class="img-responsive" width="100%" src="/{{$data['service']->img}}" alt="">
+                <img class="img-responsive" width="100%" src="{{$data['service']->img}}" alt="">
             </div>
             <div class="col-md-4">
                 <h3>{{$data['service']->title}}</h3>
@@ -40,7 +40,7 @@
                                                 <i class="fa fa-plus fa-3x"></i>
                                             </div>
                                         </div>
-                                        <img src="/{{$service->img}}" class=" img-responsive" alt="">
+                                        <img src="/{{$service->img}}" class="img-responsive" alt="">
                                         <div class="ripple-wrapper"></div>
                                     </a>
                                     <div class="portfolio-caption">

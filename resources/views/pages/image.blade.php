@@ -28,6 +28,6 @@
 @endsection
 @section('footer')
     <script>
-           $('.full').css('background','url(/{{$images[0]->img}}) no-repeat center center fixed');
+           $('.full').css('background','url({{$images[0]->img}}) no-repeat center center fixed');
     </script>
 @endsection

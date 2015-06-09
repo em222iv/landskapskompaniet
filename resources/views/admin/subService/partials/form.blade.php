@@ -19,7 +19,6 @@
    </div>
   @section('footer')
    <script type="text/javascript">
-   console.log('df');
       $('#service_list').select2({
        placeholder: 'Välj tjänster'
       });
