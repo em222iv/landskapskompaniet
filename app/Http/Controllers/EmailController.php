@@ -26,16 +26,4 @@ class EmailController extends Controller {
         flash()->success('Du har skrivit upp dig');
         return redirect('/');
 	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }
