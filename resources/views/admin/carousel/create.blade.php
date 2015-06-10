@@ -7,8 +7,6 @@
                   {!! Form::open(['url'=>'admin/carousels', 'files' => true]) !!}
                     @include('admin.carousel.partials.form',['submitButton' => 'Skapa'])
                   {!! Form::close() !!}
-                  @include('errors.errorlist')
-                    @include('flash::message')
                 </div>
             </div>
     </section>

@@ -7,7 +7,6 @@
                   {!! Form::open(['url'=>'admin/service', 'files' => true]) !!}
                     @include('admin.service.partials.form',['submitButton' => 'Skapa'])
                   {!! Form::close() !!}
-                  @include('errors.errorlist')
                 </div>
             </div>
     </section>

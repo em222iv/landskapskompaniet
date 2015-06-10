@@ -28,6 +28,8 @@ Route::controllers([
 Route::get('admin', ['as' => 'admin.home', 'uses' => 'Admin\HomeController@index']);
 //email routes
 Route::get('admin/email/create', ['as' => 'admin.email.create', 'uses' => 'Admin\AdminEmailController@create']);
+Route::get('admin/email/index', ['as' => 'admin.email.index', 'uses' => 'Admin\AdminEmailController@index']);
+Route::delete('admin/email/{email}', ['as' => 'admin.email.destroy', 'uses' => 'Admin\AdminEmailController@destroy']);
 Route::post('admin/email', ['as' => 'admin.email', 'uses' => 'Admin\AdminEmailController@send']);
 //RESTful resource routes
 Route::resource('/admin/carousels', 'Admin\AdminCarouselController');

@@ -31,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('service','App\Service');
         $router->model('subservice','App\SubService');
         $router->model('carousels','App\Carousel');
+        $router->model('email','App\Email');
     }
     /**
      * Define the routes for the application.

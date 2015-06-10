@@ -53,7 +53,7 @@
         </div>
         <div class="col-lg-4">
             <a href="https://www.facebook.com/landskapskompaniet?fref=ts"><img id="facebook-picture" class="img-circle" src=""></a>
-            <h2>Facebook</h2>
+            <h2>Denna fungerar endast på <a href="http://landskapskompaniet.se">huvudsiten</a></h2>
             <p id="faceboook-message"></p>
             <div class="fb-like" data-href="https://www.facebook.com/landskapskompaniet?fref=ts" data-width="100" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>

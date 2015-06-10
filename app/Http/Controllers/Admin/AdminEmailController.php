@@ -18,6 +18,11 @@ class AdminEmailController extends Controller {
         $this->email = $email;
     }
 
+    public function index()
+    {
+        $emails = $this->email->paginate(8);
+        return view('admin.email.index',compact('emails'));
+    }
     public function create()
     {
         return view('admin.email.create');
@@ -26,7 +31,6 @@ class AdminEmailController extends Controller {
     public function send(SendEmailRequest $request)
     {
         $this->input = $request->all();
-//        dd($this->email->lists('email'));
         Mail::raw($this->input['text'], function($message)
         {
             $message->from('landskapskompaniet@gmail.com','Landskapskompaniet');
@@ -34,5 +38,13 @@ class AdminEmailController extends Controller {
         });
         flash()->success('Mail skickat');
         return view('admin.home');
+    }
+
+    public function destroy(Email $email) {
+        $email->delete();
+        flash()->success('Email adress borttagen');
+        $emails = $this->email->paginate(8);
+        return view('admin.email.index',compact('emails'));
+
     }
 }

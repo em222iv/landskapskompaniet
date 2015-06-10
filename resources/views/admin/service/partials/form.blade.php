@@ -14,7 +14,7 @@
    </div>
     <div class="form-group">
        {!! Form::label('sub_list','Deltjänster') !!}
-      {!! Form::select('sub_list[]',$subservices,null,['id'=>'sub_list','class'=>'form-control','multiple']) !!}
+       {!! Form::select('sub_list[]',$subservices,null,['id'=>'sub_list','class'=>'form-control','multiple']) !!}
     </div>
    <div class="form-group">
     {!! Form::submit($submitButton,['class'=>'btn btn-primary']) !!}

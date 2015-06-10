@@ -7,8 +7,6 @@
                   {!! Form::open(['url'=>'admin/subservice', 'files' => true]) !!}
                     @include('admin.subService.partials.form',['submitButton' => 'Skapa'])
                   {!! Form::close() !!}
-                  @include('errors.errorlist')
-                    @include('flash::message')
                 </div>
             </div>
     </section>

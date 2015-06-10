@@ -23,6 +23,7 @@ class EmailController extends Controller {
 	{
         $input = $request->all();
         Email::create($input);
+        flash()->success('Du har skrivit upp dig');
         return redirect('/');
 	}
 

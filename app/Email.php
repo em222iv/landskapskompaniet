@@ -9,4 +9,21 @@ class Email extends Model {
         'email'
     ];
 
+
+    public function emails()
+    {
+        return $this->all();
+    }
+
+    /**
+     * get list of ids assoiciated with $this article
+     * @return array
+     */
+
+    public function getSubListAttribute()
+    {
+        return $this->emails->lists('id');
+    }
+
+
 }
